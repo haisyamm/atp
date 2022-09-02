@@ -1,0 +1,94 @@
+ahap 1 untuk pengerjaan 4 point berupa:
+1. Perbaikan Website
+2. Pembuatan Master data cek harga
+3. Pembuatan inputan resi retail dan cetak resi
+4. Trace cargo berdasarkan nomor resi di web ATP Cargo (tampilan nya per point ikutin Tokped/Shopee
+5. Request pick up by form pada contact us web %20 digunakan untuk memberi spasi pada text, untuk enter, kamu bisa menggunakan %0A. 
+
+Terkait sistem login vendor akan dibuat jadi tahap 2 untuk pengerjaan:
+1. Akses multi user untuk vendor dan rekanan daerah
+2. Fitur invoice, faktur pajak, historical transaksi,  dan customer support via open ticket untuk user Vendor
+3. Konfirmasi pengiraman via upload gambar untuk user rekanan daerah
+4. Connect data timbangan ke inputan resi via Open API
+#FE7A15
+
+
+Yang dari sistem penginputan data ini mau dibagi jadi 3 bagian besar (akan ada sedikit perbedaan antara login vendor dan retail nantinya tetapi ini saya rincikan untuk yg retail dulu ya karena lebih banyak)
+
+BAGIAN 1 DETAIL PENGIRIMAN 
+1. NOMOR RESI
+Untuk tambah resi nomornya mau dibuat urutan muncul sesuai dengan login cabang yang sudah dialokasikan
+Contoh: 
+Di database kita ada nomor resi 1-30
+- Resi 1-10 dialokasikan untuk kantor pusat nanti akan otomatis muncul berurutan kalau user login menggunakan user kantor pusat
+- Resi 11-30 dialokasikan untuk cabang mangga dua nanti akan muncul berurutan kalau user login menggunakan user mangga dua 
+
+Jika ada kesalahan input resi itu sdh tidak bisa diedit jd nomornya dianggap void diganti ke nomor selanjutnya lg
+
+Untuk nomor resi pak, saya konfirmasi lebih lanjut ya apakah mau dimunculkan atau akan ter generate langsung saat kita submit detail
+
+2. TANGGAL DAN JAM
+Kalau bisa menyesuaikan dengan jam di device atau komputer atau jam sesuai tanggal sistem (realtime input)
+
+Ini juga berkabar lebih lanjut pak apakah perlu dimunculkan saat input data atau otomatis muncul saat generate resi
+
+3. SERVICE/Produk Pengiriman
+Ada 3 service untuk saat ini kemudian akan bertambah ke depannya (Reguler, Kilat, dan Ekonomis)
+
+4. Nama Pengirim
+Untuk ini bisa diinput manual bisa juga di save datanya pak nanti ada checklist untuk simpan data (jika sudah disimpan nanti ketika pilih selanjutnya sdh otomatis muncul alamatnya dan nomor telponnya tetapi masih bisa diedit lg kalau ada perubahan)
+
+Untuk ini apa bisa dibantu untuk otomatis menggunakan huruf kapital semua pak supaya databasenya rapih nanti (semua tulisan saja pak di sistem menggunakan huruf besar)
+
+5. Alamat Pengirim
+Untuk alamat bisa seperti biasa ditulis dan dibantu dibawahnya tetap ada kolom untuk kecamatan tetapi sesuai login saja misalny login kantor pusat jadi kecamatan kantor, login mangga dua jadi kecamatan mangga dua di lock saja tidak masalah untuk yg ini jd sudah paten
+
+6. Nomor Telpon Pengirim
+Wajib diisi pak jd seperti contoh dibawah sudah dituliskan +62nya jadi tinggal paste nomor atau input manual kalau ada angka “0” didepannya langsung otomatis hilang
+
+7. Nama Penerima 
+Kurang lebih sama seperti nama pengirim
+
+8. Alamat Penerima
+Dibantu kalau bisa dibawahnya tetap ada kolom untuk pilih kecamatannya seperti yg terlampir di contoh di bawah, kalau bisa dia ketik keywordnya dari Kelurahan lalu akan muncul kelurahan kecamatan kota jadi bukan hanya dari keyword kecamatan.
+
+Yang lainnya seperti kode pos, kota tidak perlu lagi pak dihilangkan saja digabung jadi 
+“Kelurahan, Kecamatan, Kota Tujuan”
+
+9. Nomor Telpon Penerima 
+Wajib dan kurang lebih mirip seperti nomor telpon pengirim
+
+10. Referensi External/Nomor PO
+boleh juga dicantumkan seperti biasa diisi manual saja kalau bisa ditaruh di dekat nomor resi juga gapapa untuk tampilannya
+
+BAGIAN 2 DETAIL BARANG
+1. Tipe Komoditas/Isi Barang
+diisi manual atau nanti akan ada dropdown listnya
+
+2. Pilihan Insurance
+Ada 2 pilihan: Insurance Free/No Insurance atau Basic Insurance
+
+3. Estimasi Harga Barang
+Rp …. (Hanya bisa diisi angka saja)
+
+4. Untuk kolom berat barang dan volume
+mau dibuatnya seperti contoh dibawah saja supaya lebih mudah
+
+BAGIAN 3 DETAIL PEMBAYARAN
+1. Tarif per Kg 
+akan muncul otomatis tetapi tidak perlu di generate di resi hanya muncul di komputer saja
+
+2. Biaya kirim
+Otomatis muncul setelah dikalikan dengan berat barang/berat volume barang 
+
+8. Asuransi 
+Otomatis muncul ini ratenya akan dikonfirmasi lebih lanjut ya pak, kalau asuransi free berarti 0
+
+9. Biaya lain-lain
+Diisi manual untuk biaya packing,dll tp dibantu untuk dibuat supaya hanya bisa diisi angka dan ada koma seperti Rp 10,000
+
+10. Total Biaya Pengiriman
+Total biaya kirim + insurance + biaya lain-lain
+
+11. SISTEM PEMBAYARAN
+Kita ada 3 pembayaran yaitu Cash, Credit/Invoice, COD (kalau COD nanti jika area login menggunakan usernya akan otomatis muncul untuk transaksi mana sana yg COD)
