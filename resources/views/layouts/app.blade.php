@@ -17,6 +17,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicons/favicon.ico') }}">
     <link rel="manifest" href="{{ asset('assets/img/favicons/manifest.json') }}">
     <link href="{{ asset('assets/css/css2.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <!-- <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff"> -->
 
@@ -41,7 +42,7 @@
                 <li class="nav-item px-2"><a class="nav-link" href="#contactus"><svg class="svg-inline--fa fa-bolt fa-w-10 nav-link-icon text-800 me-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bolt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M296 160H180.6l42.6-129.8C227.2 15 215.7 0 200 0H56C44 0 33.8 8.9 32.2 20.8l-32 240C-1.7 275.2 9.5 288 24 288h118.7L96.6 482.5c-3.6 15.2 8 29.5 23.3 29.5 8.4 0 16.4-4.4 20.8-12l176-304c9.3-15.9-2.2-36-20.7-36z"></path></svg><!-- <span class="nav-link-icon text-800 me-1 fas fa-bolt"></span> Font Awesome fontawesome.com --><span class="nav-link-text">CONTACT</span></a></li>
             </ul>
             <form>
-                <button class="btn btn-voyage-outline order-0" type="submit"><span class="text-success">REQUEST PICKUP</span></button>
+                <a href="{{ route('request-pickup') }}" class="btn btn-voyage-outline order-0"><span class="text-success">REQUEST PICKUP</span></a>
                 <button class="btn btn-voyage-outline order-0" type="submit"><span class="text-primary">LOGIN</span></button>
             </form>
             </div>
@@ -54,6 +55,7 @@
 
     <!-- Libs JS -->
     <!-- Tabler Core -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('assets/dist/js/tabler.min.js') }}"></script>
     <script src="{{ asset('assets/dist/js/demo.min.js') }}"></script>
     <!-- Jquery -->
@@ -64,6 +66,9 @@
     <script src="{{ asset('assets/js/polyfill.min.js') }}"></script>
     <script src="{{ asset('assets/js/all.min.js') }}"></script>
     <script src="{{ asset('assets/js/theme.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
     @stack('script')
 </body>
 

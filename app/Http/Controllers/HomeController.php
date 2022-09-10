@@ -38,6 +38,6 @@ class HomeController extends Controller
      */
     public function devHome()
     {
-        return view('devHome');
+        return view('home');
     }
 }

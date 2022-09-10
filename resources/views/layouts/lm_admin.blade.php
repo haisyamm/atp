@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin Panel</title>
     <!-- CSS files -->
     <link href="{{ asset('assets/dist/css/tabler.min.css') }}" rel="stylesheet" />
@@ -17,6 +18,10 @@
     <!-- Toast -->
     <link rel="stylesheet" href="{{ asset('assets/pus_dist/lib/jquery-toast-plugin/jquery.toast.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/pus_dist/lib/sweetalert/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">    
+    
     <!-- ....... -->
 </head>
 
@@ -72,7 +77,7 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-3d" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -115,7 +120,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/file-text -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <circle cx="12" cy="12" r="9"></circle>
@@ -208,7 +212,7 @@
                                     Gallery
                                 </a>  
                             </div>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" href="">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -239,24 +243,70 @@
                                     </svg>
                                 </span>
                                 <span class="nav-link-title">
-                                    Report
+                                    Resi
                                 </span>
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="./layout-horizontal.html">
-                                    Assets By Outlet
+                                    Input Resi
+                                </a>
+                                @if(auth()->user()->type == 0)
+                                <a class="dropdown-item" href="./layout-boxed.html">
+                                    Pesanan Saya
+                                </a>
+                                @endif
+                                <a class="dropdown-item" href="">
+                                    Request Pickup
+                                </a>
+                                @if(auth()->user()->type == 1 || auth()->user()->type == 2)
+                                <a class="dropdown-item" href="./layout-boxed.html">
+                                    List Resi
                                 </a>
                                 <a class="dropdown-item" href="./layout-boxed.html">
+                                    List Request Pickup
+                                </a>
+                                @endif
+                            </div>
+                        </li>
+                        @if(auth()->user()->type == 1 || auth()->user()->type == 2)
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/file-text -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-text" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                        <line x1="9" y1="9" x2="10" y2="9"></line>
+                                        <line x1="9" y1="13" x2="15" y2="13"></line>
+                                        <line x1="9" y1="17" x2="15" y2="17"></line>
+                                    </svg>
+                                </span>
+                                <span class="nav-link-title">
+                                    Setting
+                                </span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ route('master-harga')}}">
+                                    Master Harga
+                                </a>
+                                <!-- <a class="dropdown-item" href="./layout-boxed.html">
                                     Assets By Regional
                                 </a>
                                 <a class="dropdown-item" href="./layout-boxed.html">
                                     Assets Check-In & Out
+                                </a> -->
+                                @if(auth()->user()->type == 2)
+                                <a class="dropdown-item" href="./layout-boxed.html">
+                                    Company
                                 </a>
                                 <a class="dropdown-item" href="./layout-boxed.html">
-                                    Assets Order & Release
+                                    User
                                 </a>
+                                @endif
                             </div>
                         </li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -418,6 +468,13 @@
     <!-- Custome Js -->
     <script src="{{ asset('assets/pus_dist/js/script.js') }}"></script>
     <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
     <script>
         let url = "<?= url('') ?>";
         let token = "<?= Illuminate\Support\Facades\Session::token() ?>";

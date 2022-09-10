@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 <form class="card card-md" action="{{ route('login') }}" method="POST" autocomplete="off">
     @csrf

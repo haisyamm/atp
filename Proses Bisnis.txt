@@ -92,3 +92,10 @@ Total biaya kirim + insurance + biaya lain-lain
 
 11. SISTEM PEMBAYARAN
 Kita ada 3 pembayaran yaitu Cash, Credit/Invoice, COD (kalau COD nanti jika area login menggunakan usernya akan otomatis muncul untuk transaksi mana sana yg COD)
+
+Calon Sistem Analis
+
+Melakukan perancangan dan desain sistem serta impelementasi , bertanggung jawab atas 
+
+Ada matakuliah yang dapat memenuhi profil lulusan, ada juga penunjang. 
+apakah matkul penunjang ini dicantumkan profil lulusan atau profesi lain yang sesuai dengan penunjang tersebut
