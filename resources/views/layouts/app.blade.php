@@ -18,6 +18,8 @@
     <link rel="manifest" href="{{ asset('assets/img/favicons/manifest.json') }}">
     <link href="{{ asset('assets/css/css2.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
     <!-- <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff"> -->
 
@@ -25,6 +27,11 @@
     <!--    Stylesheets-->
     <!-- ===============================================-->
     <link href="{{ asset('assets/css/theme.min.css') }}" rel="stylesheet">
+    <style>
+    body {
+        font-family: 'Poppins';
+    }
+    </style>
 </head>
 
 <body>
