@@ -99,3 +99,34 @@ Melakukan perancangan dan desain sistem serta impelementasi , bertanggung jawab 
 
 Ada matakuliah yang dapat memenuhi profil lulusan, ada juga penunjang. 
 apakah matkul penunjang ini dicantumkan profil lulusan atau profesi lain yang sesuai dengan penunjang tersebut
+
+
+
+Master Harga :
+▪️Asal
+- Provinsi
+- Kota
+- Kode Area
+- Kecamatan
+- Kelurahan
+▪️Tujuan
+- Provinsi
+- Kota
+- Kode Area
+- Kecamatan
+- Kelurahan
+▪️Harga Publish
+▪️Leadtime
+▪️Service
+
+----
+Key na di Kecamatan ke Kecamatan 
+
+----
+Sort By na per Kode Area
+
+----
+Tambah Fitur Filter 
+
+----
+Edit Multiple

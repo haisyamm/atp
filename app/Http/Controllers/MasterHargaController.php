@@ -14,7 +14,19 @@ class MasterHargaController extends Controller
      */
     public function index()
     {
-        $data['hargas'] = MasterHarga::all();
+        $result = MasterHarga::all();
+        //dd($result);
+        for($i = 0; $i < $result->count(); $i++){
+            //dd($val);
+            $convert[$i]['id'] = $result[$i]['id'];
+            $convert[$i]['alamat_asal'] =  explode(',', $result[$i]['alamat_asal']);
+            $convert[$i]['alamat_tujuan'] =  explode(',', $result[$i]['alamat_tujuan']);
+            $convert[$i]['harga'] =  $result[$i]['harga'];
+            $convert[$i]['servis'] =  $result[$i]['servis'];
+            $convert[$i]['estimasi'] =  $result[$i]['estimasi'];
+        }
+        //dd( $result->count(), $convert[0]['alamat_asal'][0]);
+        $data['hargas'] = json_encode($convert);
         return view('harga.list', $data);
     }
 

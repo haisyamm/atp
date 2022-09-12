@@ -23,9 +23,17 @@
                                         </svg>
                                     </a>
                                 </th>
-                                <th>Daerah Asal</th>
-                                <th>Daerah Tujuan</th>
-                                <th>Estimasi</th>
+                                <th>Area Asal</th>
+                                <th>Provinsi Asal</th>
+                                <th>Kota Asal</th>
+                                <th>Kecamatan Asal</th>
+                                <th>Kel. / Desa Asal</th>
+                                <th>Area Tujuan</th>
+                                <th>Provinsi Tujuan</th>
+                                <th>Kota Tujuan</th>
+                                <th>Kecamatan Tujuan</th>
+                                <th>Kel. / Desa Tujuan</th>
+                                <th>Leadtime</th>
                                 <th>Servis</th>
                                 <th>Harga /KG</th>
                                 <th class="text-center" style="width: 50px;">
@@ -53,7 +61,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($hargas as $val)
+                            @foreach(json_decode($hargas) as $val)
                             <tr>
                                 <td>
                                     <a href="" class="btn btn-icon border-dashed bg-dark-lt">
@@ -64,10 +72,18 @@
                                         </svg>
                                     </a>
                                 </td>
-                                <td>{{$val->alamat_asal}}</td>
-                                <td>{{$val->alamat_tujuan}}</td>
-                                <td>{{$val->estimasi}}</td>
-                                <td>{{$val->servis}}</td>
+                                <td>CGK</td>
+                                <td>{{$val->alamat_asal[0]}}</td>
+                                <td>{{$val->alamat_asal[1]}}</td>
+                                <td>{{$val->alamat_asal[2]}}</td>
+                                <td>{{$val->alamat_asal[3]}}</td>
+                                <td>Area Tujuan</td>
+                                <td>{{$val->alamat_tujuan[0]}}</td>
+                                <td>{{$val->alamat_tujuan[1]}}</td>
+                                <td>{{$val->alamat_tujuan[2]}}</td>
+                                <td>{{$val->alamat_tujuan[3]}}</td>
+                                <td>CGK</td>
+                                <td>{{$val->servis}} /Hari</td>
                                 <td>{{$val->harga}}</td>
                                 <td class="text-center">
                                     <a href="{{ route('harga-edit', $val->id) }}" class="btn btn-icon border-dashed bg-yellow-lt">
