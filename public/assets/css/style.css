@@ -9503,7 +9503,7 @@ fieldset:disabled .btn {
 
 /* rtl:end:remove */
 .text-primary {
-  color: #3011BC !important;
+  color: #FE7A15 !important;
 }
 
 .text-secondary {
@@ -17575,9 +17575,9 @@ ul {
 }
 
 .bg-primary-gradient {
-  background: -webkit-gradient(linear, left top, right top, from(#3011bc), to(#7e11bc));
-  background: -o-linear-gradient(left, #3011bc, #7e11bc);
-  background: linear-gradient(90deg, #3011bc, #7e11bc);
+  background: -webkit-gradient(linear, left top, right top, from(#006a4e), to(#FE7A15));
+  background: -o-linear-gradient(left, #006a4e, #FE7A15);
+  background: linear-gradient(90deg, #006a4e, #FE7A15);
 }
 
 .bg-secondary-gradient {
