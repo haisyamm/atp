@@ -21,48 +21,56 @@
                 <input type="hidden" name="p_id" id="p_id" value="{{ isset($harga->id) ? $harga->id : ''  }}">
                     <div class="row" style="margin-top: 25px;">
                         <div class="col-md-6 form-group mb-3">
-                            <label for="kelurahan_asal" class="small fw-bolder text-uppercase">Daerah Asal Kelurahan</label>
-                            <select name="kelurahan_asal" id="kelurahan_asal" class="village form-control mt-1">
-                                @if(isset($harga->kelurahan_asal))
-                                <option value="{{ $harga->kelurahan_asal }}">{{ $harga->alamat_asal }}</option>
+                            <label for="alamat_asal" class="small fw-bolder text-uppercase">Daerah Asal</label>
+                            <select name="alamat_asal" id="alamat_asal" class="distric form-control mt-1">
+                                @if(isset($harga->alamat_asal))
+                                <option value="{{ $harga->alamat_asal }}">{{ $harga->alamat_asal }}</option>
                                 @endif
                             </select>
                         </div>
                         <div class="col-md-6 form-group mb-3">
-                            <label for="kelurahan_tujuan" class="small fw-bolder text-uppercase"> Daerah Tujuan Kelurahan</label>
-                            <select name="kelurahan_tujuan" id="kelurahan_tujuan" class="village form-control mt-1">
-                                @if(isset($harga->kelurahan_asal))
-                                <option value="{{ $harga->kelurahan_tujuan }}">{{ $harga->alamat_tujuan }}</option>
+                            <label for="alamat_tujuan" class="small fw-bolder text-uppercase"> Daerah Tujuan</label>
+                            <select name="alamat_tujuan" id="alamat_tujuan" class="distric form-control mt-1">
+                                @if(isset($harga->alamat_tujuan))
+                                <option value="{{ $harga->alamat_tujuan }}">{{ $harga->alamat_tujuan }}</option>
                                 @endif  
                             </select>
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="asal_area" class="small fw-bolder text-uppercase">Kode Area</label>
+                            <input type="text" name="asal_area" id="asal_area" class="form-control mt-1" placeholder="Masukan Area Asal" value="{{ isset($harga->id) ? $harga->asal_area : ''  }}">
+                        </div>
+                        <div class="col-md-6 form-group mb-3">
+                            <label for="tujuan_area" class="small fw-bolder text-uppercase">Kode Area</label>
+                            <input type="text" name="tujuan_area" id="tujuan_area" class="form-control mt-1" placeholder="Masukan Area Tujuan" value="{{ isset($harga->id) ? $harga->tujuan_area : ''  }}">
                         </div>
                     </div>
                 </div>
                 <div class="ps-1">
                     <div class="row" style="margin-top: 25px;">
                         <div class="col-md-4 form-group mb-3">
-                            <label for="estimasi" class="small fw-bolder text-uppercase">Estimasi</label>
+                            <label for="estimasi" class="small fw-bolder text-uppercase">Leadtime</label>
                             <input type="text" name="estimasi" id="estimasi" class="form-control mt-1" placeholder="Masukan Estimasi" value="{{ isset($harga->id) ? $harga->estimasi : ''  }}">
                         </div>
                         <div class="col-md-4 form-group mb-3">
                             <label for="servis" class="small fw-bolder text-uppercase">Servis</label>
                             <select name="servis" id="servis" class="form-control mt-1">
                                 <option value="{{ isset($harga->servis) ? $harga->servis : ''  }}" selected disabled>{{ isset($harga->harga) ? config('servis')[$harga->servis] : 'Pilih Servis'  }}</option>
-                                <option value="REG">REGULER</option>
-                                <option value="KIL">KILAT</option>
-                                <option value="EKO">EKONOMIS</option>
+                                @foreach(config('servis') as $key => $servis)
+                                <option value="{{$key}}">{{$servis}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-4 form-group mb-3">
-                            <label for="harga" class="small fw-bolder text-uppercase">Harga /KG</label>
-                            <input type="text" name="harga" id="harga" class="form-control mt-1" placeholder="Masukan Harga" value="{{ isset($harga->harga) ? $harga->harga : ''  }}">
+                            <label for="harga" class="small fw-bolder text-uppercase">Tarif /KG</label>
+                            <input type="text" name="harga" id="harga" class="form-control mt-1" placeholder="Masukan Tarif" value="{{ isset($harga->harga) ? $harga->harga : ''  }}">
                         </div>
                     </div>
                 </div>
                 <hr>
                 <div class="d-flex justify-content-end">
                     <button class="btn btn-light" onclick="history.back()">Cancel</button>
-                    <button class="btn btn-dark ms-3" onclick="onCreateAsset()">Add</button>
+                    <button class="btn btn-dark ms-3" onclick="onCreateAsset()">{{ isset($harga->id) ? 'Update' : 'Add'  }}</button>
                 </div>
             </div>
         </div>
@@ -113,33 +121,11 @@
     // }
     // });
 
-    // $('.distric').select2({
-    // placeholder: 'Pilih Kecamatan',
-    // theme: "bootstrap",
-    // ajax: {
-    //     url: '{{route("distric")}}',
-    //     dataType: 'json',
-    //     delay: 250,
-
-    //     processResults: function (data) {
-    //         return {
-    //             results: $.map(data, function (item) {
-    //                 return {
-    //                     text: item.name,
-    //                     id: item.id
-    //                 }
-    //             })
-    //         };
-    //     },
-    //     cache: true
-    // }
-    // });
-
-    $('.village').select2({
-    placeholder: 'Pilih Kelurahan',
+    $('.distric').select2({
+    placeholder: 'Pilih Kecamatan',
     theme: "bootstrap",
     ajax: {
-        url: '{{route("village")}}',
+        url: '{{route("distric")}}',
         dataType: 'json',
         delay: 250,
 
@@ -157,12 +143,34 @@
     }
     });
 
+    // $('.village').select2({
+    // placeholder: 'Pilih kecamatan',
+    // theme: "bootstrap",
+    // ajax: {
+    //     url: '{{route("village")}}',
+    //     dataType: 'json',
+    //     delay: 250,
+
+    //     processResults: function (data) {
+    //         return {
+    //             results: $.map(data, function (item) {
+    //                 return {
+    //                     text: item.name,
+    //                     id: item.id
+    //                 }
+    //             })
+    //         };
+    //     },
+    //     cache: true
+    // }
+    // });
+
 </script>
 <script>
     const onCreateAsset = () => {
         var dataBatch = getFormInput();
         var p_id = $('#p_id').val();
-        if(p_id == null){
+        if(p_id === ""){
             requestServer({
                 url: '{{route("harga-send")}}',
                 data: dataBatch,
@@ -174,7 +182,8 @@
                     showConfirmButton: false,
                     timer: 1500
                     }).then((result) => {
-                        windows.location.href("{{route('master-harga')}}");
+                        return false;
+                        windows.location.replace("{{route('master-harga')}}");
                     })
                 }
             });
@@ -187,11 +196,11 @@
                     Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Your harga has been saved',
+                    title: 'Your harga has been update',
                     showConfirmButton: false,
                     timer: 1500
                     }).then((result) => {
-                        windows.location.href("{{route('master-harga')}}");
+                        backToList();
                     })
                 }
             });
@@ -201,26 +210,34 @@
     // Get input in form
     const getFormInput = () => {
         // Daerah Asal
-        let aa = $('#kelurahan_asal').text();
-        let ka = $('#kelurahan_asal').val();
-        let at = $('#kelurahan_tujuan').text();
-        let kt = $('#kelurahan_tujuan').val();
+        let aa = $('#alamat_asal').text();
+        let at = $('#alamat_tujuan').text();
+        let ka = $('#alamat_asal').val();
+        let kt = $('#alamat_tujuan').val();
+        let ara = $('#asal_area').val();
+        let art = $('#tujuan_area').val();
         let hrg = $('#harga').val();
         let est = $('#estimasi').val();
         let ser = $('#servis').val();
 
         let dataBatch = {
             "_token": "{{ csrf_token() }}",
+            asal_id: ka,
+            tujuan_id: kt,
             alamat_asal: aa,
-            kelurahan_asal: ka,
             alamat_tujuan: at,
-            kelurahan_tujuan: kt,
+            asal_area: ara,
+            tujuan_area: art,
             harga: hrg,
             estimasi: est,
             servis: ser
         };
 
         return dataBatch;
+    }
+
+    function backToList(){
+        windows.location.href = "http://127.0.0.1:8000/lm-admin/";
     }
 </script>
 @endpush

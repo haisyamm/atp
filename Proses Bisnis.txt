@@ -1,4 +1,4 @@
-ahap 1 untuk pengerjaan 4 point berupa:
+Tahap 1 untuk pengerjaan 4 point berupa:
 1. Perbaikan Website
 2. Pembuatan Master data cek harga
 3. Pembuatan inputan resi retail dan cetak resi
@@ -13,7 +13,9 @@ Terkait sistem login vendor akan dibuat jadi tahap 2 untuk pengerjaan:
 #FE7A15
 
 
-Yang dari sistem penginputan data ini mau dibagi jadi 3 bagian besar (akan ada sedikit perbedaan antara login vendor dan retail nantinya tetapi ini saya rincikan untuk yg retail dulu ya karena lebih banyak)
+Yang dari sistem penginputan data ini mau dibagi jadi 3 bagian besar 
+(akan ada sedikit perbedaan antara login vendor dan retail nantinya tetapi ini saya 
+rincikan untuk yg retail dulu ya karena lebih banyak)
 
 BAGIAN 1 DETAIL PENGIRIMAN 
 1. NOMOR RESI
@@ -91,15 +93,10 @@ Diisi manual untuk biaya packing,dll tp dibantu untuk dibuat supaya hanya bisa d
 Total biaya kirim + insurance + biaya lain-lain
 
 11. SISTEM PEMBAYARAN
-Kita ada 3 pembayaran yaitu Cash, Credit/Invoice, COD (kalau COD nanti jika area login menggunakan usernya akan otomatis muncul untuk transaksi mana sana yg COD)
+Kita ada 3 pembayaran yaitu Cash, Credit/Invoice, 
+COD (kalau COD nanti jika area login menggunakan usernya akan otomatis muncul untuk transaksi mana sana yg COD)
 
 Calon Sistem Analis
-
-Melakukan perancangan dan desain sistem serta impelementasi , bertanggung jawab atas 
-
-Ada matakuliah yang dapat memenuhi profil lulusan, ada juga penunjang. 
-apakah matkul penunjang ini dicantumkan profil lulusan atau profesi lain yang sesuai dengan penunjang tersebut
-
 
 
 Master Harga :

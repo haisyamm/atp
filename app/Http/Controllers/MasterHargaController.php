@@ -14,11 +14,13 @@ class MasterHargaController extends Controller
      */
     public function index()
     {
-        $result = MasterHarga::all();
+        $result = MasterHarga::all()->take(1000);
         //dd($result);
         for($i = 0; $i < $result->count(); $i++){
             //dd($val);
             $convert[$i]['id'] = $result[$i]['id'];
+            $convert[$i]['asal_area'] =  $result[$i]['asal_area'];
+            $convert[$i]['tujuan_area'] =  $result[$i]['tujuan_area'];
             $convert[$i]['alamat_asal'] =  explode(',', $result[$i]['alamat_asal']);
             $convert[$i]['alamat_tujuan'] =  explode(',', $result[$i]['alamat_tujuan']);
             $convert[$i]['harga'] =  $result[$i]['harga'];
@@ -67,13 +69,21 @@ class MasterHargaController extends Controller
     public function searchKecamatan(Request $request)
     {
         $result = [];
+        $convert = [];
 
         if($request->has('q')){
             $search = $request->q;
-            $result = \Indonesia::search($search)->allDistricts();
+            $cari = \Indonesia::search($search)->allDistricts();
+            foreach($cari->take(15) as $val){
+                $result = \Indonesia::findDistrict($val->id, ['villages']);
+                foreach($result->villages as $vil){
+                    $village = \Indonesia::findVillage($vil->id, ['province', 'city', 'district']);
+                    $convert[$vil->id]['id'] = $result->id;
+                    $convert[$vil->id]['name'] = $village->province->name.", ".$village->city->name.", ".$village->district->name.", ".$village->name;
+                }
+            }
         }
-        
-        return json_encode($result);
+        return json_encode($convert);
     }
 
     public function searchKelurahan(Request $request)
@@ -114,10 +124,12 @@ class MasterHargaController extends Controller
     {
         try{
             $mh = new MasterHarga;
+            $mh->asal_id = $request->asal_id;
+            $mh->tujuan_id = $request->tujuan_id;
             $mh->alamat_asal = $request->alamat_asal;
-            $mh->kelurahan_asal = $request->kelurahan_asal;
             $mh->alamat_tujuan = $request->alamat_tujuan;
-            $mh->kelurahan_tujuan = $request->kelurahan_tujuan;
+            $mh->asal_area = $request->asal_area;
+            $mh->tujuan_area = $request->tujuan_area;
             $mh->harga = $request->harga;
             $mh->estimasi = $request->estimasi;
             $mh->servis = $request->servis;
@@ -145,7 +157,7 @@ class MasterHargaController extends Controller
 
     public function tarif(Request $request)
     {
-        $data['tarif'] = MasterHarga::where('kelurahan_asal', $request->kelurahan_asal )->where('kelurahan_tujuan', $request->kelurahan_tujuan)->get();
+        $data['tarif'] = MasterHarga::where('asal_id', $request->asal_id )->where('tujuan_id', $request->tujuan_id)->get();
         $data['berat'] = $request->berat;
         return view('tarif', $data);
     }
@@ -179,10 +191,12 @@ class MasterHargaController extends Controller
         try{
         
             $masterHarga->update([
+                'asal_id' => $request->asal_id,
+                'tujuan_id' => $request->tujuan_id,
+                'asal_area' => $request->area_asal,
+                'tujuan_area' => $request->area_tujuan,
                 'alamat_asal' => $request->alamat_asal,
-                'kelurahan_asal' => $request->kelurahan_asal,
                 'alamat_tujuan' => $request->alamat_tujuan,
-                'kelurahan_tujuan' => $request->kelurahan_tujuan,
                 'harga' => $request->harga,
                 'estimasi' => $request->estimasi,
                 'servis' => $request->servis,

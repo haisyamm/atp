@@ -23,19 +23,19 @@
                                         </svg>
                                     </a>
                                 </th>
-                                <th>Area Asal</th>
+                                <th>Kode Area</th>
                                 <th>Provinsi Asal</th>
                                 <th>Kota Asal</th>
                                 <th>Kecamatan Asal</th>
                                 <th>Kel. / Desa Asal</th>
-                                <th>Area Tujuan</th>
+                                <th>Kode Area</th>
                                 <th>Provinsi Tujuan</th>
                                 <th>Kota Tujuan</th>
                                 <th>Kecamatan Tujuan</th>
                                 <th>Kel. / Desa Tujuan</th>
                                 <th>Leadtime</th>
                                 <th>Servis</th>
-                                <th>Harga /KG</th>
+                                <th>Tarif /KG</th>
                                 <th class="text-center" style="width: 50px;">
                                     <span class="text-muted">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -72,19 +72,19 @@
                                         </svg>
                                     </a>
                                 </td>
-                                <td>CGK</td>
-                                <td>{{$val->alamat_asal[0]}}</td>
-                                <td>{{$val->alamat_asal[1]}}</td>
-                                <td>{{$val->alamat_asal[2]}}</td>
-                                <td>{{$val->alamat_asal[3]}}</td>
-                                <td>Area Tujuan</td>
-                                <td>{{$val->alamat_tujuan[0]}}</td>
-                                <td>{{$val->alamat_tujuan[1]}}</td>
-                                <td>{{$val->alamat_tujuan[2]}}</td>
-                                <td>{{$val->alamat_tujuan[3]}}</td>
-                                <td>CGK</td>
-                                <td>{{$val->servis}} /Hari</td>
-                                <td>{{$val->harga}}</td>
+                                <td>{{$val->asal_area}}</td>
+                                <td>{{empty($val->alamat_asal[0])? '' : $val->alamat_asal[0]}}</td>
+                                <td>{{empty($val->alamat_asal[1])? '' : $val->alamat_asal[1]}}</td>
+                                <td>{{empty($val->alamat_asal[2])? '' : $val->alamat_asal[2]}}</td>
+                                <td>{{empty($val->alamat_asal[3])? '' : $val->alamat_asal[3]}}</td>
+                                <td>{{$val->tujuan_area}}</td>
+                                <td>{{empty($val->alamat_tujuan[0])? '' : $val->alamat_tujuan[0]}}</td>
+                                <td>{{empty($val->alamat_tujuan[1])? '' : $val->alamat_tujuan[1]}}</td>
+                                <td>{{empty($val->alamat_tujuan[2])? '' : $val->alamat_tujuan[2]}}</td>
+                                <td>{{empty($val->alamat_tujuan[3])? '' : $val->alamat_tujuan[3]}}</td>
+                                <td>{{$val->estimasi}} /Hari</td>
+                                <td>{{$val->servis}}</td>
+                                <td>Rp. {{$val->harga}}</td>
                                 <td class="text-center">
                                     <a href="{{ route('harga-edit', $val->id) }}" class="btn btn-icon border-dashed bg-yellow-lt">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

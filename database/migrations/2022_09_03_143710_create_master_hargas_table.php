@@ -15,12 +15,14 @@ class CreateMasterHargasTable extends Migration
     {
         Schema::create('master_hargas', function (Blueprint $table) {
             $table->id();
+            $table->integer('asal_id');
+            $table->integer('tujuan_id');
+            $table->string('asal_area');
+            $table->string('tujuan_area');
             $table->string('alamat_asal');
-            $table->integer('kelurahan_asal');
             $table->string('alamat_tujuan');
-            $table->integer('kelurahan_tujuan');
             $table->integer('harga');
-            $table->integer('estimasi');
+            $table->string('estimasi');
             $table->string('servis');
             $table->timestamps();
         });

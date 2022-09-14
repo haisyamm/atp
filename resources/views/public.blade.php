@@ -30,13 +30,14 @@
                                 <form class="row g-4 mt-2" method="GET" action="{{ route('tarif') }}">
                                     <div class="col-12">
                                         <div class="form-control">
-                                            <select name="kelurahan_asal" id="kelurahan_asal" class="village form-control">
+                                            <select name="asal_id" id="asal_id" class="distric form-control" readonly>
+                                            <option value="1951" selected>DKI JAKARTA, KOTA ADM. JAKARTA PUSAT, GAMBIR, KEBON KELAPA</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-control">
-                                            <select name="kelurahan_tujuan" id="kelurahan_tujuan" class="village form-control ">
+                                            <select name="tujuan_id" id="tujuan_id" class="distric form-control ">
                                             </select>
                                         </div>
                                     </div>
@@ -379,26 +380,26 @@
         berat.value = v;
     }
 
-    $('.village').select2({
-        placeholder: 'Pilih Kelurahan Asal',
-        theme: "bootstrap",
-        ajax: {
-            url: '{{route("village")}}',
-            dataType: 'json',
-            delay: 250,
+    $('.distric').select2({
+    placeholder: 'Pilih Kecamatan',
+    theme: "bootstrap",
+    ajax: {
+        url: '{{route("distric")}}',
+        dataType: 'json',
+        delay: 250,
 
-            processResults: function(data) {
-                return {
-                    results: $.map(data, function(item) {
-                        return {
-                            text: item.name,
-                            id: item.id
-                        }
-                    })
-                };
-            },
-            cache: true
-        }
+        processResults: function (data) {
+            return {
+                results: $.map(data, function (item) {
+                    return {
+                        text: item.name,
+                        id: item.id
+                    }
+                })
+            };
+        },
+        cache: true
+    }
     });
 </script>
 <script>
@@ -413,14 +414,14 @@
     // Get input in form
     const getFormInput = () => {
         // Daerah Asal
-        let ka = $('#kelurahan_asal').val();
-        let kt = $('#kelurahan_tujuan').val();
+        let ka = $('#asal_id').val();
+        let kt = $('#tujuan_id').val();
         let vol = $('#berat').val();
 
         let dataBatch = {
             "_token": "{{ csrf_token() }}",
-            kelurahan_asal: ka,
-            kelurahan_tujuan: kt,
+            asal_id: ka,
+            tujuan_id: kt,
             berat: vol
         };
 
