@@ -73,15 +73,15 @@
                                     </a>
                                 </td>
                                 <td>{{$val->asal_area}}</td>
-                                <td>{{empty($val->alamat_asal[0])? '' : $val->alamat_asal[0]}}</td>
+                                <!-- <td>{{empty($val->alamat_asal[0])? '' : $val->alamat_asal[0]}}</td>
                                 <td>{{empty($val->alamat_asal[1])? '' : $val->alamat_asal[1]}}</td>
                                 <td>{{empty($val->alamat_asal[2])? '' : $val->alamat_asal[2]}}</td>
-                                <td>{{empty($val->alamat_asal[3])? '' : $val->alamat_asal[3]}}</td>
+                                <td>{{empty($val->alamat_asal[3])? '' : $val->alamat_asal[3]}}</td> -->
                                 <td>{{$val->tujuan_area}}</td>
-                                <td>{{empty($val->alamat_tujuan[0])? '' : $val->alamat_tujuan[0]}}</td>
+                                <!-- <td>{{empty($val->alamat_tujuan[0])? '' : $val->alamat_tujuan[0]}}</td>
                                 <td>{{empty($val->alamat_tujuan[1])? '' : $val->alamat_tujuan[1]}}</td>
                                 <td>{{empty($val->alamat_tujuan[2])? '' : $val->alamat_tujuan[2]}}</td>
-                                <td>{{empty($val->alamat_tujuan[3])? '' : $val->alamat_tujuan[3]}}</td>
+                                <td>{{empty($val->alamat_tujuan[3])? '' : $val->alamat_tujuan[3]}}</td> -->
                                 <td>{{$val->estimasi}} /Hari</td>
                                 <td>{{$val->servis}}</td>
                                 <td>Rp. {{$val->harga}}</td>
