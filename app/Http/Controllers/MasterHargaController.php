@@ -78,7 +78,7 @@ class MasterHargaController extends Controller
                 $result = \Indonesia::findDistrict($val->id, ['villages']);
                 foreach($result->villages as $vil){
                     $village = \Indonesia::findVillage($vil->id, ['province', 'city', 'district']);
-                    $convert[$vil->id]['id'] = $result->id;
+                    $convert[$vil->id]['id'] = $result->code;
                     $convert[$vil->id]['name'] = $village->province->name.", ".$village->city->name.", ".$village->district->name.", ".$village->name;
                 }
             }
