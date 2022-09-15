@@ -29,8 +29,6 @@ class MasterHargaController extends Controller
         }
         //dd( $result->count(), $convert[0]['alamat_asal'][0]);
         $data['hargas'] = json_encode($convert);
-
-        dd($data);
         return view('harga.list', $data);
     }
 
