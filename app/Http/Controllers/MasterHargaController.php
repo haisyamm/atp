@@ -14,7 +14,7 @@ class MasterHargaController extends Controller
      */
     public function index()
     {
-        $result = MasterHarga::where('asal_area','CGK')->orWhere('tujuan_area', 'CGK');
+        $result = MasterHarga::where('asal_area','CGK')->where('tujuan_area', 'CGK')->get();
         //dd($result);
         for($i = 0; $i < $result->count(); $i++){
             //dd($val);
