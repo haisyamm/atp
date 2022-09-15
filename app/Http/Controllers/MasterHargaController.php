@@ -14,7 +14,7 @@ class MasterHargaController extends Controller
      */
     public function index()
     {
-        $result = MasterHarga::all()->take(100);
+        $result = MasterHarga::all()->take(1000);
         //dd($result);
         for($i = 0; $i < $result->count(); $i++){
             //dd($val);
