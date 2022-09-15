@@ -14,7 +14,7 @@ class MasterHargaController extends Controller
      */
     public function index()
     {
-        $result = MasterHarga::all()->take(100);
+        $result = MasterHarga::where('asal_area','CGK')->orWhere('tujuan_area', 'CGK');
         //dd($result);
         for($i = 0; $i < $result->count(); $i++){
             //dd($val);
@@ -28,9 +28,8 @@ class MasterHargaController extends Controller
             $convert[$i]['estimasi'] =  $result[$i]['estimasi'];
         }
         //dd( $result->count(), $convert[0]['alamat_asal'][0]);
-        $data['hargas'] = $convert;
+        $data['hargas'] = json_encode($convert);
         return view('harga.list', $data);
-        //return view('harga.list');
     }
 
     /**
