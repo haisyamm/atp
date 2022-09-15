@@ -21,8 +21,8 @@ class MasterHargaController extends Controller
             $convert[$i]['id'] = $result[$i]['id'];
             $convert[$i]['asal_area'] =  $result[$i]['asal_area'];
             $convert[$i]['tujuan_area'] =  $result[$i]['tujuan_area'];
-            // $convert[$i]['alamat_asal'] =  explode(',', $result[$i]['alamat_asal']);
-            // $convert[$i]['alamat_tujuan'] =  explode(',', $result[$i]['alamat_tujuan']);
+            $convert[$i]['alamat_asal'] =  explode(',', $result[$i]['alamat_asal']);
+            $convert[$i]['alamat_tujuan'] =  explode(',', $result[$i]['alamat_tujuan']);
             $convert[$i]['harga'] =  $result[$i]['harga'];
             $convert[$i]['servis'] =  $result[$i]['servis'];
             $convert[$i]['estimasi'] =  $result[$i]['estimasi'];
