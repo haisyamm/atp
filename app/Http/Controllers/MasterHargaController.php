@@ -14,6 +14,9 @@ class MasterHargaController extends Controller
      */
     public function index()
     {
+        $data['f_asal'] = MasterHarga::select('asal_area')->groupBy('asal_area')->get();
+        $data['f_tujuan'] = MasterHarga::select('tujuan_area')->groupBy('tujuan_area')->get();
+
         $result = MasterHarga::where('asal_area','CGK')->where('tujuan_area', 'CGK')->get();
         //dd($result);
         for($i = 0; $i < $result->count(); $i++){
@@ -27,6 +30,31 @@ class MasterHargaController extends Controller
             $convert[$i]['servis'] =  $result[$i]['servis'];
             $convert[$i]['estimasi'] =  $result[$i]['estimasi'];
         }
+        //dd($data['f_asal'][0]['asal_area']);
+        //dd( $result->count(), $convert[0]['alamat_asal'][0]);
+        $data['hargas'] = json_encode($convert);
+        return view('harga.list', $data);
+    }
+
+    public function filter(Request $request)
+    {
+        $data['f_asal'] = MasterHarga::select('asal_area')->groupBy('asal_area')->get();
+        $data['f_tujuan'] = MasterHarga::select('tujuan_area')->groupBy('tujuan_area')->get();
+
+        $result = MasterHarga::where('asal_area', $request->f_asal)->where('tujuan_area', $request->f_tujuan )->get();
+        //dd($result);
+        for($i = 0; $i < $result->count(); $i++){
+            //dd($val);
+            $convert[$i]['id'] = $result[$i]['id'];
+            $convert[$i]['asal_area'] =  $result[$i]['asal_area'];
+            $convert[$i]['tujuan_area'] =  $result[$i]['tujuan_area'];
+            $convert[$i]['alamat_asal'] =  explode(',', $result[$i]['alamat_asal']);
+            $convert[$i]['alamat_tujuan'] =  explode(',', $result[$i]['alamat_tujuan']);
+            $convert[$i]['harga'] =  $result[$i]['harga'];
+            $convert[$i]['servis'] =  $result[$i]['servis'];
+            $convert[$i]['estimasi'] =  $result[$i]['estimasi'];
+        }
+        //dd($data['f_asal'][0]['asal_area']);
         //dd( $result->count(), $convert[0]['alamat_asal'][0]);
         $data['hargas'] = json_encode($convert);
         return view('harga.list', $data);

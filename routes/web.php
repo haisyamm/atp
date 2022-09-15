@@ -55,6 +55,7 @@ Route::middleware(['auth', 'user-access:1'])->prefix("lm-admin")->group(function
 
     Route::post('/addHarga', [MasterHargaController::class, 'store'])->name('harga-send');
     Route::post('/updateHarga', [MasterHargaController::class, 'update'])->name('harga-update');
+    Route::post('/price-filter', [MasterHargaController::class, 'filter'])->name('filter-harga');
     Route::get('/editHarga/{id}', [MasterHargaController::class, 'edit'])->name('harga-edit');
     Route::delete('/delHarga/{id}', [MasterHargaController::class, 'destroy'])->name('harga-delete');
 });

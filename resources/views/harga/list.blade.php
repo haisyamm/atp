@@ -6,7 +6,28 @@
             <div class="card-header d-flex justify-content-between">
                 <h3 class="card-title">Master Harga</h3>
                 <div class="">
-                    <a href="{{ route('master-harga-add') }}" class="btn btn-dark">Tambah</a>
+                    <form action="{{ route('filter-harga')}}" method="POST" class="d-flex flex-row">
+                    @csrf
+                    <div>
+                        <select name="f_asal" id="f_asal" class="form-control">
+                            <option value="CGK" selected readonly>CGK</option>
+
+                        </select>
+                        </div>
+                    <div>
+                        <select name="f_tujuan" id="f_tujuan" class="form-control">
+                            <option value="CGK" selected disabled>CGK</option>
+                            @foreach($f_tujuan as $val)
+                            <option value="{{ $val->tujuan_area}}">{{ $val->tujuan_area}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-google">Filter</button>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{{ route('master-harga-add') }}" class="btn btn-secondary">Tambah</a>
+                    </form>
                 </div>
             </div>
             <div class="card-body border-bottom py-3">
