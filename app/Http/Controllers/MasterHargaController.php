@@ -159,7 +159,7 @@ class MasterHargaController extends Controller
     {
         $data['tarif'] = MasterHarga::where('asal_id', $request->asal_id )->where('tujuan_id', $request->tujuan_id)->get();
         $data['berat'] = $request->berat;
-        return view('tarif', $data);
+        return view('tarif', $data); 
     }
 
     public function show(MasterHarga $masterHarga)
