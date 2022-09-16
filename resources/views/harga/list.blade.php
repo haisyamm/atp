@@ -10,13 +10,14 @@
                     @csrf
                     <div>
                         <select name="f_asal" id="f_asal" class="form-control">
-                            <option value="CGK" selected readonly>CGK</option>
+                            <option value="CGK" selected readonly> DEFAULT CGK</option>
 
                         </select>
                         </div>
                     <div>
+                    <!-- <label for="f_tujuan" class="small text-uppercase">Tujuan</label> -->
                         <select name="f_tujuan" id="f_tujuan" class="form-control">
-                            <option value="CGK" selected disabled>CGK</option>
+                            <option value="CGK" selected disabled>AREA TUJUAN</option>
                             @foreach($f_tujuan as $val)
                             <option value="{{ $val->tujuan_area}}">{{ $val->tujuan_area}}</option>
                             @endforeach

@@ -187,6 +187,7 @@ class MasterHargaController extends Controller
     {
         $data['tarif'] = MasterHarga::where('asal_id', $request->asal_id )->where('tujuan_id', $request->tujuan_id)->get();
         $data['berat'] = $request->berat;
+        $data['volume'] = $request->panjang*$request->lebar*$request->tinggi;
         return view('tarif', $data); 
     }
 

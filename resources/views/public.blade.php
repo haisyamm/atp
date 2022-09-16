@@ -31,7 +31,7 @@
                                     <div class="col-12">
                                         <div class="form-control">
                                             <select name="asal_id" id="asal_id" class="distric form-control" readonly>
-                                            <option value="197102" selected>DKI JAKARTA, KOTA JAKARTA BARAT, TAMAN SARI, MAPHAR</option>
+                                                <option value="197102" selected>DKI JAKARTA, KOTA JAKARTA BARAT, TAMAN SARI, MAPHAR</option>
                                             </select>
                                         </div>
                                     </div>
@@ -44,29 +44,29 @@
                                     <div class="col-3">
                                         <div class="form-group">
                                             <label for="panjang" class="small text-uppercase">panjang</label>
-                                            <input class="form-control input-box form-voyage-control" id="panjang" name="panjang" type="text" placeholder="CM" oninput="hitung()">
+                                            <input class="form-control input-box form-voyage-control" id="panjang" name="panjang" type="text" placeholder="CM">
                                         </div>
                                     </div>
                                     <div class="col-3">
                                         <div class="form-group">
                                             <label for="lebar" class="small text-uppercase">lebar</label>
-                                            <input class="form-control input-box form-voyage-control" id="lebar" name="lebar" type="text" placeholder="CM" oninput="hitung()">
+                                            <input class="form-control input-box form-voyage-control" id="lebar" name="lebar" type="text" placeholder="CM">
                                         </div>
                                     </div>
                                     <div class="col-3">
                                         <label for="tinggi" class="small text-uppercase">tinggi</label>
                                         <div class="form-group">
-                                            <input class="form-control input-box form-voyage-control" id="tinggi" name="tinggi" type="text" placeholder="CM" oninput="hitung()">
+                                            <input class="form-control input-box form-voyage-control" id="tinggi" name="tinggi" type="text" placeholder="CM">
                                         </div>
                                     </div>
                                     <div class="col-3">
-                                        <label for="berat" class="small text-uppercase">berat</label>
+                                        <label for="berat" class="small text-uppercase">berat actual</label>
                                         <div class="form-group">
                                             <input class="form-control input-box form-voyage-control" id="berat" name="berat" type="text" placeholder="KG">
                                         </div>
                                     </div>
-                                    <div><br><h6 class="text-primary fw-bold">Masukkan asal, tujuan & berat barang Anda</h6></div>
-                                    <div class="col-12 d-grid mt-1"><button class="btn btn-secondary" type="submit">CEK TARIF</button></div>
+
+                                    <div class="col-12 d-grid mt-6"><button class="btn btn-secondary" type="submit">Cek Tarif</button></div>
                                 </form>
                             </div>
                         </div>

@@ -20,7 +20,7 @@
                 <div class="ps-1">
                 <input type="hidden" name="p_id" id="p_id" value="{{ isset($harga->id) ? $harga->id : ''  }}">
                     <div class="row" style="margin-top: 25px;">
-                        <div class="col-md-6 form-group mb-3">
+                        <div class="col-md-9 form-group mb-3">
                             <label for="alamat_asal" class="small fw-bolder text-uppercase">Daerah Asal</label>
                             <select name="alamat_asal" id="alamat_asal" class="distric form-control mt-1">
                                 @if(isset($harga->alamat_asal))
@@ -28,7 +28,11 @@
                                 @endif
                             </select>
                         </div>
-                        <div class="col-md-6 form-group mb-3">
+                        <div class="col-md-3 form-group mb-3">
+                            <label for="asal_area" class="small fw-bolder text-uppercase">Kode Area</label>
+                            <input type="text" name="asal_area" id="asal_area" class="form-control mt-1" placeholder="Masukan Area Asal" value="{{ isset($harga->id) ? $harga->asal_area : ''  }}">
+                        </div>
+                        <div class="col-md-9 form-group mb-3">
                             <label for="alamat_tujuan" class="small fw-bolder text-uppercase"> Daerah Tujuan</label>
                             <select name="alamat_tujuan" id="alamat_tujuan" class="distric form-control mt-1">
                                 @if(isset($harga->alamat_tujuan))
@@ -36,11 +40,7 @@
                                 @endif  
                             </select>
                         </div>
-                        <div class="col-md-6 form-group mb-3">
-                            <label for="asal_area" class="small fw-bolder text-uppercase">Kode Area</label>
-                            <input type="text" name="asal_area" id="asal_area" class="form-control mt-1" placeholder="Masukan Area Asal" value="{{ isset($harga->id) ? $harga->asal_area : ''  }}">
-                        </div>
-                        <div class="col-md-6 form-group mb-3">
+                        <div class="col-md-3 form-group mb-3">
                             <label for="tujuan_area" class="small fw-bolder text-uppercase">Kode Area</label>
                             <input type="text" name="tujuan_area" id="tujuan_area" class="form-control mt-1" placeholder="Masukan Area Tujuan" value="{{ isset($harga->id) ? $harga->tujuan_area : ''  }}">
                         </div>
