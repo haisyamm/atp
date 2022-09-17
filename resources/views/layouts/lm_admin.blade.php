@@ -300,7 +300,7 @@
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{ route('master-harga')}}">
-                                    Master Harga
+                                    List Tarif
                                 </a>
                                 <!-- <a class="dropdown-item" href="./layout-boxed.html">
                                     Assets By Regional

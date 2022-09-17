@@ -4,10 +4,12 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between">
-                <h3 class="card-title">Master Harga</h3>
+                <h3 class="card-title"><B>LIST TARIF</B></h3>
                 <div class="">
                     <form action="{{ route('filter-harga')}}" method="POST" class="d-flex flex-row">
                     @csrf
+                    <div><h3 class="card-title">FILTER BY KODE AREA :</h3></div>
+                    <div>&nbsp;&nbsp;&nbsp;</div>
                     <div>
                         <select name="f_asal" id="f_asal" class="form-control">
                             <option value="CGK" selected readonly> DEFAULT CGK</option>
@@ -24,16 +26,16 @@
                         </select>
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-google">Filter</button>
+                        <button type="submit" class="btn btn-dark w-100">FILTER</button>
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="{{ route('master-harga-add') }}" class="btn btn-secondary">Tambah</a>
+                        <a href="{{ route('master-harga-add') }}" class="btn btn-primary">TAMBAH DATA</a>
                     </form>
                 </div>
             </div>
             <div class="card-body border-bottom py-3">
                 <div class="table-responsive mt-2">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <table id="example" class="table table-vcenter card-table" style="width:100%">
                         <thead>
                             <tr>
                                 <th>
