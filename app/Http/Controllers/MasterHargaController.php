@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Models\MasterHarga;
 use Illuminate\Http\Request;
 
@@ -15,7 +15,7 @@ class MasterHargaController extends Controller
     public function index()
     {
         $data['f_asal'] = MasterHarga::select('asal_area')->groupBy('asal_area')->get();
-        $data['f_tujuan'] = MasterHarga::select('tujuan_area')->groupBy('tujuan_area')->get();
+        $data['f_tujuan'] = DB::table('filter_tujuan')->get();
 
         $result = MasterHarga::where('asal_area','CGK')->where('tujuan_area', 'CGK')->get();
         //dd($result);
@@ -39,7 +39,7 @@ class MasterHargaController extends Controller
     public function filter(Request $request)
     {
         $data['f_asal'] = MasterHarga::select('asal_area')->groupBy('asal_area')->get();
-        $data['f_tujuan'] = MasterHarga::select('tujuan_area')->groupBy('tujuan_area')->get();
+        $data['f_tujuan'] = DB::table('filter_tujuan')->get();
 
         $result = MasterHarga::where('asal_area', $request->f_asal)->where('tujuan_area', $request->f_tujuan )->get();
         //dd($result);

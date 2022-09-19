@@ -18,10 +18,10 @@
                         </div>
                     <div>
                     <!-- <label for="f_tujuan" class="small text-uppercase">Tujuan</label> -->
-                        <select name="f_tujuan" id="f_tujuan" class="form-control">
+                        <select name="f_tujuan" id="f_tujuan" class="form-control" style="display: block; width: 130px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
                             <option value="CGK" selected disabled>AREA TUJUAN</option>
                             @foreach($f_tujuan as $val)
-                            <option value="{{ $val->tujuan_area}}">{{ $val->tujuan_area}}</option>
+                            <option style="width:25%" value="{{ $val->tujuan_area}}">{{ $val->kota." (".$val->tujuan_area.")"}}</option>
                             @endforeach
                         </select>
                     </div>
