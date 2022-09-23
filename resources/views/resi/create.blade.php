@@ -58,7 +58,7 @@
                                 <select name="alamat_pengirim_2" id="alamat_pengirim_2" class="distric form-select mt-1">
                                 </select>
                             </div>
-                            <input type="text" name="alamat_pengirim_1" id="alamat_pengirim_1" class="form-control" placeholder="Masukan Alamat" value="{{ isset($resi->id) ? $resi->alamat_1 : ''  }}">
+                            <input type="text" name="alamat_pengirim_1" id="alamat_pengirim_1" class="form-control" placeholder="Nama Jalan, Patokan, RT/RW" value="{{ isset($resi->id) ? $resi->alamat_1 : ''  }}">
                         </div>
                         <div class="col-md-6 form-group mb-3">
                             <label for="alamat_penerima_1" class="small fw-bolder text-uppercase">Alamat Penerima</label>
@@ -66,12 +66,12 @@
                                 <select name="alamat_penerima_2" id="alamat_penerima_2" class="distric form-control mt-1">
                                 </select>
                             </div>
-                            <input type="text" name="alamat_penerima_1" id="alamat_penerima_1" class="form-control" placeholder="Masukan Alamat" value="{{ isset($resi->id) ? $resi->alamat_2 : ''  }}">
+                            <input type="text" name="alamat_penerima_1" id="alamat_penerima_1" class="form-control" placeholder="Nama Jalan, Patokan, RT/RW" value="{{ isset($resi->id) ? $resi->alamat_2 : ''  }}">
                         </div>
                         <div class="col-md-6 form-group mb-3">
                             <label for="tlp_pengirim" class="small fw-bolder text-uppercase">Telp. Pengirim</label>
                             <div class="input-group">  
-                                <input type="tel" name="tlp_pengirim" id="tlp_pengirim" class="form-control mt-1" placeholder="Masukan Nama" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}">
+                                <input type="tel" name="tlp_pengirim" id="tlp_pengirim" class="form-control mt-1" placeholder="Ex: 0881234567890" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}">
                             </div>
                             <div class="col-md-12 form-group form-switch mt-3">
                                     <input class="form-check-input" type="checkbox" id="save_pengirim" name="save_pengirim">
@@ -83,7 +83,7 @@
                             <div class="input-group">
                                 <!-- <span class="input-group-text">
                                 </span> -->
-                                <input type="tel" name="tlp_penerima" id="tlp_penerima" class="form-control mt-1" placeholder="Masukan Nama" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}">
+                                <input type="tel" name="tlp_penerima" id="tlp_penerima" class="form-control mt-1" placeholder="Ex: 0881234567890" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}">
                             </div>
                             <div class="col-md-12 form-group form-switch mt-3">
                                 <input class="form-check-input" type="checkbox" id="save_penerima" name="save_penerima">
@@ -115,7 +115,7 @@
                     </table>
                     <table id="emptbl" class="table align-middle">
                         <tr class="detail">
-                            <td id="col0"><input type="text" id="berat_act" name="berat_act" value="" class="form-control"  oninput="hitung()"/></td> 
+                            <td id="col0"><input type="text" id="berat_act" placeholder="Berat Actual" name="berat_act" value="" class="form-control"  oninput="hitung()"/></td> 
                             <td id="col1"  style="width :40%">
                                 <div class="row">
                                     <div class="input-group">
@@ -318,10 +318,10 @@ function hitung() {
 
     if(total_vol > total_bact){
         document.getElementById('total_berat').value = Math.ceil(total_vol);
-        tk = parseFloat(Math.ceil(total_vol)*trf);
+        tk = parseFloat(Math.ceil(total_vol)*parseInt(trf));
     }else{
         document.getElementById('total_berat').value = total_bact;
-        tk = parseFloat(Math.ceil(total_bact)*trf);
+        tk = parseFloat(Math.ceil(total_bact)*parseInt(trf));
     }
     document.getElementById('tot_biaya_kirim').value = tk;
     document.getElementById('total_biaya').value = tk;
@@ -361,6 +361,7 @@ $(document).ready(function() {
 });
 </script>
 <script>
+    
     $('.distric').select2({
     placeholder: 'Pilih Kecamatan',
     theme: "bootstrap",

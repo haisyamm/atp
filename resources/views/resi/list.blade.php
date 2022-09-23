@@ -49,6 +49,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach(json_decode($resi) as $val)
                             <tr>
                                 <td class="text-center" style="width: 30px;">
                                 <a href="" class="btn btn-icon border-dashed bg-dark-lt">
@@ -61,53 +62,14 @@
                                         </svg>
                                     </a>
                                 </td>
-                                <td>ATP01TUPGR00001</td>
-                                <td>22 September 2022</td>
-                                <td>Budi</td>
-                                <td>Ani</td>
-                                <td>Kilat</td>
-                                <td>Tasikmalaya</td>
-                                <td>10 KG</td>
-                                <td>RP. 380.000</td>
-                                <td class="text-center" style="width: 100px;">
-                                    <a href="" class="btn btn-icon border-dashed bg-dark-lt">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <circle cx="12" cy="12" r="9"></circle>
-                                                <path d="M10 8l4 8"></path>
-                                                <path d="M10 16l4 -8"></path>
-                                        </svg>
-                                    </a>
-                                        <a href="" class="btn btn-icon border-dashed bg-dark-lt">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-printer" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2"></path>
-                                        <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4"></path>
-                                        <rect x="7" y="13" width="10" height="8" rx="2"></rect>
-                                        </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center" style="width: 30px;">
-                                <a href="" class="btn btn-icon border-dashed bg-dark-lt">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-truck-delivery" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <circle cx="7" cy="17" r="2"></circle>
-                                        <circle cx="17" cy="17" r="2"></circle>
-                                        <path d="M5 17h-2v-4m-1 -8h11v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5"></path>
-                                        <line x1="3" y1="9" x2="7" y2="9"></line>
-                                        </svg>
-                                    </a>
-                                </td>
-                                <td>ATPXXTUPGR00001</td>
-                                <td>22 September 2022</td>
-                                <td>Robi</td>
-                                <td>Rudi</td>
-                                <td>Reguler</td>
-                                <td>Tasikmalaya</td>
-                                <td>10 KG</td>
-                                <td>RP. 180.000</td>
+                                <td>{{$val->no_resi}}</td>
+                                <td>{{$val->tgl_resi}}</td>
+                                <td>{{$val->pengirim}}</td>
+                                <td>{{$val->penerima}}</td>
+                                <td>{{$val->servis}}</td>
+                                <td>{{$val->alamat_penerima[0]['alamat_1']}}</td>
+                                <td>{{$val->total_berat}}</td>
+                                <td>{{$val->total_biaya}}</td>
                                 <td class="text-center" style="width: 100px;">
                                     <a href="" class="btn btn-icon border-dashed bg-dark-lt">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -127,6 +89,7 @@
                                     </a>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -136,9 +99,17 @@
 </div>
 @endsection
 @push('script')
+
+<script src="https://cdn.datatables.net/fixedcolumns/4.1.0/js/dataTables.fixedColumns.min.js"></script>
 <script>
+    
 $(document).ready(function () {
-    $('#example').DataTable();
+    $('#example').DataTable({
+        fixedColumns:   {
+            left: false,
+            right: 2
+        }
+    });
 });
 </script>
 @endpush

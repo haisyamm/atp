@@ -15,7 +15,7 @@ class ResiController extends Controller
      */
     public function index()
     {
-        $data['hargas'] = [];
+        $data['resi'] = Resi::all();
         return view('resi.list', $data);
     }
 
@@ -33,7 +33,6 @@ class ResiController extends Controller
     {
         
         $data['product'] = "ATPXXTUPGR00001";
-        
         $data['qrcode'] =  QrCode::size(70)->generate("ATPXXTUPGR00001");
 
         // $pdf = PDF::loadview('resi.cetak',['data'=>$data]);
@@ -55,7 +54,7 @@ class ResiController extends Controller
     public function store(Request $request)
     {
         try{
-            $an = 'ATP'.$request->payment.substr($request->servis,0,1)."0001";
+            $an = 'ATP'.$request->payment.substr($request->servis,0,1)."0002";
             $detail['barang'] = $request->detail_barang;
             $detail['tarif'] = $request->detail;
             // dd($detail);
@@ -70,10 +69,10 @@ class ResiController extends Controller
             $resi->tgl_resi = $request->tgl_resi;
             $resi->servis = $request->servis;
             $resi->no_reff = $request->no_reff;
-            $resi->pengirim = $request->pengirim;
+            $resi->pengirim = $request->nama_pengirim;
             $resi->alamat_pengirim = json_encode($alamat_pengirim);
             $resi->tlp_pengirim = $request->tlp_pengirim;
-            $resi->penerima = $request->tujuan_area;
+            $resi->penerima = $request->nama_penerima;
             $resi->alamat_penerima = json_encode($alamat_penerima);
             $resi->tlp_penerima = $request->tlp_penerima;
             $resi->payment = $request->payment;
@@ -82,6 +81,8 @@ class ResiController extends Controller
             $resi->total_berat = $request->total_berat;
             $resi->total_biaya = $request->total_biaya;
             $resi->detail_barang = json_encode($detail);
+
+
             $resi->saveOrFail();
 
             return response()->json([
