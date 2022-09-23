@@ -153,7 +153,7 @@ class MasterHargaController extends Controller
             $estimasi=[];
             foreach(config('servis') as $key => $servis){
                // dd($request["harga_".$key]);
-                $harga[$key] = $request["harga_".$key];
+                $harga[$key] = str_replace(",", "", $request["harga_".$key]);
                 $estimasi[$key] = $request["estimasi_".$key];
             }
             $mh = new MasterHarga;
@@ -237,7 +237,7 @@ class MasterHargaController extends Controller
             $estimasi=[];
             foreach(config('servis') as $key => $servis){
                // dd($request["harga_".$key]);
-                $harga[$key] = $request["harga_".$key];
+                $harga[$key] = str_replace(",", "", $request["harga_".$key]);
                 $estimasi[$key] = $request["estimasi_".$key];
             }
 

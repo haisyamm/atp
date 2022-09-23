@@ -61,7 +61,7 @@
                                 <th>Leadtime {{$servis}}</th>
                                 <th>Tarif {{$servis}}</th>
                                 @endforeach
-                                <th class="text-center" style="width: 50px;">
+                                <th class="text-center fixed-columns-right" style="width: 50px;" >
                                     <span class="text-muted">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -71,7 +71,7 @@
                                         </svg>
                                     </span>
                                 </th>
-                                <th class="text-center" style="width: 50px;">
+                                <th class="text-center fixed-columns-right" style="width: 50px;">
                                     <span class="text-muted">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -108,8 +108,8 @@
                                 <td>{{empty($val->alamat_tujuan[2])? '' : $val->alamat_tujuan[2]}}</td>
                                 <td>{{empty($val->alamat_tujuan[3])? '' : $val->alamat_tujuan[3]}}</td>
                                 @foreach(config('servis') as $key => $servis)
-                                <td>{{$val->estimasi->$key}} /Hari</td>
-                                <td>Rp. {{$val->harga->$key}}</td>
+                                <td>{{$val->estimasi->$key}}</td>
+                                <td>{{number_format((float)$val->harga->$key,2,",",".")}}</td>
                                 @endforeach
                                 <td class="text-center">
                                     <a href="{{ route('harga-edit', $val->id) }}" class="btn btn-icon border-dashed bg-yellow-lt">
@@ -146,9 +146,17 @@
 </div>
 @endsection
 @push('script')
+
+<script src="https://cdn.datatables.net/fixedcolumns/4.1.0/js/dataTables.fixedColumns.min.js"></script>
 <script>
+    
 $(document).ready(function () {
-    $('#example').DataTable();
+    $('#example').DataTable({
+        fixedColumns:   {
+            left: false,
+            right: 2
+        }
+    });
 });
 </script>
 @endpush
