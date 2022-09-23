@@ -230,8 +230,8 @@
     // Get input in form
     const getFormInput = () => {
         // Daerah Asal
-        let aa = $('#alamat_asal').text();
-        let at = $('#alamat_tujuan').text();
+        let aa = $('#alamat_asal option:selected').text();
+        let at = $('#alamat_tujuan option:selected').text();
         let ka = $('#alamat_asal').val();
         let kt = $('#alamat_tujuan').val();
         let ara = $('#asal_area').val();
