@@ -16,8 +16,8 @@ class MasterHargaController extends Controller
     {
         $data['f_asal'] = MasterHarga::select('asal_area')->groupBy('asal_area')->get();
         $data['f_tujuan'] = DB::table('filter_tujuan')->get();
-
-        $result = MasterHarga::where('asal_area','CGK')->where('tujuan_area', 'CGK')->get();
+        $convert=[];
+        $result = MasterHarga::where('asal_area','CGK')->where('tujuan_area', 'TSY')->get();
         //dd($result);
         for($i = 0; $i < $result->count(); $i++){
             //dd($val);
@@ -26,9 +26,8 @@ class MasterHargaController extends Controller
             $convert[$i]['tujuan_area'] =  $result[$i]['tujuan_area'];
             $convert[$i]['alamat_asal'] =  explode(',', $result[$i]['alamat_asal']);
             $convert[$i]['alamat_tujuan'] =  explode(',', $result[$i]['alamat_tujuan']);
-            $convert[$i]['harga'] =  $result[$i]['harga'];
-            $convert[$i]['servis'] =  $result[$i]['servis'];
-            $convert[$i]['estimasi'] =  $result[$i]['estimasi'];
+            $convert[$i]['harga'] =  json_decode($result[$i]['harga']);
+            $convert[$i]['estimasi'] =  json_decode($result[$i]['estimasi']);
         }
         //dd($data['f_asal'][0]['asal_area']);
         //dd( $result->count(), $convert[0]['alamat_asal'][0]);
@@ -50,9 +49,8 @@ class MasterHargaController extends Controller
             $convert[$i]['tujuan_area'] =  $result[$i]['tujuan_area'];
             $convert[$i]['alamat_asal'] =  explode(',', $result[$i]['alamat_asal']);
             $convert[$i]['alamat_tujuan'] =  explode(',', $result[$i]['alamat_tujuan']);
-            $convert[$i]['harga'] =  $result[$i]['harga'];
-            $convert[$i]['servis'] =  $result[$i]['servis'];
-            $convert[$i]['estimasi'] =  $result[$i]['estimasi'];
+            $convert[$i]['harga'] =  json_decode($result[$i]['harga']);
+            $convert[$i]['estimasi'] =  json_decode($result[$i]['estimasi']);
         }
         //dd($data['f_asal'][0]['asal_area']);
         //dd( $result->count(), $convert[0]['alamat_asal'][0]);
@@ -151,6 +149,13 @@ class MasterHargaController extends Controller
     public function store(Request $request)
     {
         try{
+            $harga=[];
+            $estimasi=[];
+            foreach(config('servis') as $key => $servis){
+               // dd($request["harga_".$key]);
+                $harga[$key] = $request["harga_".$key];
+                $estimasi[$key] = $request["estimasi_".$key];
+            }
             $mh = new MasterHarga;
             $mh->asal_id = $request->asal_id;
             $mh->tujuan_id = $request->tujuan_id;
@@ -158,18 +163,18 @@ class MasterHargaController extends Controller
             $mh->alamat_tujuan = $request->alamat_tujuan;
             $mh->asal_area = $request->asal_area;
             $mh->tujuan_area = $request->tujuan_area;
-            $mh->harga = $request->harga;
-            $mh->estimasi = $request->estimasi;
-            $mh->servis = $request->servis;
+            $mh->harga = json_encode($harga);
+            $mh->estimasi = json_encode($estimasi);
             $mh->saveOrFail();
 
             return response()->json([
                 'status' => 'Success ditambahkan',
                 'data' => $mh,
             ]);
+
         }catch(\Exception $e){
             \Log::error($e->getMessage());
-            return response()->json([
+            return response()->with([
                 'message'=> $e->getMessage()
             ],500);
         }
@@ -191,6 +196,13 @@ class MasterHargaController extends Controller
         return view('tarif', $data); 
     }
 
+    public function fixTarif(Request $request)
+    {
+        $tarif = MasterHarga::where('asal_id', $request->asal_id )->where('tujuan_id', $request->tujuan_id)->get();
+        $harga = $tarif[0]->harga;
+        return $harga; 
+    }
+
     public function show(MasterHarga $masterHarga)
     {
         //
@@ -205,6 +217,8 @@ class MasterHargaController extends Controller
     public function edit(Request $request)
     {
         $harga = MasterHarga::find($request->id);
+        $harga['estimasi'] = json_decode($harga->estimasi);
+        $harga['harga'] = json_decode($harga->harga);
         return view('harga.create', compact('harga'));
     }
 
@@ -218,18 +232,26 @@ class MasterHargaController extends Controller
     public function update(Request $request, MasterHarga $masterHarga)
     {
         try{
-        
-            $masterHarga->update([
-                'asal_id' => $request->asal_id,
-                'tujuan_id' => $request->tujuan_id,
-                'asal_area' => $request->area_asal,
-                'tujuan_area' => $request->area_tujuan,
-                'alamat_asal' => $request->alamat_asal,
-                'alamat_tujuan' => $request->alamat_tujuan,
-                'harga' => $request->harga,
-                'estimasi' => $request->estimasi,
-                'servis' => $request->servis,
-            ]);
+
+            $harga=[];
+            $estimasi=[];
+            foreach(config('servis') as $key => $servis){
+               // dd($request["harga_".$key]);
+                $harga[$key] = $request["harga_".$key];
+                $estimasi[$key] = $request["estimasi_".$key];
+            }
+
+            //dd($harga);
+            $masterHarga = MasterHarga::find($request->id);
+            $masterHarga->asal_id = $request->asal_id;
+            $masterHarga->tujuan_id = $request->tujuan_id;
+            $masterHarga->alamat_asal = $request->alamat_asal;
+            $masterHarga->alamat_tujuan = $request->alamat_tujuan;
+            $masterHarga->asal_area = $request->asal_area;
+            $masterHarga->tujuan_area = $request->tujuan_area;
+            $masterHarga->harga = json_encode($harga);
+            $masterHarga->estimasi = json_encode($estimasi);
+            $masterHarga->saveOrFail();
 
             return response()->json([
                 'status' => 'Success update',

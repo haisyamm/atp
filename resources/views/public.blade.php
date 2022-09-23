@@ -31,7 +31,7 @@
                                     <div class="col-12">
                                         <div class="form-control">
                                             <select name="asal_id" id="asal_id" class="distric form-control" readonly>
-                                                <option value="197102" selected>DKI JAKARTA, KOTA JAKARTA BARAT, TAMAN SARI, MAPHAR</option>
+                                                <option value="317303" selected>DKI JAKARTA, KOTA JAKARTA BARAT, TAMAN SARI, MAPHAR</option>
                                             </select>
                                         </div>
                                     </div>

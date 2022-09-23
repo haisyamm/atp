@@ -29,11 +29,11 @@
         
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <style>
-    body {
+    body, option {
         font-family: 'Poppins';
     }
     </style>
-    
+    @yield('css')
     <!-- ....... -->
 </head>
 
@@ -255,27 +255,27 @@
                                     </svg>
                                 </span>
                                 <span class="nav-link-title">
-                                    Resi
+                                    Booking
                                 </span>
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="./layout-horizontal.html">
+                                @if(auth()->user()->type == 0)
+                                <a class="dropdown-item" href="{{route('resi-add')}}">
                                     Input Resi
                                 </a>
-                                @if(auth()->user()->type == 0)
                                 <a class="dropdown-item" href="./layout-boxed.html">
                                     Pesanan Saya
                                 </a>
-                                @endif
                                 <a class="dropdown-item" href="">
                                     Request Pickup
                                 </a>
-                                @if(auth()->user()->type == 1 || auth()->user()->type == 2)
-                                <a class="dropdown-item" href="./layout-boxed.html">
-                                    List Resi
-                                </a>
                                 <a class="dropdown-item" href="./layout-boxed.html">
                                     List Request Pickup
+                                </a>
+                                @endif
+                                @if(auth()->user()->type == 1 || auth()->user()->type == 2)
+                                <a class="dropdown-item" href="{{route('resi')}}">
+                                    Booking List
                                 </a>
                                 @endif
                             </div>
@@ -435,15 +435,15 @@
     <script src="{{ asset('assets/dist/js/tabler.min.js') }}"></script>
     <script src="{{ asset('assets/dist/js/demo.min.js') }}"></script>
     <!-- Jquery -->
+    <script src="{{ asset('assets/pus_dist/js/script.js') }}"></script>
     <script src="{{ asset('assets/pus_dist/lib/jquery/jquery.min.js') }}"></script>
     <!-- Toast and sweetalert -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="{{ asset('assets/pus_dist/lib/jquery-toast-plugin/jquery.toast.min.js') }}"></script>
     <script src="{{ asset('assets/pus_dist/lib/sweetalert/sweetalert2/sweetalert2.min.js') }}"></script>
     <!-- Custome Js -->
-    <script src="{{ asset('assets/pus_dist/js/script.js') }}"></script>
     <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MasterHargaController;
+use App\Http\Controllers\ResiController;
 use App\Http\Controllers\RequestPickupController;
 
 /*
@@ -29,6 +30,8 @@ Route::get('village', [MasterHargaController::class, 'searchKelurahan'])->name('
 
 
 Route::get('/tarif', [MasterHargaController::class, 'tarif'])->name('tarif');
+Route::get('/searchTarif', [MasterHargaController::class, 'fixTarif'])->name('tarif-fix');
+Route::get('/tracking', [ResiController::class, 'tracking'])->name('tracking');
 //Route::get('/tarif/cari', [MasterHargaController::class, 'searchHarga'])->name('cek-tarif');
 Auth::routes();
 
@@ -54,10 +57,17 @@ Route::middleware(['auth', 'user-access:1'])->prefix("lm-admin")->group(function
     Route::get('/price/add', [MasterHargaController::class, 'create'])->name('master-harga-add');
 
     Route::post('/addHarga', [MasterHargaController::class, 'store'])->name('harga-send');
-    Route::post('/updateHarga', [MasterHargaController::class, 'update'])->name('harga-update');
+    Route::post('/newHarga', [MasterHargaController::class, 'update'])->name('harga-update');
     Route::post('/price-filter', [MasterHargaController::class, 'filter'])->name('filter-harga');
     Route::get('/editHarga/{id}', [MasterHargaController::class, 'edit'])->name('harga-edit');
     Route::delete('/delHarga/{id}', [MasterHargaController::class, 'destroy'])->name('harga-delete');
+
+    Route::get('/resi-list', [ResiController::class, 'index'])->name('resi');
+    Route::get('/resi/add', [ResiController::class, 'create'])->name('resi-add');
+    Route::post('/addResi', [ResiController::class, 'store'])->name('resi-send');
+    Route::post('/updateHarga', [ResiController::class, 'update'])->name('resi-update');
+
+    Route::get('/resi/print', [ResiController::class, 'print'])->name('cetak-resi');
 });
 
 /*------------------------------------------

@@ -57,9 +57,10 @@
                                 <th>Kota Tujuan</th>
                                 <th>Kecamatan Tujuan</th>
                                 <th>Kel. / Desa Tujuan</th>
-                                <th>Leadtime</th>
-                                <th>Servis</th>
-                                <th>Tarif /KG</th>
+                                @foreach(config('servis') as $key => $servis)
+                                <th>Leadtime {{$servis}}</th>
+                                <th>Tarif {{$servis}}</th>
+                                @endforeach
                                 <th class="text-center" style="width: 50px;">
                                     <span class="text-muted">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -106,9 +107,10 @@
                                 <td>{{empty($val->alamat_tujuan[1])? '' : $val->alamat_tujuan[1]}}</td>
                                 <td>{{empty($val->alamat_tujuan[2])? '' : $val->alamat_tujuan[2]}}</td>
                                 <td>{{empty($val->alamat_tujuan[3])? '' : $val->alamat_tujuan[3]}}</td>
-                                <td>{{$val->estimasi}} /Hari</td>
-                                <td>{{$val->servis}}</td>
-                                <td>Rp. {{$val->harga}}</td>
+                                @foreach(config('servis') as $key => $servis)
+                                <td>{{$val->estimasi->$key}} /Hari</td>
+                                <td>Rp. {{$val->harga->$key}}</td>
+                                @endforeach
                                 <td class="text-center">
                                     <a href="{{ route('harga-edit', $val->id) }}" class="btn btn-icon border-dashed bg-yellow-lt">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

@@ -19,10 +19,11 @@
                 </div>
                 <div class="ps-1">
                     <input type="hidden" name="p_id" id="p_id" value="{{ isset($harga->id) ? $harga->id : ''  }}">
-                    <div class="row" style="margin-top: 25px;">
-                        <div class="col-md-9 form-select mb-3" style="width: 60%;">
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="col-md-9 form-select mb-3" style="width: 75%;">
                             <label for="alamat_asal" class="small fw-bolder text-uppercase">Asal</label>
                             <select name="alamat_asal" id="alamat_asal" class="distric form-control mt-1">
+                            <option value="317303" selected>DKI JAKARTA, KOTA JAKARTA BARAT, TAMAN SARI, MAPHAR</option>
                                 @if(isset($harga->alamat_asal))
                                 <option value="{{ $harga->alamat_asal }}">{{ $harga->alamat_asal }}</option>
                                 @endif
@@ -34,11 +35,11 @@
                         </div>
                     </div>
                     <div class="row" style="margin-top: 10px;">
-                        <div class="col-md-9 form-select mb-3" style="width: 60%;">
+                        <div class="col-md-9 form-select mb-3" style="width: 75%;">
                             <label for="alamat_tujuan" class="small fw-bolder text-uppercase"> Tujuan</label>
                             <select name="alamat_tujuan" id="alamat_tujuan" class="distric form-control mt-1">
                                 @if(isset($harga->alamat_tujuan))
-                                <option value="{{ $harga->alamat_tujuan }}">{{ $harga->alamat_tujuan }}</option>
+                                <option value="{{ $harga->tujuan_id }}">{{ $harga->alamat_tujuan }}</option>
                                 @endif
                             </select>
                         </div>
@@ -58,26 +59,32 @@
                 </div>
                 <div class="ps-1">
                     <div class="row" style="margin-top: 25px;">
-                        <div class="col-md-4 form-group mb-3">
-                            <label for="estimasi" class="small fw-bolder text-uppercase">Leadtime</label>
-                            <input type="text" name="estimasi" id="estimasi" class="form-control mt-1" placeholder="Masukan Estimasi" value="{{ isset($harga->id) ? $harga->estimasi : ''  }}">
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 10px;">
-                        <div class="col-md-4 form-group mb-3">
-                            <label for="servis" class="small fw-bolder text-uppercase">Servis</label>
-                            <select name="servis" id="servis" class="form-control mt-1">
-                                <option value="{{ isset($harga->servis) ? $harga->servis : ''  }}" selected disabled>{{ isset($harga->harga) ? config('servis')[$harga->servis] : 'Pilih Servis'  }}</option>
-                                @foreach(config('servis') as $key => $servis)
-                                <option value="{{$key}}">{{$servis}}</option>
+                        <div class="col-md-12 form-group mb-3">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" width="50px">KODE SERVIS</th>
+                                    <th scope="col" >NAMA SERVIS</th>
+                                    <th scope="col">LEADTIME</th>
+                                    <th scope="col">TARIF</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach(config('servis') as $key => $servis)
+                                <tr>
+                                    <td>{{$key}}</td>
+                                    <td>{{$servis}}</td>
+                                    <td><input type="text" name="estimasi_{{$key}}" id="estimasi_{{$key}}" class="form-control mt-1" placeholder="Masukan Leadtime {{$servis}}" value="{{ isset($harga->estimasi) ? $harga->estimasi->$key : ''  }}"></td>
+                                    <td>
+                                        <div class="input-group">
+                                        <span class="input-group-text">RP</span>
+                                        <input type="text" name="harga_{{$key}}" id="harga_{{$key}}" class="form-control mt-1" placeholder="Masukan Tarif {{$servis}}" value="{{ isset($harga->harga) ? $harga->harga->$key : ''  }}">
+                                        </div>
+                                    </td>
+                                </tr>
                                 @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 10px;">
-                        <div class="col-md-4 form-group mb-3">
-                            <label for="harga" class="small fw-bolder text-uppercase">Tarif /KG</label>
-                            <input type="text" name="harga" id="harga" class="form-control mt-1" placeholder="Masukan Tarif" value="{{ isset($harga->harga) ? $harga->harga : ''  }}">
+                            </tbody>
+                        </table>
                         </div>
                     </div>
                 </div>
@@ -229,9 +236,12 @@
         let kt = $('#alamat_tujuan').val();
         let ara = $('#asal_area').val();
         let art = $('#tujuan_area').val();
-        let hrg = $('#harga').val();
-        let est = $('#estimasi').val();
-        let ser = $('#servis').val();
+        let hrgR = $('#harga_REG').val();
+        let hrgK = $('#harga_KIL').val();
+        let hrgE = $('#harga_EKO').val();
+        let estR = $('#estimasi_REG').val();
+        let estK = $('#estimasi_KIL').val();
+        let estE = $('#estimasi_EKO').val();
 
         let dataBatch = {
             "_token": "{{ csrf_token() }}",
@@ -241,16 +251,19 @@
             alamat_tujuan: at,
             asal_area: ara,
             tujuan_area: art,
-            harga: hrg,
-            estimasi: est,
-            servis: ser
+            harga_REG: hrgR,
+            harga_KIL: hrgK,
+            harga_EKO: hrgE,
+            estimasi_REG: estR,
+            estimasi_KIL: estK,
+            estimasi_EKO: estE
         };
 
         return dataBatch;
     }
 
     function backToList() {
-        windows.location.href = "http://127.0.0.1:8000/lm-admin/";
+        windows.location.href = "{{route('master-harga')}}";
     }
 </script>
 @endpush
