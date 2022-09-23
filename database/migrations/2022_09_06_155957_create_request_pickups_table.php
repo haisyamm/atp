@@ -16,8 +16,9 @@ class CreateRequestPickupsTable extends Migration
         Schema::create('request_pickups', function (Blueprint $table) {
             $table->id();
             $table->string('no_resi');
-            $table->string('alamat_pengirim');
+            $table->text('alamat_pengirim');
             $table->integer('no_hp');
+            $table->datetime('tgl_pickup');
             $table->timestamps();
         });
     }

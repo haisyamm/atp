@@ -21,9 +21,8 @@ class CreateMasterHargasTable extends Migration
             $table->string('tujuan_area');
             $table->string('alamat_asal');
             $table->string('alamat_tujuan');
-            $table->integer('harga');
-            $table->string('estimasi');
-            $table->string('servis');
+            $table->text('harga');
+            $table->text('estimasi');
             $table->timestamps();
         });
     }
