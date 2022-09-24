@@ -4,15 +4,15 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between">
-                <h3 class="card-title">List Resi</h3>
+                <h3 class="card-title"><B>LIST BOOKING</B></h3>
                 <div class="">
                     <a href="{{ route('resi-add') }}" class="btn btn-dark">Tambah</a>
                 </div>
             </div>
             <div class="card-body border-bottom py-3">
                 <div class="table-responsive mt-2">
-                    <table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
-                        <thead>
+                    <table id="booking" class="stripe row-border order-column" style="width:100%">
+                    <thead>
                             <tr>
                                 <th class="text-center" style="width: 30px;">
                                 <span class="text-muted">    
@@ -27,10 +27,12 @@
                                 </th>
                                 <th>No Resi</th>
                                 <th>Tanggal Resi</th>
+                                <th>Status</th>
                                 <th>Pengirim</th>
                                 <th>Penerima</th>
                                 <th>Servis</th>
                                 <th>Tujuan</th>
+                                <th>Koli</th>
                                 <th>Berat Keseluruhan</th>
                                 <th>Total Biaya</th>
                                 <th class="text-center" style="width: 50px;">
@@ -49,7 +51,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(json_decode($resi) as $val)
+                            @foreach($resi as $val)
+                            <?php 
+                                $penerima = json_decode($val->alamat_penerima);
+                                $track = json_decode($val->tracking);
+                                $last =$track[count($track)-1];
+                                $brg = json_decode($val->detail_barang);
+                            ?>
                             <tr>
                                 <td class="text-center" style="width: 30px;">
                                 <a href="" class="btn btn-icon border-dashed bg-dark-lt">
@@ -63,14 +71,16 @@
                                     </a>
                                 </td>
                                 <td>{{$val->no_resi}}</td>
-                                <td>{{$val->tgl_resi}}</td>
-                                <td>{{$val->pengirim}}</td>
+                                <td>{{$val->tgl_resi}}<label class="row small">{{Auth::user()->name}}</label></td>
+                                <td>{{$last->status}}</td>
+                                <td>{{$val->pengirim}}</td>                                
                                 <td>{{$val->penerima}}</td>
                                 <td>{{$val->servis}}</td>
-                                <td>{{$val->alamat_penerima[0]['alamat_1']}}</td>
+                                <td style="width: 30%;">{{$penerima->alamat_2}}</td>
+                                <td>{{$brg->tarif[0]->total_barang}}</td>
                                 <td>{{$val->total_berat}}</td>
                                 <td>{{$val->total_biaya}}</td>
-                                <td class="text-center" style="width: 100px;">
+                                <td class="text-center fixed-columns-right" style="width: 100px;">
                                     <a href="" class="btn btn-icon border-dashed bg-dark-lt">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -99,12 +109,11 @@
 </div>
 @endsection
 @push('script')
-
 <script src="https://cdn.datatables.net/fixedcolumns/4.1.0/js/dataTables.fixedColumns.min.js"></script>
 <script>
     
 $(document).ready(function () {
-    $('#example').DataTable({
+    $('#booking').DataTable({
         fixedColumns:   {
             left: false,
             right: 2

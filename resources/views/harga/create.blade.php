@@ -95,7 +95,7 @@
                 </div>
                 <hr>
                 <div class="d-flex justify-content-end">
-                    <a class="btn btn-danger" href="{{route('master-harga')}}">CANCEL</a>
+                    <a class="btn btn-danger" href="{{route('master-harga')}}">BACK</a>
                     <button class="btn btn-primary ms-3" onclick="onCreateAsset()">{{ isset($harga->id) ? 'UPDATE' : 'ADD'  }}</button>
                 </div>
             </div>
