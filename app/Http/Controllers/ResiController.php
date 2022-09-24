@@ -15,7 +15,9 @@ class ResiController extends Controller
      */
     public function index()
     {
-        $data['resi'] = Resi::all();
+        $resi = Resi::all();
+        $data['resi'] = json_decode($resi);
+
         return view('resi.list', $data);
     }
 

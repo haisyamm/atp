@@ -242,7 +242,7 @@
                     <div class="row">
                     </div>
                     <div class="d-flex justify-content-end">
-                        <button class="btn btn-light" onclick="history.back()">Cancel</button>
+                        <a class="btn btn-light" href="{{route('resi')}}">CANCEL</a>
                         <button class="btn btn-dark ms-1" onclick="onCreateAsset()">{{ isset($resi->id) ? 'Update' : 'Add'  }}</button>
                     </div>
                 </div>
