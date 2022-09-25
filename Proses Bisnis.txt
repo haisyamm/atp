@@ -22,8 +22,8 @@ BAGIAN 1 DETAIL PENGIRIMAN
 Untuk tambah resi nomornya mau dibuat urutan muncul sesuai dengan login cabang yang sudah dialokasikan
 Contoh: 
 Di database kita ada nomor resi 1-30
-- Resi 1-10 dialokasikan untuk kantor pusat nanti akan otomatis muncul berurutan kalau user login menggunakan user kantor pusat
-- Resi 11-30 dialokasikan untuk cabang mangga dua nanti akan muncul berurutan kalau user login menggunakan user mangga dua 
+- Resi 1-10 dialokasikan untuk kantor pusat nanti akan otomatis muncul berurutan kalau user login menggunakan user kantor pusat 00
+- Resi 11-30 dialokasikan untuk cabang mangga dua nanti akan muncul berurutan kalau user login menggunakan user mangga dua XX
 
 Jika ada kesalahan input resi itu sdh tidak bisa diedit jd nomornya dianggap void diganti ke nomor selanjutnya lg
 
@@ -95,8 +95,6 @@ Total biaya kirim + insurance + biaya lain-lain
 11. SISTEM PEMBAYARAN
 Kita ada 3 pembayaran yaitu Cash, Credit/Invoice, 
 COD (kalau COD nanti jika area login menggunakan usernya akan otomatis muncul untuk transaksi mana sana yg COD)
-
-Calon Sistem Analis
 
 
 Master Harga :

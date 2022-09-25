@@ -35,16 +35,34 @@
                                 <th>Koli</th>
                                 <th>Berat Keseluruhan</th>
                                 <th>Total Biaya</th>
+                                <th class="text-center fixed-columns-right" style="width: 50px;">
+                                    <span class="text-muted">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M12 15l8.385 -8.415a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3z"></path>
+                                            <path d="M16 5l3 3"></path>
+                                            <path d="M9 7.07a7.002 7.002 0 0 0 1 13.93a7.002 7.002 0 0 0 6.929 -5.999"></path>
+                                        </svg>
+                                    </span>
+                                </th>
+                                <th class="text-center fixed-columns-right" style="width: 50px;">
+                                    <span class="text-muted">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <circle cx="12" cy="12" r="9"></circle>
+                                                <path d="M10 8l4 8"></path>
+                                                <path d="M10 16l4 -8"></path>
+                                        </svg>
+                                    </span>
+                                </th>
                                 <th class="text-center" style="width: 50px;">
                                     <span class="text-muted">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-spy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M3 11h18"></path>
-                                    <path d="M5 11v-4a3 3 0 0 1 3 -3h8a3 3 0 0 1 3 3v4"></path>
-                                    <circle cx="7" cy="17" r="3"></circle>
-                                    <circle cx="17" cy="17" r="3"></circle>
-                                    <path d="M10 17h4"></path>
-                                    </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-printer" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2"></path>
+                                            <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4"></path>
+                                            <rect x="7" y="13" width="10" height="8" rx="2"></rect>
+                                        </svg>
                                     Action
                                     </span>
                                 </th>
@@ -60,7 +78,7 @@
                             ?>
                             <tr>
                                 <td class="text-center" style="width: 30px;">
-                                <a href="" class="btn btn-icon border-dashed bg-dark-lt">
+                                <a href="{{ route('tracking', 'no_resi='.$val->no_resi) }}" class="btn btn-icon border-dashed bg-dark-lt">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-truck-delivery" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <circle cx="7" cy="17" r="2"></circle>
@@ -80,6 +98,16 @@
                                 <td>{{$brg->tarif[0]->total_barang}}</td>
                                 <td>{{$val->total_berat}}</td>
                                 <td>{{$val->total_biaya}}</td>
+                                <td class="text-center">
+                                    <a href="{{ route('resi-edit', $val->id) }}" class="btn btn-icon border-dashed bg-yellow-lt">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M12 15l8.385 -8.415a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3z"></path>
+                                            <path d="M16 5l3 3"></path>
+                                            <path d="M9 7.07a7.002 7.002 0 0 0 1 13.93a7.002 7.002 0 0 0 6.929 -5.999"></path>
+                                        </svg>
+                                    </a>
+                                </td>
                                 <td class="text-center fixed-columns-right" style="width: 100px;">
                                     <a href="" class="btn btn-icon border-dashed bg-dark-lt">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -89,7 +117,9 @@
                                                 <path d="M10 16l4 -8"></path>
                                         </svg>
                                     </a>
-                                        <a href="{{route('cetak-resi')}}" class="btn btn-icon border-dashed bg-dark-lt">
+                                </td>
+                                <td class="text-center fixed-columns-right" style="width: 100px;">
+                                    <a href="{{route('cetak-resi')}}" class="btn btn-icon border-dashed bg-dark-lt">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-printer" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2"></path>
@@ -116,7 +146,7 @@ $(document).ready(function () {
     $('#booking').DataTable({
         fixedColumns:   {
             left: false,
-            right: 2
+            right: 3
         }
     });
 });

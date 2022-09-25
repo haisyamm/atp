@@ -31,7 +31,7 @@ Route::get('village', [MasterHargaController::class, 'searchKelurahan'])->name('
 
 Route::get('/tarif', [MasterHargaController::class, 'tarif'])->name('tarif');
 Route::get('/searchTarif', [MasterHargaController::class, 'fixTarif'])->name('tarif-fix');
-Route::get('/tracking', [ResiController::class, 'tracking'])->name('tracking');
+Route::get('/track/stt', [ResiController::class, 'tracking'])->name('track-stt');
 //Route::get('/tarif/cari', [MasterHargaController::class, 'searchHarga'])->name('cek-tarif');
 Auth::routes();
 
@@ -65,7 +65,11 @@ Route::middleware(['auth', 'user-access:1'])->prefix("lm-admin")->group(function
     Route::get('/resi-list', [ResiController::class, 'index'])->name('resi');
     Route::get('/resi/add', [ResiController::class, 'create'])->name('resi-add');
     Route::post('/addResi', [ResiController::class, 'store'])->name('resi-send');
-    Route::post('/updateHarga', [ResiController::class, 'update'])->name('resi-update');
+    Route::get('/editResi/{id}', [ResiController::class, 'edit'])->name('resi-edit');
+    Route::post('/updateResi', [ResiController::class, 'update'])->name('resi-update');
+    Route::post('/updateTrack', [ResiController::class, 'updateTracking'])->name('track-update');
+    Route::get('/tracking', [ResiController::class, 'tracking'])->name('tracking');
+
 
     Route::get('/resi/print', [ResiController::class, 'print'])->name('cetak-resi');
 });
