@@ -54,7 +54,7 @@ return [
             'prefix'    => '',
             'strict'    => false,
             'options'   => [
-                \PDO::ATTR_EMULATE_PREPARES => false
+                \PDO::ATTR_EMULATE_PREPARES => true
             ]
         ],
 
