@@ -96,7 +96,11 @@ class ResiController extends Controller
     public function store(Request $request)
     {
         try{
-            $an = 'ATP'.$request->payment.substr($request->servis,0,1)."0002";
+            $resi = Resi::all();
+            $last = count(json_decode($resi));
+            $new = $last+1;
+            $an = 'ATP'.$request->payment.substr($request->servis,0,1).str_pad($new, 5, '0', STR_PAD_LEFT);
+            dd($an);
             $detail['barang'] = $request->detail_barang;
             $detail['tarif'] = $request->detail;
             // dd($detail);
