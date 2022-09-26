@@ -33,15 +33,25 @@ class ResiController extends Controller
         return view('resi.create');
     }
 
-    public function print()
+    public function print(Request $request)
     {
-        
-        $data['product'] = "ATPXXTUPGR00001";
-        $data['qrcode'] =  QrCode::size(70)->generate("ATPXXTUPGR00001");
+        $resi = Resi::find($request->id);
+        $area = auth()->user()->area;
+        $o_id = auth()->user()->o_id;
+        $url = route('track-stt', 'no_resi='.$resi->no_resi);
+        //dd($resi);
+        $detail = json_decode($resi->detail_barang);
+        $data['qrcode'] =  QrCode::size(70)->generate($url);
+        $data['product'] = $resi->no_resi;
+        $data['alamat_pengirim'] = json_decode($resi->alamat_pengirim);
+        $data['alamat_penerima']= json_decode($resi->alamat_penerima);
+        $data['resi'] = json_decode($resi);
+        $data['detail_barang'] = $detail->barang[0];
+        $data['detail_biaya'] = $detail->tarif[0];
 
-        $pdf = PDF::loadview('resi.resiPdf',$data);
-        return $pdf->stream();
-        // return view('resi.resiPdf',$data);
+        // $pdf = PDF::loadview('resi.resiPdf',$data);
+        // return $pdf->stream();
+        return view('resi.resiPdf',$data);
     }
 
     public function tracking(Request $request)
@@ -99,7 +109,7 @@ class ResiController extends Controller
             $resi = Resi::all();
             $last = count(json_decode($resi));
             $new = $last+1;
-            $an = 'ATP-'.$request->payment.substr($request->servis,0,1).str_pad($new, 6, '0', STR_PAD_LEFT);
+            $an = 'ATP-'.$area.$request->payment.substr($request->servis,0,1).str_pad($new, 6, '0', STR_PAD_LEFT);
             // dd($an);
             $detail['barang'] = $request->detail_barang;
             $detail['tarif'] = $request->detail;
@@ -158,9 +168,16 @@ class ResiController extends Controller
      * @param  \App\Models\Resi  $resi
      * @return \Illuminate\Http\Response
      */
-    public function show(Resi $resi)
+    public function show(Request $request)
     {
-        //
+        $resi = Resi::find($request->id);
+        $detail = json_decode($resi->detail_barang);
+        $data['alamat_pengirim'] = json_decode($resi->alamat_pengirim);
+        $data['alamat_penerima']= json_decode($resi->alamat_penerima);
+        $data['resi'] = json_decode($resi);
+        $data['detail_barang'] = $detail->barang[0];
+        $data['detail_biaya'] = $detail->tarif[0];
+        return view('resi.detail', $data);
     }
 
     /**

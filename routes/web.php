@@ -63,6 +63,7 @@ Route::middleware(['auth', 'user-access:1'])->prefix("lm-admin")->group(function
     Route::delete('/delHarga/{id}', [MasterHargaController::class, 'destroy'])->name('harga-delete');
 
     Route::get('/resi-list', [ResiController::class, 'index'])->name('resi');
+    Route::get('/detail/{id}', [ResiController::class, 'show'])->name('show-detail');
     Route::get('/resi/add', [ResiController::class, 'create'])->name('resi-add');
     Route::post('/addResi', [ResiController::class, 'store'])->name('resi-send');
     Route::get('/editResi/{id}', [ResiController::class, 'edit'])->name('resi-edit');
@@ -71,7 +72,7 @@ Route::middleware(['auth', 'user-access:1'])->prefix("lm-admin")->group(function
     Route::get('/tracking', [ResiController::class, 'tracking'])->name('tracking');
 
 
-    Route::get('/resi/print', [ResiController::class, 'print'])->name('cetak-resi');
+    Route::get('/printResi/{id}', [ResiController::class, 'print'])->name('cetak-resi');
 });
 
 /*------------------------------------------

@@ -347,7 +347,7 @@ function hitung() {
 
 function tarif(){
     let ser = $('#servis option:selected').val();
-    let ka = "317303"; //role user
+    let ka = "{{auth()->user()->origin_id}}"; //role user
     let kt = "{{$penerima->id}}";
 
     return data = $.ajax({

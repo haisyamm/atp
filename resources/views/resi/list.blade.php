@@ -1,4 +1,12 @@
 @extends('layouts.lm_admin')
+@section('css')
+<style>
+    th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        margin: 0 auto;
+    }
+</style>
+@stop
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -63,7 +71,6 @@
                                             <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4"></path>
                                             <rect x="7" y="13" width="10" height="8" rx="2"></rect>
                                         </svg>
-                                    Action
                                     </span>
                                 </th>
                             </tr>
@@ -119,7 +126,7 @@
                                     </a>
                                 </td>
                                 <td class="text-center fixed-columns-right" style="width: 100px;">
-                                    <a href="{{route('cetak-resi')}}" class="btn btn-icon border-dashed bg-dark-lt">
+                                    <a href="{{ route('cetak-resi', $val->id) }}" class="btn btn-icon border-dashed bg-dark-lt">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-printer" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2"></path>

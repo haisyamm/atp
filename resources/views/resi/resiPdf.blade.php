@@ -35,6 +35,7 @@
         <div class="page-wrapper">
             <div class="container">
                 <div class="row  justify-content-md-center">
+                    @foreach($detail_barang as $brg)
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body border-bottom py-3">
@@ -43,7 +44,7 @@
                                         <thead>
                                             <tr class="border-bottom">
                                                 <td><img class="d-inline-block" src="{{asset('assets/img/logo.png')}}" alt="logo" width="100"></td>
-                                                <td colspan="2" class="text-end"><b>CGK - TSY | PS1</b></td>
+                                                <td colspan="2" class="text-end"><b>CGK - TSY</b></td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -51,7 +52,7 @@
                                             <td width="200px">
                                             <label class="small fw-bolder">{{$product}}</label>
                                             </td>
-                                            <td colspan="2">Cipawitra, Mangkubumi, Kota Tasikmalaya</td>
+                                            <td colspan="2">{{$alamat_pengirim->alamat_2}}</td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
@@ -59,14 +60,15 @@
                                             {!! DNS1D::getBarcodeHTML($product, "C128",0.7,22) !!}
                                             </div>
                                             </td>
-                                            <td class="text-end" width="300px"> Dibuat :<br>22 September 2022</td>
+                                            <td class="text-end" width="300px"> Dibuat :<br>{{date('d-m-Y', strtotime($resi->tgl_resi))}}</td>
                                         </tr>
                                         <tr class="border">
                                             <td colspan="3" class="text-left" width="250px">
-                                                Pengirim :<br>
-                                                Penerima :22 September 2022<br>
-                                                Alamat   : <br><br>
-                                                Isi      :
+                                                Pengirim :  {{$alamat_pengirim->alamat_2}}<br>
+                                                Penerima :  {{$alamat_penerima->alamat_2}}<br>
+                                                Alamat   :  {{$alamat_penerima->alamat_1}}<br>
+                                                            {{$alamat_penerima->alamat_1}}<br>
+                                                Isi      : {{$detail_biaya->isi}}
                                             </td>
                                         </tr>
                                         <tr>
@@ -80,7 +82,7 @@
                                             </td>
                                             <td></td>
                                             <td class="text-end"> 
-                                                <label class="small">Ex. Reff : XXXXXX</label>
+                                                <label class="small">{{$resi->no_reff}}</label>
                                             </td>
                                         </tr>
                                         
@@ -89,25 +91,25 @@
                                     <table width="100%" class="mt-2">
                                         <thead>
                                             <tr class="border-top" >
-                                                <td colspan="2"><h2>NON COD</h2></td>
-                                                <td><a class="btn btn-dark">KILAT</a></td>
+                                                <td colspan="2"><h2 class="text-uppercase">{{config('payment')[$resi->payment]}}</h2></td>
+                                                <td><a class="btn btn-dark">{{config('servis')[$resi->servis]}}</a></td>
                                                 <td class="text-end"><h2>1/1</h2></td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
                                             <td>
-                                                <label class="small">Total Biaya : -</label>
+                                                <label class="small">Total Biaya : {{$resi->total_biaya}}</label>
                                             </td>
                                             <td>
-                                                <label class="small">Total Berat : -</label>
+                                                <label class="small">Total Berat : {{$detail_barang->berat_actual}}</label>
                                             </td>
-                                            <td rowspan="2"><h3>GW :</h3></td>
-                                            <td rowspan="2" class="text-end"><h3> 1Kg / 1Kg</h3></td>
+                                            <td rowspan="2"><h3>GW : {{$detail_barang->berat_actual}}</h3></td>
+                                            <td rowspan="2" class="text-end"><h3> {{$detail_barang->berat_actual}}Kg / 1Kg</h3></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label class="small">Biaya Kirim : -</label>
+                                                <label class="small">Biaya Kirim : {{$detail_barang->tarif}} </label>
                                             </td>
                                             <td>
                                                 <label class="small">Pajak/BM : -</label>
@@ -141,7 +143,7 @@
                                                 {!! DNS1D::getBarcodeHTML($product, "C128",0.7,22) !!}
                                             </td>
                                             <td rowspan="2" class="border">
-                                                <center><a class="btn btn-sm btn-dark">KILAT</a></center><br>
+                                                <center><a class="btn btn-sm btn-dark">{{config('servis')[$resi->servis]}}</a></center><br>
                                                 <label class="small">Total Berat : -</label><br>
                                                 <label class="small">Biaya Kirim : -</label><br>
                                                 <label class="small">Pajak/BM : -</label><br>
@@ -152,10 +154,10 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2" class="border">
-                                                Pengirim :<br>
-                                                Penerima : <br>
-                                                Alamat   : <br>
-                                                Estimasi : 22 September 2022
+                                                Pengirim : {{$resi->pengirim}}<br>
+                                                Penerima : {{$resi->penerima}}<br>
+                                                Alamat   : ***************<br>
+                                                Estimasi : {{date('d F Y', strtotime($resi->tgl_resi))}}
                                             </td>
                                             <td class="border text-center">
                                                 <label class="small">Total Biaya</label><br>
@@ -168,6 +170,7 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
