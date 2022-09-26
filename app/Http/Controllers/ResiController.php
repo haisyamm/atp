@@ -99,7 +99,7 @@ class ResiController extends Controller
             $resi = Resi::all();
             $last = count(json_decode($resi));
             $new = $last+1;
-            $an = 'ATP'.$request->payment.substr($request->servis,0,1).str_pad($new, 5, '0', STR_PAD_LEFT);
+            $an = 'ATP-'.$request->payment.substr($request->servis,0,1).str_pad($new, 6, '0', STR_PAD_LEFT);
             // dd($an);
             $detail['barang'] = $request->detail_barang;
             $detail['tarif'] = $request->detail;
@@ -111,7 +111,12 @@ class ResiController extends Controller
             $alamat_penerima['id']= $request->tujuan_id;
             $alamat_penerima['alamat_1']= $request->alamat_penerima_1;
             $alamat_penerima['alamat_2']= $request->alamat_penerima_2;
-
+            
+            $tracking['status'] = "PICK UP";
+            $tracking['word'] = config('tracking')['PICK UP'];
+            $tracking['date'] = Carbon::now()->format('Y-m-d');
+            $tracking['time'] = Carbon::now()->format('H:i');
+            $track[] = $tracking;
             $resi = new Resi;
             $resi->no_resi = $an;
             $resi->tgl_resi = $request->tgl_resi;
@@ -129,7 +134,8 @@ class ResiController extends Controller
             $resi->total_berat = $request->total_berat;
             $resi->total_biaya = $request->total_biaya;
             $resi->detail_barang = json_encode($detail);
-
+            $resi->tracking = json_encode($track);
+            // dd($resi);
 
             $resi->saveOrFail();
 
