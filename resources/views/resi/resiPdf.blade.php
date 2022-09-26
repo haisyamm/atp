@@ -28,11 +28,6 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.4.0/css/select.dataTables.min.css">
         
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <style>
-    body, option {
-        font-family: 'Poppins';
-    }
-    </style>
 </head>
 
 <body class="layout-fluid theme-light">
