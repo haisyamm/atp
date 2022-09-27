@@ -147,7 +147,7 @@
                                 <div class="row" style="margin-top: 25px;">
                                     <div class="col-md-4 form-group mb-3">
                                         <label for="tgl_resi" class="small fw-bolder text-uppercase">Tanggal Resi</label>
-                                        <p class="mt-2">{{ $resi->tgl_resi}}</p>
+                                        <p class="mt-2">{{ date('d-m-Y', strtotime($resi->tgl_resi)); }}</p>
                                     </div>
                                     <div class="col-md-4 form-group mb-3">
                                         <label for="servis" class="small fw-bolder text-uppercase">Pilih Layanan</label>
@@ -155,7 +155,7 @@
                                     </div>
                                     <div class="col-md-4 form-group mb-3">
                                         <label for="no_reff" class="small fw-bolder text-uppercase">Refferensi</label>
-                                        <p class="mt-2">{{ $resi->tgl_resi}}</p>
+                                        <p class="mt-2">{{ date('d-m-Y', strtotime($resi->tgl_resi)); }}</p>
                                     </div>
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="nama_pengirim" class="small fw-bolder text-uppercase">Nama Pengirim</label>
