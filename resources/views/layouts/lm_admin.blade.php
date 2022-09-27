@@ -73,6 +73,7 @@
                                 </span>
                             </a>
                         </li>
+                        @if(auth()->user()->access != 0)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home.index') }}">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -241,6 +242,7 @@
                                 </span>
                             </a>
                         </li>
+                        @endif
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -259,28 +261,12 @@
                                 </span>
                             </a>
                             <div class="dropdown-menu">
-                                @if(auth()->user()->type == 0)
-                                <a class="dropdown-item" href="{{route('resi-add')}}">
-                                    Input Resi
-                                </a>
-                                <a class="dropdown-item" href="./layout-boxed.html">
-                                    Pesanan Saya
-                                </a>
-                                <a class="dropdown-item" href="">
-                                    Request Pickup
-                                </a>
-                                <a class="dropdown-item" href="./layout-boxed.html">
-                                    List Request Pickup
-                                </a>
-                                @endif
-                                @if(auth()->user()->type == 1 || auth()->user()->type == 2)
                                 <a class="dropdown-item" href="{{route('resi')}}">
                                     Booking List
                                 </a>
-                                @endif
                             </div>
                         </li>
-                        @if(auth()->user()->type == 1 || auth()->user()->type == 2)
+                        @if(auth()->user()->access == 1 || auth()->user()->access == 2)
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">

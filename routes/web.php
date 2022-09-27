@@ -61,9 +61,11 @@ Auth::routes();
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
-// Route::middleware(['auth', 'user-access:0'])->group(function () {
-
-// });
+Route::middleware(['auth', 'user-access:0'])->prefix("admin")->group(function () {
+    Route::get('/', [HomeController::class, 'adminHome'])->name('lm-admin');
+    Route::get('/resi-list', [ResiController::class, 'index'])->name('resi-user');
+    Route::get('/printResi/{id}', [ResiController::class, 'print'])->name('cetak-resi');
+});
 
 /*------------------------------------------
 --------------------------------------------

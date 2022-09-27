@@ -179,7 +179,7 @@ class ResiController extends Controller
         $data['alamat_pengirim'] = json_decode($resi->alamat_pengirim);
         $data['alamat_penerima']= json_decode($resi->alamat_penerima);
         $data['resi'] = json_decode($resi);
-        $data['detail_barang'] = $detail->barang[0];
+        $data['detail_barang'] = $detail->barang;
         $data['detail_biaya'] = $detail->tarif[0];
         return view('resi.detail', $data);
     }

@@ -131,207 +131,206 @@
     <div class="col-md-12">
         <div class="main-card mb-2 card">
             <div class="card-header d-flex justify-content-between px-4 py-4">
-                <form action="{{ route('tracking')}}" method="GET" class="d-flex flex-row">
-                    <div class="col-md-6">
-                        <input type="text" name="no_resi" id="no_resi" class="form-control mt-2" placeholder="ATPXX12345678" value="{{ isset($resi->resi) ? $resi->resi : ''  }}">
-                    </div>
-                    <div class="mt-2">
-                        <button type="submit" class="btn btn-dark w-100">
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <circle cx="10" cy="10" r="7"></circle>
-                                <line x1="21" y1="21" x2="15" y2="15"></line>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                <div class="card-body">
+                            <div class="h3 fw-bolder text-uppercase col-md-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="me-1 mb-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="12" cy="12" r="9"></circle>
                                 </svg>
-                                </span>
-                            Cari
-                        </button>
-                    </div>
-                </form>
-                <a href="{{ route('resi-add') }}" class="btn btn-primary">Book Now</a>
-            </div>
-            <div class="card-body">
-            @if($tracking)
-                <h5 class="card-title">Tracking Timeline</h5>
-                <div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
-                    @foreach($tracking as $key => $track)
-                    <div class="vertical-timeline-item vertical-timeline-element">
-                        <div>
-                            @if($last== $key)
-                            <span class="vertical-timeline-element-icon bounce-in">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-truck-delivery badge-dot-xl" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <circle cx="7" cy="17" r="2"></circle>
-                            <circle cx="17" cy="17" r="2"></circle>
-                            <path d="M5 17h-2v-4m-1 -8h11v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5"></path>
-                            <line x1="3" y1="9" x2="7" y2="9"></line>
-                            </svg>
-                            </span>
-                            @else
-                            <span class="vertical-timeline-element-icon bounce-in">
-                                <i class="badge badge-dot badge-dot-xl badge-danger"> </i>
-                            </span>
-                            @endif
-                            <div class="vertical-timeline-element-content bounce-in">
-                                <h4 class="timeline-title">{{$track->status}}</h4>
-                                <p>
-                                    {{$track->word}}
-                                    <!-- <a href="javascript:void(0);" data-abc="true">12:00 PM</a> -->
-                                </p>
-                                <span class="vertical-timeline-element-date">
-                                    <label for="">{{date("d M", strtotime($track->date))}}</label><br>
-                                    <label for="">{{$track->time}}</label>
-                                </span>
+                                Detail Pengiriman
+                            </div>
+                            <div class="ps-1">
+                                <div class="row" style="margin-top: 25px;">
+                                    <div class="col-md-4 form-group mb-3">
+                                        <label for="tgl_resi" class="small fw-bolder text-uppercase">Tanggal Resi</label>
+                                        <p class="mt-2">{{ $resi->tgl_resi}}</p>
+                                    </div>
+                                    <div class="col-md-4 form-group mb-3">
+                                        <label for="servis" class="small fw-bolder text-uppercase">Pilih Layanan</label>
+                                        <p class="mt-2">{{ config('servis')[$resi->servis]}}</p>
+                                    </div>
+                                    <div class="col-md-4 form-group mb-3">
+                                        <label for="no_reff" class="small fw-bolder text-uppercase">Refferensi</label>
+                                        <p class="mt-2">{{ $resi->tgl_resi}}</p>
+                                    </div>
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="nama_pengirim" class="small fw-bolder text-uppercase">Nama Pengirim</label>
+                                        <p class="mt-2">{{ $resi->pengirim}}</p>
+                                    </div>
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="nama_penerima" class="small fw-bolder text-uppercase">Nama Penerima</label>
+                                        <p class="mt-2">{{ $resi->penerima}}</p>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="alamat_pengirim_1" class="small fw-bolder text-uppercase">Alamat Pengirim</label>
+                                        <p class="mt-2">{{ $alamat_pengirim->alamat_1}}</p>
+                                        <p>{{ $alamat_pengirim->alamat_2}}</p>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="alamat_penerima_1" class="small fw-bolder text-uppercase">Alamat Penerima</label>
+                                        <p class="mt-2">{{ $alamat_penerima->alamat_1}}</p>
+                                        <p>{{ $alamat_penerima->alamat_2}}</p>
+                                    </div>
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="tlp_pengirim" class="small fw-bolder text-uppercase">Telp. Pengirim</label>
+                                        <p class="mt-2">{{ $resi->tlp_pengirim}}</p>                                                    
+                                    </div>                        
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="tlp_penerima" class="small fw-bolder text-uppercase">Telp. Penerima</label>
+                                        <p class="mt-2">{{ $resi->tlp_penerima}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="h3 fw-bolder text-uppercase col-md-6 mb-3 mt-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="me-1 mb-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="12" cy="12" r="9"></circle>
+                                </svg>
+                                Detail Barang
+                            </div>
+                            <div class="ps-1">
+                                <table class="table align-middle">
+                                    <tr>
+                                        <th>Berat Barang</th>
+                                        <th>Dimensi Paket (p x l x t) </th>
+                                        <th>Volume</th> 
+                                        <th></th> 
+                                    </tr>
+                                    @foreach($detail_barang as $brg)
+                                    <tr class="detail">
+                                        <td id="col1">
+                                            <div class="row">
+                                                <div class="input-group">
+                                                <p class="mt-2">{{ $brg->berat_actual}}</p>
+                                                </div>
+                                            </div>
+                                        </td> 
+                                        <td id="col1"  style="width :40%">
+                                            <div class="row">
+                                                <div class="input-group">
+                                                <p class="mt-2">{{ $brg->dimensi}}</p>
+                                                </div>
+                                            </div>
+                                        </td>  
+                                        <td id="col1">
+                                            <div class="row">
+                                                <div class="input-group">
+                                                <p class="mt-2">{{ $brg->volume}}</p>
+                                                </div>
+                                            </div>
+                                        </td>  
+                                    </tr>
+                                    @endforeach  
+                                </table> 
+                                <table> 
+                                    <tr class="mb-6">
+                                        <td  style="width :70%">Isi Barang</td> 
+                                        <td colspan="2" class="text-end" style="width :30%">
+                                            <div class="input-group mt-2">
+                                                <input type="text" name="isi_barang" id="isi_barang" class="form-control" value="{{ isset($detail_biaya->isi) ? $detail_biaya->isi : ''  }}">
+                                            </div>
+                                        </td> 
+                                    </tr>
+                                    <tr class="mb-6">
+                                        <td  style="width :70%">Total Barang</td> 
+                                        <td colspan="2" class="text-center" style="width :30%">
+                                        <input type="text" name="total_barang" id="total_barang" class="form-control" value="{{ $detail_biaya->total_barang}}">
+                                            
+                                        </td> 
+                                    </tr>
+                                    <tr class="mb-6">
+                                        <td  style="width :70%">Total Berat Dimensi</td> 
+                                        <td colspan="2" class="text-end" style="width :30%">
+                                            <div class="input-group">
+                                                <input type="text" name="total_volume" id="total_volume" class="form-control" value="{{ $detail_biaya->total_volume}}"readonly>
+                                                <span class="input-group-text">KG</span>
+                                            </div>
+                                        </td> 
+                                    </tr class="mb-6"> 
+                                    <tr>
+                                        <td  style="width :70%">Berat Dikenakan Biaya</td> 
+                                        <td colspan="2" class="text-end" style="width :30%">
+                                        <div class="input-group">
+                                            <input type="text" name="total_berat" id="total_berat" value="{{ $resi->total_berat}}"class="form-control" readonly>
+                                            <span class="input-group-text">KG</span>
+                                        </div>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  style="width :70%">Tarif</td> 
+                                        <td colspan="2" class="text-end" style="width :30%">
+                                            <div class="input-group">
+                                                <span class="input-group-text">RP</span>
+                                                <input type="text" name="tarif" id="tarif" class="form-control" value="{{ isset($detail_biaya->tarif) ? $detail_biaya->tarif : ''  }}" readonly>
+                                            </div>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  style="width :70%">Biaya Kirim</td> 
+                                        <td colspan="2" class="text-end" style="width :30%">
+                                        <div class="input-group">
+                                            <span class="input-group-text">RP</span>
+                                            <input type="text" name="tot_biaya_kirim" id="tot_biaya_kirim" class="form-control" readonly>
+                                        </div>
+                                        </td> 
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="h3 fw-bolder text-uppercase col-md-6 px" style="margin-top: 25px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="me-1 mb-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="12" cy="12" r="9"></circle>
+                                </svg>
+                                Detail Biaya
+                            </div>
+                            <div class="ps-1">
+                                    <input type="hidden" name="p_id" id="p_id" value="{{ isset($resi->id) ? $resi->id : ''  }}">
+                                    <div class="row" style="margin-top: 25px;">
+                                        <div class="col-md-3 form-group mb-3">
+                                            <label for="payment" class="small fw-bolder text-uppercase">Metode Pembayaran</label>
+                                            <select name="payment" id="payment" class="form-select mt-1" required>
+                                            <option value="" class="form-select">Pilih...</option>
+                                            @foreach(config('payment') as $key => $payment)
+                                            <option value="{{$key}}" class="form-select" {{ ($resi->payment == $key) ? 'selected=true' : ''  }} >{{$payment}}</option>
+                                            @endforeach
+                                        </select>
+                                        </div>
+                                        <!-- <div class="col-md-3 form-group mb-3">
+                                            <label for="tujuan_area" class="small fw-bolder text-uppercase">PPN</label>
+                                            <input type="text" name="tujuan_area" id="tujuan_area" class="form-control mt-1" placeholder="Masukan PPN" value="">
+                                        </div> -->
+                                        <div class="col-md-3 form-group mb-3">
+                                            <label for="packing" class="small fw-bolder text-uppercase">Packing</label>
+                                            <input type="text" name="packing" id="packing" class="form-control mt-1" placeholder="Packing" value="{{ isset($resi->packing) ? $resi->packing : ''  }}" oninput="total()">
+                                        </div>
+                                        <div class="col-md-3 form-group mb-3">
+                                            <label for="other" class="small fw-bolder text-uppercase">Others</label>
+                                            <input type="text" name="other" id="other" class="form-control mt-1" placeholder="Others" value="{{ isset($resi->others) ? $resi->others : ''  }}" oninput="total()">
+                                        </div>
+                                        <!-- <div class="col-md-3 form-group mb-3">
+                                            <label for="tujuan_area" class="small fw-bolder text-uppercase">Asuransi</label>
+                                            <input type="text" name="tujuan_area" id="tujuan_area" class="form-control mt-1" placeholder="Masukan Asuransi" value="">
+                                        </div> -->
+                                        
+                                        <div class="col-md-3 form-group mb-3">
+                                            <label for="total_biaya" class="small fw-bolder text-uppercase">Total Biaya Keseluruhan</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">RP</span>
+                                                <input type="text" name="total_biaya" id="total_biaya" class="form-control" value="{{ isset($resi->total_biaya) ? $resi->total_biaya : ''  }}" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
                             </div>
                         </div>
-                    </div>
-                    @endforeach
-                    <!-- <div class="vertical-timeline-item vertical-timeline-element">
-                        <div>
-                            <span class="vertical-timeline-element-icon bounce-in">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-truck-delivery" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <circle cx="7" cy="17" r="2"></circle>
-                            <circle cx="17" cy="17" r="2"></circle>
-                            <path d="M5 17h-2v-4m-1 -8h11v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5"></path>
-                            <line x1="3" y1="9" x2="7" y2="9"></line>
-                            </svg>
-                            </span>
-                            <div class="vertical-timeline-element-content bounce-in">
-                                <p>Another meeting with UK client today, at <b class="text-danger">3:00 PM</b></p>
-                                <p>Yet another one, at <span class="text-success">5:00 PM</span></p>
-                                <span class="vertical-timeline-element-date">12:25 PM</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="vertical-timeline-item vertical-timeline-element">
-                        <div>
-                            <span class="vertical-timeline-element-icon bounce-in">
-                                <i class="badge badge-dot badge-dot-xl badge-danger"> </i>
-                            </span>
-                            <div class="vertical-timeline-element-content bounce-in">
-                                <h4 class="timeline-title">Discussion with team about new product launch</h4>
-                                <p>meeting with team mates about the launch of new product. and tell them about new features</p>
-                                <span class="vertical-timeline-element-date">6:00 PM</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="vertical-timeline-item vertical-timeline-element">
-                        <div>
-                            <span class="vertical-timeline-element-icon bounce-in">
-                                <i class="badge badge-dot badge-dot-xl badge-primary"> </i>
-                            </span>
-                            <div class="vertical-timeline-element-content bounce-in">
-                                <h4 class="timeline-title text-success">Discussion with marketing team</h4>
-                                <p>Discussion with marketing team about the popularity of last product</p>
-                                <span class="vertical-timeline-element-date">9:00 AM</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="vertical-timeline-item vertical-timeline-element">
-                        <div>
-                            <span class="vertical-timeline-element-icon bounce-in">
-                                <i class="badge badge-dot badge-dot-xl badge-success"> </i>
-                            </span>
-                            <div class="vertical-timeline-element-content bounce-in">
-                                <h4 class="timeline-title">Purchase new hosting plan</h4>
-                                <p>Purchase new hosting plan as discussed with development team, today at <a href="javascript:void(0);" data-abc="true">10:00 AM</a></p>
-                                <span class="vertical-timeline-element-date">10:30 PM</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="vertical-timeline-item vertical-timeline-element">
-                        <div>
-                            <span class="vertical-timeline-element-icon bounce-in">
-                                <i class="badge badge-dot badge-dot-xl badge-warning"> </i>
-                            </span>
-                            <div class="vertical-timeline-element-content bounce-in">
-                                <p>Another conference call today, at <b class="text-danger">11:00 AM</b></p>
-                                <p>Yet another one, at <span class="text-success">1:00 PM</span></p>
-                                <span class="vertical-timeline-element-date">12:25 PM</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="vertical-timeline-item vertical-timeline-element">
-                        <div>
-                            <span class="vertical-timeline-element-icon bounce-in">
-                                <i class="badge badge-dot badge-dot-xl badge-warning"> </i>
-                            </span>
-                            <div class="vertical-timeline-element-content bounce-in">
-                                <p>Another meeting with UK client today, at <b class="text-danger">3:00 PM</b></p>
-                                <p>Yet another one, at <span class="text-success">5:00 PM</span></p>
-                                <span class="vertical-timeline-element-date">12:25 PM</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="vertical-timeline-item vertical-timeline-element">
-                        <div>
-                            <span class="vertical-timeline-element-icon bounce-in">
-                                <i class="badge badge-dot badge-dot-xl badge-danger"> </i>
-                            </span>
-                            <div class="vertical-timeline-element-content bounce-in">
-                                <h4 class="timeline-title">Discussion with team about new product launch</h4>
-                                <p>meeting with team mates about the launch of new product. and tell them about new features</p>
-                                <span class="vertical-timeline-element-date">6:00 PM</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="vertical-timeline-item vertical-timeline-element">
-                        <div>
-                            <span class="vertical-timeline-element-icon bounce-in">
-                                <i class="badge badge-dot badge-dot-xl badge-primary"> </i>
-                            </span>
-                            <div class="vertical-timeline-element-content bounce-in">
-                                <h4 class="timeline-title text-success">Discussion with marketing team</h4>
-                                <p>Discussion with marketing team about the popularity of last product</p>
-                                <span class="vertical-timeline-element-date">9:00 AM</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="vertical-timeline-item vertical-timeline-element">
-                        <div>
-                            <span class="vertical-timeline-element-icon bounce-in">
-                                <i class="badge badge-dot badge-dot-xl badge-success"> </i>
-                            </span>
-                            <div class="vertical-timeline-element-content bounce-in">
-                                <h4 class="timeline-title">Purchase new hosting plan</h4>
-                                <p>Purchase new hosting plan as discussed with development team, today at <a href="javascript:void(0);" data-abc="true">10:00 AM</a></p>
-                                <span class="vertical-timeline-element-date">10:30 PM</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="vertical-timeline-item vertical-timeline-element">
-                        <div>
-                            <span class="vertical-timeline-element-icon bounce-in">
-                                <i class="badge badge-dot badge-dot-xl badge-warning"> </i>
-                            </span>
-                            <div class="vertical-timeline-element-content bounce-in">
-                                <p>Another conference call today, at <b class="text-danger">11:00 AM</b></p>
-                                <p>Yet another one, at <span class="text-success">1:00 PM</span></p>
-                                <span class="vertical-timeline-element-date">12:25 PM</span>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
-            @else
-                <h5 class="card-title">Resi Not Found</h5>
-            @endif
-            </div>
-            <div class="card-footer border-light">
-                <input type="hidden" name="p_id" id="p_id" value="{{ isset($resi->id) ? $resi->id : ''  }}">
-                <div class="row" style="margin-top: 25px;">
-                    <div class="col-md-12 form-group mb-3">
-                        <label for="tracking" class="small fw-bolder text-uppercase">Update Status</label>
-                        <select name="tracking" id="tracking" class="col-md-12 form-select mt-1" required>
-                        <option value="" class="col-md-12 form-select">Pilih...</option>
-                        @foreach(config('tracking') as $key => $tracking)
-                        <option value="{{$key}}" class="col-md-12 form-select">{{$tracking}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="d-flex justify-content-end">
-                    <a class="btn btn-light" href="{{route('resi')}}">CANCEL</a>
-                    <button class="btn btn-dark ms-1" onclick="onCreateAsset()">Update</button>
                 </div>
             </div>
         </div>        
@@ -340,38 +339,5 @@
 @endsection
 @push('script')
 <script>
-    const onCreateAsset = () => {
-        var dataBatch = getFormInput();
-        var p_id = $('#p_id').val();
-        dataBatch['id'] = p_id;
-        requestServer({
-            url: '{{route("track-update")}}',
-            data: dataBatch,
-            onSuccess: function(response) {
-                Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Your resi has been update',
-                showConfirmButton: false,
-                timer: 1500
-                }).then((result) => {
-                    window.location.assign('{{route("resi")}}');
-                })
-            }
-        });
-    }
-
-    // Get input in form
-    const getFormInput = () => {
-        // Daerah Asal
-        let word = $('#tracking option:selected').text();
-        let sts = $('#tracking').val();
-        let dataBatch = {
-            "_token": "{{ csrf_token() }}",
-            status: sts ,
-            word: word 
-        };
-        return dataBatch;
-    }
 </script>
 @endpush
