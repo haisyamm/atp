@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\WhyController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\MasterHargaController;
 use App\Http\Controllers\ResiController;
@@ -74,6 +75,7 @@ All Admin Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:1'])->prefix("lm-admin")->group(function () {
 
+    Route::resource('pelanggan', PelangganController::class);
     Route::resource('why', WhyController::class);
     Route::resource('home', HomeController::class);
     Route::resource('service', ServiceController::class);

@@ -14,7 +14,10 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        //
+        $pelanggan = Pelanggan::all();
+        return view('pelangganlist')->with([
+            'pelanggan' => $pelanggan
+        ]);
     }
 
     /**
@@ -24,7 +27,7 @@ class PelangganController extends Controller
      */
     public function create()
     {
-        //
+        return view('pelanggan');
     }
 
     /**
@@ -35,7 +38,9 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        Pelanggan::create($data);
+        return redirect()->route('pelanggan.index');
     }
 
     /**
@@ -55,9 +60,12 @@ class PelangganController extends Controller
      * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pelanggan $pelanggan)
-    {
-        //
+    public function edit($id)
+    {   
+        $data = Pelanggan::findOrFail($id);
+        return view('pelangganedit')->with([
+            'data' => $data
+        ]);
     }
 
     /**
@@ -67,9 +75,12 @@ class PelangganController extends Controller
      * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pelanggan $pelanggan)
+    public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $item = Pelanggan::findOrFail($id);
+        $item->update($data);
+        return redirect()->route('pelanggan.index');
     }
 
     /**
@@ -78,8 +89,10 @@ class PelangganController extends Controller
      * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pelanggan $pelanggan)
+    public function destroy($id)
     {
-        //
+        $item = Pelanggan::findOrFail($id);
+        $item->delete();
+        return redirect()->route('pelanggan.index');
     }
 }
