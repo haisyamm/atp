@@ -61,13 +61,9 @@ Auth::routes();
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'user-access:0'])->group(function () {
-    Route::resource('why', WhyController::class);
-    Route::resource('home', HomeController::class);
-    Route::resource('service', ServiceController::class);
-    Route::resource('contacts', ContactController::class);
-    Route::resource('banner', BannerController::class);
-});
+// Route::middleware(['auth', 'user-access:0'])->group(function () {
+
+// });
 
 /*------------------------------------------
 --------------------------------------------
@@ -75,6 +71,12 @@ All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:1'])->prefix("lm-admin")->group(function () {
+
+    Route::resource('why', WhyController::class);
+    Route::resource('home', HomeController::class);
+    Route::resource('service', ServiceController::class);
+    Route::resource('contacts', ContactController::class);
+    Route::resource('banner', BannerController::class);
 
     Route::get('/', [HomeController::class, 'adminHome'])->name('lm-admin');
     Route::get('/price-list', [MasterHargaController::class, 'index'])->name('master-harga');
