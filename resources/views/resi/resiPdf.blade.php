@@ -35,7 +35,9 @@
         <div class="page-wrapper">
             <div class="container">
                 <div class="row  justify-content-md-center">
+                    <?php $i =0;?>
                     @foreach($detail_barang as $brg)
+                    <?php $i++;?>
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body border-bottom py-3">
@@ -44,7 +46,7 @@
                                         <thead>
                                             <tr class="border-bottom">
                                                 <td><img class="d-inline-block" src="{{asset('assets/img/logo.png')}}" alt="logo" width="100"></td>
-                                                <td colspan="2" class="text-end"><b>CGK - TSY</b></td>
+                                                <td colspan="2" class="text-end"><b>{{$area->asal_area}}-{{$area->tujuan_area}}</b></td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -93,7 +95,7 @@
                                             <tr class="border-top" >
                                                 <td colspan="2"><h2 class="text-uppercase">{{config('payment')[$resi->payment]}}</h2></td>
                                                 <td><a class="btn btn-dark">{{config('servis')[$resi->servis]}}</a></td>
-                                                <td class="text-end"><h2>1/1</h2></td>
+                                                <td class="text-end"><h2>{{$i}}/{{$detail_biaya->total_barang}}</h2></td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -102,14 +104,14 @@
                                                 <label class="small">Total Biaya : {{$resi->total_biaya}}</label>
                                             </td>
                                             <td>
-                                                <label class="small">Total Berat : {{$detail_barang->berat_actual}}</label>
+                                                <label class="small">Total Berat : {{$brg->berat_actual}}</label>
                                             </td>
-                                            <td rowspan="2"><h3>GW : {{$detail_barang->berat_actual}}</h3></td>
-                                            <td rowspan="2" class="text-end"><h3> {{$detail_barang->berat_actual}}Kg / 1Kg</h3></td>
+                                            <td rowspan="2"><h3>GW : {{$brg->berat_actual}}</h3></td>
+                                            <td rowspan="2" class="text-end"><h3> {{$brg->berat_actual}}Kg / 1Kg</h3></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label class="small">Biaya Kirim : {{$detail_barang->tarif}} </label>
+                                                <label class="small">Biaya Kirim : {{$detail_biaya->tarif}} </label>
                                             </td>
                                             <td>
                                                 <label class="small">Pajak/BM : -</label>
@@ -120,10 +122,10 @@
                                                 <label class="small">Asuransi : -</label>
                                             </td>
                                             <td>
-                                                <label class="small">Lain-lain : -</label>
+                                                <label class="small">Lain-lain : {{number_format((float)$resi->total_biaya,2)}}</label>
                                             </td>
-                                            <td rowspan="2"><h3>VW :</h3></td>
-                                            <td rowspan="2" class="text-end">10x10x10CM<h3>0,1Kg</h3></td>
+                                            <td rowspan="2"><h3>VW : {{number_format((float)$brg->volume,2)}}Kg</h3></td>
+                                            <td rowspan="2" class="text-end">{{$brg->dimensi}} <h3>{{number_format((float)$brg->volume,2)}}Kg</h3></td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"></td>
@@ -144,11 +146,11 @@
                                             </td>
                                             <td rowspan="2" class="border">
                                                 <center><a class="btn btn-sm btn-dark">{{config('servis')[$resi->servis]}}</a></center><br>
-                                                <label class="small">Total Berat : -</label><br>
+                                                <label class="small">Total Berat : {{$resi->total_berat}}</label><br>
                                                 <label class="small">Biaya Kirim : -</label><br>
                                                 <label class="small">Pajak/BM : -</label><br>
                                                 <label class="small">Asuransi : -</label><br>
-                                                <label class="small">Lain-lain : -</label>
+                                                <label class="small">Lain-lain : {{number_format((float)$resi->others,2)}}</label>
                                             </td>
                                             <td class="text-center">{!! $qrcode !!}</td>
                                         </tr>
@@ -161,7 +163,7 @@
                                             </td>
                                             <td class="border text-center">
                                                 <label class="small">Total Biaya</label><br>
-                                                Rp. -
+                                                <label class="small">{{number_format((float)$resi->total_biaya,2)}}</label>
                                             </td>
                                         </tr>
                                         </tfoot>

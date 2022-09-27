@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Carbon\Carbon;
 use PDF;
+use DB;
 
 class ResiController extends Controller
 {
@@ -38,17 +39,20 @@ class ResiController extends Controller
         $resi = Resi::find($request->id);
         $area = auth()->user()->area;
         $o_id = auth()->user()->o_id;
+        $penerima= json_decode($resi->alamat_penerima);
         $url = route('track-stt', 'no_resi='.$resi->no_resi);
         //dd($resi);
+        // $cek_area =  
+        $data['area'] = DB::table('cek_area')->where('asal_id', auth()->user()->origin_id)->where('tujuan_id', $penerima->id)->first();
         $detail = json_decode($resi->detail_barang);
         $data['qrcode'] =  QrCode::size(70)->generate($url);
         $data['product'] = $resi->no_resi;
         $data['alamat_pengirim'] = json_decode($resi->alamat_pengirim);
-        $data['alamat_penerima']= json_decode($resi->alamat_penerima);
+        $data['alamat_penerima']=  $penerima;
         $data['resi'] = json_decode($resi);
-        $data['detail_barang'] = $detail->barang[0];
+        $data['detail_barang'] = $detail->barang;
         $data['detail_biaya'] = $detail->tarif[0];
-
+        // dd($data);
         // $pdf = PDF::loadview('resi.resiPdf',$data);
         // return $pdf->stream();
         return view('resi.resiPdf',$data);
