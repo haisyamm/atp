@@ -2,9 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\WhyController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\MasterHargaController;
 use App\Http\Controllers\ResiController;
 use App\Http\Controllers\RequestPickupController;
+
+use App\Models\About;
+use App\Models\Service;
+use App\Models\Why;
+use App\Models\Contact;
+use App\Models\Banner;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +28,18 @@ use App\Http\Controllers\RequestPickupController;
 */
 
 Route::get('/', function () {
-    return view('public');
+    $about = About::all();
+    $service = Service::all();
+    $why = Why::all();
+    $contact = Contact::all();
+    $banner = Banner::first();
+    return view('public')->with([
+        'about' => $about,
+        'service' => $service,
+        'why' => $why,
+        'contact' => $contact,
+        'banner' => $banner
+    ]);
 })->name('site');
 Route::get('/contact/pick-up', [RequestPickupController::class, 'create'])->name('request-pickup');
 Route::post('/contact/pick-up', [RequestPickupController::class, 'store'])->name('request-send');
@@ -41,8 +62,11 @@ All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:0'])->group(function () {
-
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::resource('why', WhyController::class);
+    Route::resource('home', HomeController::class);
+    Route::resource('service', ServiceController::class);
+    Route::resource('contacts', ContactController::class);
+    Route::resource('banner', BannerController::class);
 });
 
 /*------------------------------------------
