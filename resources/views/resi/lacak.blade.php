@@ -129,6 +129,10 @@
 @section('content')    
 <div class="row justify-content-center">
     <div class="col-md-12">
+        <div class="card-header d-flex justify-content-between" style="background-color: #006a4e;">
+                <h3 class="card-title text-white"><B>UPDATE LACAK PENGIRIMAN</B></h3>
+                </div>
+            </div>
         <div class="main-card mb-2 card">
             <div class="card-header d-flex justify-content-between px-4 py-4">
                 <form action="{{ route('tracking')}}" method="GET" class="d-flex flex-row">

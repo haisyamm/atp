@@ -3,7 +3,7 @@
     <div class="row p-3">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between text-white" style="background-color: #006a4e;">
                     <h3>CONTACT US</h3>
                 </div>
                 <div class="card-body">
@@ -15,7 +15,7 @@
                             <label class="mb-2">Link Maps:</label><br>
                             <input type="text" name="address" class="form-control mb-2" value="{{ $ct->address }}">
                             <textarea class="form-control" name="maps_link" value="{{ $ct->maps_link }}" rows="3">{{ $ct->maps_link }}</textarea>
-                        </div>
+                        </div><hr>
                         <div class="form-group mb-2">
                             <label class="mb-2">Head Office:</label>
                             <input type="text" name="ho_telp" class="form-control mb-2" value="{{ $ct->ho_telp }}">
@@ -30,7 +30,7 @@
                             <label class="mb-2">Marketing Office:</label>
                             <input type="text" name="mo_telp" class="form-control mb-2" value="{{ $ct->mo_telp }}">
                             <input type="text" name="mo_email" class="form-control mb-2" value="{{ $ct->mo_email }}">
-                        </div>
+                        </div><hr>
                         <div class="form-group mb-2">
                             <label class="mb-2">Facebook:</label>
                             <input type="text" name="facebook" class="form-control mb-2" value="{{ $ct->facebook }}">
@@ -63,7 +63,7 @@
                             <div class="form-group mb-2">
                                 <label class="mb-2">Link Maps:</label><br>
                                 <textarea class="form-control" name="maps_link" placeholder="Tuliskan link alamat perusahaan disini..." rows="3"></textarea>
-                            </div>
+                            </div><hr>
                             <div class="form-group mb-2">
                                 <label class="mb-2">Head Office:</label>
                                 <input type="text" name="ho_telp" class="form-control mb-2"
@@ -84,7 +84,7 @@
                                     placeholder="Tuliskan no. telp disini...">
                                 <input type="text" name="mo_email" class="form-control mb-2"
                                     placeholder="Tuliskan email disini...">
-                            </div>
+                            </div><hr>
                             <div class="form-group mb-2">
                                 <label class="mb-2">Facebook:</label>
                                 <input type="text" name="facebook" class="form-control mb-2"
