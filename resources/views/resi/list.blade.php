@@ -100,7 +100,9 @@
                                         {{$val->no_resi}}
                                     </a>
                                 </td>
-                                <td>{{$val->tgl_resi}}<label class="row small">{{Auth::user()->name}}</label></td>
+                                <td class="text-center">{{date("d F Y", strtotime($val->tgl_resi))}}
+                                    <p class="row small">{{Auth::user()->name}}</p>
+                                </td>
                                 <td>{{$last->status}}</td>
                                 <td>{{$val->pengirim}}</td>                                
                                 <td>{{$val->penerima}}</td>
@@ -108,13 +110,13 @@
                                 <td style="width: 30%;">{{$penerima->alamat_2}}</td>
                                 <td>{{$brg->tarif[0]->total_barang}}</td>
                                 <td>{{$val->total_berat}}</td>
-                                <td>{{$val->total_biaya}}</td>
+                                <td>{{number_format((float)$val->total_biaya,2)}}</td>
                                 @if($val->cancel)
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 @else
-                                <td class="text-center">
+                                <td class="text-center" style="width: 100px; color:white">
                                     @if(auth()->user()->access != 0)
                                     <a href="{{ route('resi-edit', $val->id) }}" class="btn btn-icon border-dashed bg-yellow-lt">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -126,7 +128,7 @@
                                     </a>
                                     @endif
                                 </td>
-                                <td class="text-center fixed-columns-right" style="width: 100px;">
+                                <td class="text-center fixed-columns-right" style="width: 100px; color:white">
                                 @if(auth()->user()->access != 0)
                                     <a href="" class="btn btn-icon border-dashed bg-dark-lt">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -138,7 +140,7 @@
                                     </a>
                                     @endif
                                 </td>
-                                <td class="text-center fixed-columns-right" style="width: 100px;">
+                                <td class="text-center fixed-columns-right" style="width: 100px; color:white">
                                     <a href="{{ route('cetak-resi', $val->id) }}" class="btn btn-icon border-dashed bg-dark-lt">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-printer" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
