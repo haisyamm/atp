@@ -53,7 +53,7 @@ Route::get('village', [MasterHargaController::class, 'searchKelurahan'])->name('
 
 Route::get('/tarif', [MasterHargaController::class, 'tarif'])->name('tarif');
 Route::get('/searchTarif', [MasterHargaController::class, 'fixTarif'])->name('tarif-fix');
-Route::get('/track/stt', [ResiController::class, 'tracking'])->name('track-stt');
+Route::get('/track/stt', [ResiController::class, 'trackSTT'])->name('track-stt');
 //Route::get('/tarif/cari', [MasterHargaController::class, 'searchHarga'])->name('cek-tarif');
 Auth::routes();
 

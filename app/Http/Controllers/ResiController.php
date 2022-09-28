@@ -69,6 +69,17 @@ class ResiController extends Controller
         return view('resi.lacak', $data);
     }
 
+    public function trackSTT(Request $request)
+    {
+        $resi = Resi::where('no_resi', $request->no_resi)->first();
+        // dd($resi[0]->tracking);
+        $tracking = isset($resi->tracking) ? json_decode($resi->tracking) : '';
+        $data['resi'] =json_decode($resi);
+        $data['last'] =count(json_decode($resi->tracking))-1;
+        $data['tracking'] = $tracking;
+        return view('lacak', $data);
+    }
+
     public function updateTracking(Request $request)
     {
         try

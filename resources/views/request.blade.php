@@ -14,27 +14,74 @@
                             <div class="row g-4">
                                 <div class="col-12">
                                     <div class="input-group-icon">
-                                        <label class="form-label visually-hidden" for="no_resi">No Resi</label>
-                                        <input class="form-control input-box form-voyage-control" id="no_resi" type="text" placeholder="No Resi">
-                                        <span class="nav-link-icon text-800 fs--1 input-box-icon">
-                                            <svg class="svg-inline--fa fa-map-marker-alt fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="map-marker-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"></path></svg><!-- <i class="fas fa-map-marker-alt"></i> Font Awesome fontawesome.com --></span>
+                                        <label class="form-label " for="nama_pengirim">Nama Pengirim</label>
+                                        <input class="form-control" id="nama_pengirim" type="text" placeholder="Nama Pengirim">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-group-icon">
-                                        <label class="form-label visually-hidden" for="alamat">Alamat</label>
-                                        <input class="form-control input-box form-voyage-control" id="alamat" type="text" placeholder="Alamat">
-                                        <span class="nav-link-icon text-800 fs--1 input-box-icon"><svg class="svg-inline--fa fa-map-marker-alt fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="map-marker-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"></path></svg><!-- <i class="fas fa-map-marker-alt"> </i> Font Awesome fontawesome.com --></span>
+                                        <label class="form-label " for="alamat">Alamat</label>
+                                        <input class="form-control" id="alamat" type="text" placeholder="Alamat">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-group-icon">
-                                        <label class="form-label visually-hidden" for="no_hp">No HP</label>
-                                        <input class="form-control input-box form-voyage-control" id="no_hp" type="text" placeholder="Nomor Hp">
-                                        <span class="nav-link-icon text-800 fs--1 input-box-icon"><svg class="svg-inline--fa fa-map-marker-alt fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="map-marker-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"></path></svg><!-- <i class="fas fa-map-marker-alt"> </i> Font Awesome fontawesome.com --></span>
+                                        <label class="form-label " for="no_hp">Nomor yang dapat dihubungi:</label>
+                                        <input class="form-control" id="no_hp" type="text" placeholder="Nomor yang dapat dihubungi">
                                     </div>
                                 </div>
-                                
+                            
+                                <div class="col-12">
+                                    <div class="input-group-icon">
+                                        <label class="form-label" for="date">Request Waktu Pick Up</label>
+                                        <input class="form-control datepicker" id="date" type="date">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-group-icon">
+                                        <input class="form-check-input" type="radio" name="option1" id="option1" value="09.00-12.00">
+                                            <label class="form-check-label" for="option1">
+                                                09.00-12.00
+                                            </label>
+                                        </div>
+                                        <input class="form-check-input" type="radio" name="option1" id="option1" value="13.00-16.00">
+                                        <label class="form-check-label" for="option2">
+                                            13.00-16.00
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-group-icon">
+                                    <label class="form-label " for="tujuan_id">Tujuan</label>
+                                        <select name="tujuan_id" id="tujuan_id" class="distric form-control ">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-group-icon">
+                                    <label class="form-label " for="servis">Servis</label>
+                                        <select name="servis" id="servis" class="form-select mt-1">
+                                            <option value="{{ isset($resi->servis) ? $resi->servis : ''  }}" selected disabled>{{ isset($resi->resi) ? config('servis')[$resi->servis] : 'Pilih Servis'  }}</option>
+                                            @foreach(config('servis') as $key => $servis)
+                                            <option value="{{$key}}">{{$servis}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-6">
+                                    <div class="input-group-icon">
+                                        <label class="form-label " for="qty">Jumlah Pcs</label>
+                                        <input class="form-control" id="qty" type="text" placeholder="Jumlah">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-group-icon">
+                                        <label class="form-label " for="berat">Total Berat</label>
+                                        <input class="form-control" id="berat" type="text" placeholder="..../KG">
+                                    </div>
+                                </div>
+                                </div>                            
                                 <div class="col-12 d-grid mt-6"><button class="btn btn-secondary"  id="btnRequest">Request</button></div>
                             </div>
                         </div> <!-- /.service-block -->
@@ -82,29 +129,41 @@
 $(document).ready(function(){
     $('#btnRequest').click(function(){
         var dataBatch = getFormInput();
-        $.ajax({
-            type:'POST',
-            url: '{{route("request-send")}}',
-            dataType : 'json',
-            data:      dataBatch,
-            success:function(response) {
-                console.log(response);
-                window.location = "https://api.whatsapp.com/send?phone=6285156722379&text=Halo%20Mau%20Pickup%20Di%20dong%20:%0ANo%20RESI:%20"+
-                dataBatch['no_resi']+"E%0AAlamat:%20"+dataBatch['alamat_pengirim'];
-            }
-        });
+        let tid = $('#tujuan_id option:selected').text();
+        let srv = $('#servis option:selected').text();
+        let tgl = $('#date').val();
+        let time = $('#option1').val();
+        let qty = $('#qty').val();
+        let kg = $('#berat').val();
+
+        let d = new Date(tgl);
+        let ye = new Intl.DateTimeFormat('id', { year: 'numeric' }).format(d);
+        let mo = new Intl.DateTimeFormat('id', { month: 'long' }).format(d);
+        let da = new Intl.DateTimeFormat('id', { day: '2-digit' }).format(d);
+        date = da+"-"+mo+"-"+ye;
+
+            window.location = "https://api.whatsapp.com/send?phone=6285880555650&text="+
+            "*Halo Mas Agung! Tolong pick-up barang saya ya!*"+
+            "%0A Nama Pengirim:%20"+dataBatch['nama_pengirim']+
+            "%0A Alamat Pick-Up:%20"+dataBatch['alamat_pengirim']+
+            "%0A Request Waktu Pick Up:%20"+date+" "+time+
+            "%0A Tujuan: "+tid+
+            "%0A Layanan: %20"+srv+
+            "%0A Jumlah PCS:%20"+qty+
+            "%20%20%20Total Berat:%20"+kg+
+            "%0A Terkait penjemputan dapat menghubungi nomor ini :%20"+dataBatch['no_hp'];
     });
 });
 
     // Get input in form
     const getFormInput = () => {
         // Daerah Asal
-        let nor = $('#no_resi').val();
+        let nor = $('#nama_pengirim').val();
         let add = $('#alamat').val();
         let nhp = $('#no_hp').val();
 
         let dataBatch = {
-            no_resi: nor,
+            nama_pengirim: nor,
             alamat_pengirim: add,
             no_hp: nhp,
             "_token": "{{ csrf_token() }}",
@@ -112,5 +171,27 @@ $(document).ready(function(){
 
         return dataBatch;
     }
+    $('.distric').select2({
+    placeholder: 'Pilih Kecamatan',
+    theme: "bootstrap",
+    ajax: {
+        url: '{{route("distric")}}',
+        dataType: 'json',
+        delay: 250,
+
+        processResults: function (data) {
+            return {
+                results: $.map(data, function (item) {
+                    return {
+                        text: item.name,
+                        id: item.id
+                    }
+                })
+            };
+        },
+        cache: true
+    }
+    });
+</script>
 </script>
 @endpush
