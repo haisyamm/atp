@@ -177,11 +177,11 @@
                                     </div>
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="tlp_pengirim" class="small fw-bolder text-uppercase">Telp. Pengirim</label>
-                                        <p class="mt-2">{{ $resi->tlp_pengirim}}</p>                                                    
+                                        <p class="mt-2">{{ $resi->tlp_pengirim }}</p>                                                    
                                     </div>                        
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="tlp_penerima" class="small fw-bolder text-uppercase">Telp. Penerima</label>
-                                        <p class="mt-2">{{ $resi->tlp_penerima}}</p>
+                                        <p class="mt-2">{{ $resi->tlp_penerima }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -338,6 +338,4 @@
 </div>
 @endsection
 @push('script')
-<script>
-</script>
 @endpush

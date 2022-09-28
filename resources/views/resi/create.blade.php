@@ -70,7 +70,8 @@
                         <div class="col-md-6 form-group mb-3">
                             <label for="tlp_pengirim" class="small fw-bolder text-uppercase">Telp. Pengirim</label>
                             <div class="input-group">  
-                                <input type="tel" name="tlp_pengirim" id="tlp_pengirim" class="form-control mt-1" placeholder="Ex: 0881234567890" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}">
+                                <input type="tel" name="tlp_pengirim" id="tlp_pengirim" class="form-control mt-1" placeholder="Ex: 0881234567890" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}" 
+                                onkeypress="return onlyNumberKey(event)">
                             </div>
                             <div class="col-md-12 form-group form-switch mt-3">
                                     <input class="form-check-input" type="checkbox" id="save_pengirim" name="save_pengirim">
@@ -82,7 +83,7 @@
                             <div class="input-group">
                                 <!-- <span class="input-group-text">
                                 </span> -->
-                                <input type="tel" name="tlp_penerima" id="tlp_penerima" class="form-control mt-1" placeholder="Ex: 0881234567890" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}">
+                                <input type="tel" name="tlp_penerima" id="tlp_penerima" class="form-control mt-1" placeholder="Ex: 0881234567890" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}"onkeypress="return onlyNumberKey(event)">
                             </div>
                             <div class="col-md-12 form-group form-switch mt-3">
                                 <input class="form-check-input" type="checkbox" id="save_penerima" name="save_penerima">
@@ -518,6 +519,16 @@ $(document).ready(function() {
     }
 
     function backToList(){
+    }
+
+    
+</script>
+<script>
+    function onlyNumberKey(evt) {
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+            return false;
+        return true;
     }
 </script>
 @endpush
