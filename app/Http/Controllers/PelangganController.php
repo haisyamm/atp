@@ -15,7 +15,7 @@ class PelangganController extends Controller
     public function index()
     {
         $pelanggan = Pelanggan::all();
-        return view('pelangganlist')->with([
+        return view('pelanggan.list')->with([
             'pelanggan' => $pelanggan
         ]);
     }
@@ -27,7 +27,7 @@ class PelangganController extends Controller
      */
     public function create()
     {
-        return view('pelanggan');
+        return view('pelanggan.create');
     }
 
     /**
@@ -38,8 +38,16 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        Pelanggan::create($data);
+        $add = explode(":", $request->alamat);
+        $alamat['id']= $add[0];
+        $alamat['alamat_1']= $add[1];
+        $alamat['alamat_2']= $request->alamat2;
+
+        Pelanggan::create([
+            'nama' => $request->nama,
+            'alamat' => json_encode($alamat),
+            'no_tlp' => $request->no_tlp,
+        ]);
         return redirect()->route('pelanggan.index');
     }
 
@@ -62,8 +70,10 @@ class PelangganController extends Controller
      */
     public function edit($id)
     {   
-        $data = Pelanggan::findOrFail($id);
-        return view('pelangganedit')->with([
+        $data = Pelanggan::findOrFail($id)->first();
+        //dd($data);
+        $data['add'] = json_decode($data->alamat);
+        return view('pelanggan.edit')->with([
             'data' => $data
         ]);
     }
@@ -77,9 +87,17 @@ class PelangganController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $add = explode(":", $request->alamat);
+        $alamat['id']= $add[0];
+        $alamat['alamat_1']= $add[1];
+        $alamat['alamat_2']= $request->alamat2;
         $data = $request->all();
         $item = Pelanggan::findOrFail($id);
-        $item->update($data);
+        $item->update([
+            'nama' => $request->nama,
+            'alamat' => json_encode($alamat),
+            'no_tlp' => $request->no_tlp,
+        ]);
         return redirect()->route('pelanggan.index');
     }
 
