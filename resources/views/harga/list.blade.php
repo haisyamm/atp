@@ -3,19 +3,21 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header d-flex justify-content-between">
-                <h3 class="card-title"><B>LIST TARIF</B></h3>
+            <div class="card-header d-flex justify-content-between" style="background-color: #006a4e;">
+                <h3 class="card-title text-white"><B>LIST TARIF</B></h3>
                 <div class="">
                     <form action="{{ route('filter-harga')}}" method="POST" class="d-flex flex-row">
-                    @csrf
-                    <div><h3 class="card-title">FILTER BY KODE AREA :</h3></div>
+                    @csrf=
+                    <div><h3 class="card-title text-white">FILTER BY KODE AREA :</h3></div>
                     <div>&nbsp;&nbsp;&nbsp;</div>
                     <div>
                         <select name="f_asal" id="f_asal" class="form-control">
                             <option value="CGK" selected readonly> DEFAULT CGK</option>
 
                         </select>
-                        </div>
+                    </div>
+                    <div>&nbsp;&nbsp;&nbsp;</div>
+                    
                     <div>
                     <!-- <label for="f_tujuan" class="small text-uppercase">Tujuan</label> -->
                         <select name="f_tujuan" id="f_tujuan" class="form-control" style="display: block; width: 130px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
@@ -25,10 +27,14 @@
                             @endforeach
                         </select>
                     </div>
+                    <div>&nbsp;&nbsp;&nbsp;</div>
+                    
                     <div>
-                        <button type="submit" class="btn btn-dark w-100">FILTER</button>
+                        <button type="submit" class="btn btn-secondary">FILTER</button>
                     </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <div>&nbsp;&nbsp;&nbsp;</div>
+                    <div style="border-left: 3px solid white; height: 25px;"></div>
+                    <div>&nbsp;&nbsp;&nbsp;</div>
                         <a href="{{ route('master-harga-add') }}" class="btn btn-primary">TAMBAH DATA</a>
                     </form>
                 </div>
@@ -111,7 +117,7 @@
                                 <td>{{$val->estimasi->$key}}</td>
                                 <td>{{number_format((float)$val->harga->$key,2,",",".")}}</td>
                                 @endforeach
-                                <td class="text-center">
+                                <td class="text-center" style="background-color: white;">
                                     <a href="{{ route('harga-edit', $val->id) }}" class="btn btn-icon border-dashed bg-yellow-lt">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -121,7 +127,7 @@
                                         </svg>
                                     </a>
                                 </td>
-                                <td class="text-center">
+                                <td class="text-center" style="background-color: white;">
                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('harga-delete', $val->id) }}" method="POST">                                                        
                                     @csrf
                                     @method('DELETE')

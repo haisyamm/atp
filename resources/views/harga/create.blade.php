@@ -2,8 +2,8 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <div class="px-3">
-            <h2>{{ isset($harga->id) ? "Edit" : "Tambah"  }} Tarif</h2>
+        <div class="card-header d-flex justify-content-between text-white" style="background-color: #006a4e;">
+            <h3>{{ isset($harga->id) ? "Edit" : "Tambah"  }} Tarif</h3>
         </div>
     </div>
     <div class="col-md-12">

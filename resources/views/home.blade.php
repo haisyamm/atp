@@ -3,7 +3,7 @@
     <div class="row p-3">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between text-white" style="background-color: #006a4e;">
                     <h3>BANNER BUSINESS</h3>
                 </div>
                 <div class="card-body">
@@ -24,7 +24,7 @@
         </div>
         <div class="col-lg-12">
             <div class="card mt-3">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between text-white" style="background-color: #006a4e;">
                     <h3>ABOUT US</h3>
                 </div>
                 <div class="card-body">
@@ -36,13 +36,13 @@
                                 <label class="mb-2">About Us:</label>
                                 <textarea class="form-control" name="about" value="{{ $ab->about }}"
                                     rows="3">{{ $ab->about }}</textarea>
-                            </div>
+                            </div><hr>
                             <div class="form-group mb-2">
                                 <label class="mb-2">Company Value 1:</label><br>
                                 <input type="file" name="company_icon1" class="form-control-file mb-3">
                                 <input type="text" name="company_value1" class="form-control mb-2" value="{{ $ab->company_value1 }}">
                                 <textarea name="company_desc1" class="form-control" value="{{ $ab->company_desc1 }}" rows="3">{{ $ab->company_desc1 }}</textarea>
-                            </div>
+                            </div><hr>
                             <div class="form-group mb-2">
                                 <label class="mb-2">Company Value 2:</label><br>
                                 <input type="file" name="company_icon2" class="form-control-file mb-3">
@@ -58,14 +58,14 @@
                                 <label class="mb-2">About Us:</label>
                                 <textarea class="form-control" name="about" placeholder="Tuliskan tentang deskripsi perusahaan disini..."
                                     rows="3"></textarea>
-                            </div>
+                            </div><hr>
                             <div class="form-group mb-2">
                                 <label class="mb-2">Company Value 1:</label><br>
                                 <input type="file" name="company_icon1" class="form-control-file mb-3">
                                 <input type="text" name="company_value1" class="form-control mb-2"
                                     placeholder="Tuliskan value disini...">
                                 <textarea name="company_desc1" class="form-control" placeholder="Tuliskan deskripsi value disini..." rows="3"></textarea>
-                            </div>
+                            </div><hr>
                             <div class="form-group mb-2">
                                 <label class="mb-2">Company Value 2:</label><br>
                                 <input type="file" name="company_icon2" class="form-control-file mb-3">
@@ -81,7 +81,7 @@
         </div>
         <div class="col-lg-12">
             <div class="card mt-3">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between text-white" style="background-color: #006a4e;">
                     <h3>SERVICES & PRODUCT</h3>
                 </div>
                 <div class="card-body">
@@ -95,7 +95,7 @@
                             <input type="text" name="service_value1" class="form-control mb-2"
                             value="{{ $sv->service_value1 }}">
                             <textarea class="form-control" name="service_desc1" value="{{ $sv->service_desc1 }}" rows="3">{{ $sv->service_desc1 }}</textarea>
-                        </div>
+                        </div><hr>
                         <div class="form-group mb-2">
                             <label class="mb-2">Service 2:</label><br>
                             <input type="file" name="service_icon2" class="form-control-file mb-3">
@@ -103,7 +103,7 @@
                             value="{{ $sv->service_value2 }}">
                             <textarea class="form-control" name="service_desc2" 
                             value="{{ $sv->service_desc2 }}" rows="3">{{ $sv->service_desc2 }}</textarea>
-                        </div>
+                        </div><hr>
                         <div class="form-group mb-2">
                             <label class="mb-2">Service 3:</label><br>
                             <input type="file" name="service_icon3" class="form-control-file mb-3">
@@ -123,14 +123,14 @@
                             <input type="text" name="service_value1" class="form-control mb-2"
                                 placeholder="Tuliskan nama service disini...">
                             <textarea class="form-control" name="service_desc1" placeholder="Tuliskan deskripsi service disini..." rows="3"></textarea>
-                        </div>
+                        </div><hr>
                         <div class="form-group mb-2">
                             <label class="mb-2">Service 2:</label><br>
                             <input type="file" name="service_icon2" class="form-control-file mb-3">
                             <input type="text" name="service_value2" class="form-control mb-2"
                                 placeholder="Tuliskan nama service disini...">
                             <textarea class="form-control" name="service_desc2" placeholder="Tuliskan deskripsi service disini..." rows="3"></textarea>
-                        </div>
+                        </div><hr>
                         <div class="form-group mb-2">
                             <label class="mb-2">Service 3:</label><br>
                             <input type="file" name="service_icon3" class="form-control-file mb-3">
@@ -146,7 +146,7 @@
         </div>
         <div class="col-lg-12">
             <div class="card mt-3">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between text-white" style="background-color: #006a4e;">
                     <h3>WHY CHOOSE US</h3>
                 </div>
                 <div class="card-body">
@@ -163,7 +163,7 @@
                             value="{{ $wh->why_sub1 }}">
                             <textarea class="form-control" name="why_desc1" 
                             value="{{ $wh->why_desc1 }}" rows="3">{{ $wh->why_desc1 }}</textarea>
-                        </div>
+                        </div><hr>
                         <div class="form-group mb-2">
                             <label class="mb-2">Alasan 2:</label><br>
                             <input type="file" name="why_icon2" class="form-control-file mb-3">
@@ -173,7 +173,7 @@
                             value="{{ $wh->why_sub2 }}">
                             <textarea class="form-control" name="why_desc2" 
                             value="{{ $wh->why_desc2 }}" rows="3">{{ $wh->why_desc2 }}</textarea>
-                        </div>
+                        </div><hr>
                         <div class="form-group mb-2">
                             <label class="mb-2">Alasan 3:</label><br>
                             <input type="file" name="why_icon3" class="form-control-file mb-3">
@@ -183,7 +183,7 @@
                             value="{{ $wh->why_sub3 }}">
                             <textarea class="form-control" name="why_desc3" 
                             value="{{ $wh->why_desc3 }}" rows="3">{{ $wh->why_desc3 }}</textarea>
-                        </div>
+                        </div><hr>
                         <div class="form-group mb-2">
                             <label class="mb-2">Alasan 4:</label><br>
                             <input type="file" name="why_icon4" class="form-control-file mb-3">
@@ -205,21 +205,21 @@
                             <input type="text" name="why_value1" class="form-control mb-2" placeholder="Tuliskan alasan disini...">
                             <input type="text" name="why_sub1" class="form-control mb-2" placeholder="Tuliskan penjelasan disini...">
                             <textarea class="form-control" name="why_desc1" placeholder="Tuliskan deskripsi alasan disini..." rows="3"></textarea>
-                        </div>
+                        </div><hr>
                         <div class="form-group mb-2">
                             <label class="mb-2">Alasan 2:</label><br>
                             <input type="file" name="why_icon2" class="form-control-file mb-3">
                             <input type="text" name="why_value2" class="form-control mb-2" placeholder="Tuliskan alasan disini...">
                             <input type="text" name="why_sub2" class="form-control mb-2" placeholder="Tuliskan penjelasan disini...">
                             <textarea class="form-control" name="why_desc2" placeholder="Tuliskan deskripsi alasan disini..." rows="3"></textarea>
-                        </div>
+                        </div><hr>
                         <div class="form-group mb-2">
                             <label class="mb-2">Alasan 3:</label><br>
                             <input type="file" name="why_icon3" class="form-control-file mb-3">
                             <input type="text" name="why_value3" class="form-control mb-2" placeholder="Tuliskan alasan disini...">
                             <input type="text" name="why_sub3" class="form-control mb-2" placeholder="Tuliskan penjelasan disini...">
                             <textarea class="form-control" name="why_desc3" placeholder="Tuliskan deskripsi alasan disini..." rows="3"></textarea>
-                        </div>
+                        </div><hr>
                         <div class="form-group mb-2">
                             <label class="mb-2">Alasan 4:</label><br>
                             <input type="file" name="why_icon4" class="form-control-file mb-3">

@@ -1,11 +1,10 @@
 @extends('layouts.lm_admin')
 @section('content')
 <div class="row">
-    <div class="col-md-12">
-        <div class="px-3">
-            <h2>{{ isset($resi->id) ? "Edit" : "Tambah"  }} Resi</h2>
-        </div>
-    </div>
+    <div class="card-header d-flex justify-content-between" style="background-color: #006a4e;">
+                <h3 class="card-title text-white"><B> <h3>{{ isset($resi->id) ? "Edit" : "Tambah"  }} Resi</h3></B></h3>
+                
+            </div>
     <div class="col-md-12">
         <div class="card">
             <div class="card-body py-4 px-4">

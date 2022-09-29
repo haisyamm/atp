@@ -54,7 +54,7 @@ Route::get('village', [MasterHargaController::class, 'searchKelurahan'])->name('
 
 Route::get('/tarif', [MasterHargaController::class, 'tarif'])->name('tarif');
 Route::get('/searchTarif', [MasterHargaController::class, 'fixTarif'])->name('tarif-fix');
-Route::get('/track/stt', [ResiController::class, 'tracking'])->name('track-stt');
+Route::get('/track/stt', [ResiController::class, 'trackSTT'])->name('track-stt');
 //Route::get('/tarif/cari', [MasterHargaController::class, 'searchHarga'])->name('cek-tarif');
 Auth::routes();
 
@@ -75,7 +75,7 @@ All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:1'])->prefix("lm-admin")->group(function () {
-
+    
     Route::resource('pelanggan', PelangganController::class);
     Route::resource('why', WhyController::class);
     Route::resource('home', HomeController::class);
@@ -88,6 +88,8 @@ Route::middleware(['auth', 'user-access:1'])->prefix("lm-admin")->group(function
     Route::get('/', [HomeController::class, 'adminHome'])->name('lm-admin');
     Route::get('/price-list', [MasterHargaController::class, 'index'])->name('master-harga');
     Route::get('/price/add', [MasterHargaController::class, 'create'])->name('master-harga-add');
+    Route::get('/price/import', [MasterHargaController::class, 'import'])->name('master-harga-import');
+    Route::post('/importHarga', [MasterHargaController::class, 'fileImport'])->name('file-import');
 
     Route::post('/addHarga', [MasterHargaController::class, 'store'])->name('harga-send');
     Route::post('/newHarga', [MasterHargaController::class, 'update'])->name('harga-update');

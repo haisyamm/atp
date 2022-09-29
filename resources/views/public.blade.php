@@ -29,17 +29,18 @@
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                                     aria-labelledby="nav-home-tab">
-                                    <form class="row g-4 mt-2">
-                                        <div class="col-sm-6 col-md-6 col-xl-5">
-                                            <div class="input-group-icon"><label class="form-label visually-hidden"
-                                                    for="inputAddress1">Address 1</label><input
-                                                    class="form-control input-box form-voyage-control" id="inputAddress1"
-                                                    type="text" placeholder="Example :  123456789"><span
-                                                    class="nav-link-icon text-800 fs--1 input-box-icon"></span></div>
+                                    <form action="{{ route('track-stt')}}" method="GET" class="row g-4 mt-2">
+                                        <div class="col-sm-12 col-md-12 col-xl-10">
+                                            <div class="input-group-icon col-12">
+                                                <label class="form-label visually-hidden"
+                                                    for="inputAddress1">No Resi</label>
+                                                    <input class="form-control input-box form-voyage-control"
+                                                    type="text" placeholder="EX : ATPXX1234567890" id="no_resi" name="no_resi">
+                                                </div>
                                         </div>
 
                                         <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6"><button
-                                                class="btn btn-secondary" type="button" onClick="onCekTarif()">LACAK
+                                                class="btn btn-secondary" type="submit">LACAK
                                                 PENGIRIMAN</button></div>
                                     </form>
                                 </div>
