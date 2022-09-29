@@ -305,6 +305,9 @@
                                 <a class="dropdown-item" href="{{ route('master-harga')}}">
                                     List Tarif
                                 </a>
+                                <a class="dropdown-item" href="{{ route('master-harga-import')}}">
+                                    Import Tarif
+                                </a>
                                 <!-- <a class="dropdown-item" href="./layout-boxed.html">
                                     Assets By Regional
                                 </a>

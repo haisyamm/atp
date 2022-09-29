@@ -19,7 +19,7 @@ class MasterHargaController extends Controller
         $data['f_asal'] = MasterHarga::select('asal_area')->groupBy('asal_area')->get();
         $data['f_tujuan'] = DB::table('filter_tujuan')->get();
         $convert=[];
-        $result = MasterHarga::where('asal_area','CGK')->where('tujuan_area', 'TSY')->get();
+        $result = MasterHarga::where('asal_area','CGK')->where('tujuan_area', 'CGK')->get();
         //dd($result);
         for($i = 0; $i < $result->count(); $i++){
             //dd($val);
@@ -79,7 +79,10 @@ class MasterHargaController extends Controller
     {
         try {
             Excel::import(new MasterHargaImport, $request->file('file')->store('temp'));
-            return back();
+            return response()->json([
+                'status' => 'Data berhasil di import',
+                'data' => "",
+            ]);
         } catch (\Throwable $th) {
             dd($th);
             return back()->with('error','something wrong');

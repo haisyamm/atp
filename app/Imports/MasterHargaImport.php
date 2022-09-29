@@ -5,6 +5,7 @@ namespace App\Imports;
 use App\Models\MasterHarga;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
 
 class MasterHargaImport implements ToModel, WithHeadingRow
 {
@@ -28,7 +29,7 @@ class MasterHargaImport implements ToModel, WithHeadingRow
         //dd($row['tarif_reg']);
         $alamat_asal= $row['provinsi_o'].", ".$row['kota_o'].", ".$row['kecamatan_o'].", ".$row['kelurahan_o'];
         $alamat_tujuan= $row['provinsi_d'].", ".$row['kota_d'].", ".$row['kecamatan_d'].", ".$row['kelurahan_d'];
-        return new MasterHarga([
+        $mh = new MasterHarga([
             'id'  => "",
             'asal_id'  => $row['asal_id'],
             'tujuan_id' => $row['tujuan_id'],
@@ -39,5 +40,7 @@ class MasterHargaImport implements ToModel, WithHeadingRow
             'harga' => json_encode($harga),
             'estimasi' => json_encode($estimasi),
         ]);
+        //dd($mh);
+        return $mh;
     }
 }

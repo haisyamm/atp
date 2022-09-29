@@ -85,7 +85,7 @@ return [
         | you can enable it by setting read_only to false.
         |
         */
-        'read_only' => true,
+        'read_only' => false,
 
         /*
         |--------------------------------------------------------------------------
@@ -98,7 +98,7 @@ return [
         | ignored by enabling the setting ignore_empty to true.
         |
         */
-        'ignore_empty' => false,
+        'ignore_empty' => true,
 
         /*
         |--------------------------------------------------------------------------
