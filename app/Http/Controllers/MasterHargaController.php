@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use DB;
 use App\Models\MasterHarga;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\MasterHargaImport;
 
 class MasterHargaController extends Controller
 {
@@ -66,6 +68,22 @@ class MasterHargaController extends Controller
     public function create()
     {
         return view('harga.create');
+    }
+
+    public function import()
+    {
+        return view('harga.import');
+    }
+
+    public function fileImport(Request $request) 
+    {
+        try {
+            Excel::import(new MasterHargaImport, $request->file('file')->store('temp'));
+            return back();
+        } catch (\Throwable $th) {
+            dd($th);
+            return back()->with('error','something wrong');
+        }
     }
 
     public function searchProvince(Request $request)
