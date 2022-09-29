@@ -7,6 +7,7 @@ use App\Http\Controllers\WhyController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\MasterHargaController;
 use App\Http\Controllers\ResiController;
 use App\Http\Controllers\RequestPickupController;
@@ -81,6 +82,8 @@ Route::middleware(['auth', 'user-access:1'])->prefix("lm-admin")->group(function
     Route::resource('service', ServiceController::class);
     Route::resource('contacts', ContactController::class);
     Route::resource('banner', BannerController::class);
+    Route::resource('user', UserController::class);
+
 
     Route::get('/', [HomeController::class, 'adminHome'])->name('lm-admin');
     Route::get('/price-list', [MasterHargaController::class, 'index'])->name('master-harga');

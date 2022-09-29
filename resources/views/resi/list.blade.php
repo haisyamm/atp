@@ -140,6 +140,8 @@
                                     </a>
                                     @endif
                                 </td>
+                                <td class="text-center fixed-columns-right" style="width: 100px; color:white">
+                                    <a href="{{ route('cetak-resi', $val->id) }}" class="btn btn-icon border-dashed bg-dark-lt">
                                 <td class="text-center fixed-columns-right" style="width: 100px; background-color: white;">
                                     <a href="{{ route('cetak-resi', $val->id) }}" class="btn btn-icon border-dashed bg-primary-lt">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-printer" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
