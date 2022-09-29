@@ -76,7 +76,7 @@
                                     <td>{{$servis}}</td>
                                     <td>
                                         <div class="input-group">
-                                            <input type="text" name="estimasi_{{$key}}" id="estimasi_{{$key}}" class="form-control" placeholder="Contoh: 3-4" value="{{ isset($harga->estimasi) ? $harga->estimasi->$key : ''  }}">
+                                            <input type="text" name="estimasi_{{$key}}" id="estimasi_{{$key}}" class="form-control" placeholder="Contoh: 3-4" value="{{ isset($harga->estimasi) ? $harga->estimasi->$key : ''  }}" onchange="cekDigit('{{ $key }}')" onkeypress="return onlyNumberKey(event)">
                                             <span span class="input-group-text">Hari</span>
                                         </div>
                                     </td>
@@ -341,6 +341,28 @@
 
     function backToList() {
         windows.location.href = "{{route('master-harga')}}";
+    }
+</script>
+<script type="text/javascript">
+    function onlyNumberKey(evt) {
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
+        if(ASCIICode == 45){
+            return true;
+        }
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)){
+            return false;
+        }
+        return true;
+    }
+
+    function cekDigit(evt) {
+        var data = document.getElementById(`estimasi_${evt}`).value;
+        var digitPertama = data.slice(0, data.lastIndexOf('-'));
+        var digitKedua = data.slice(data.lastIndexOf('-') + 1);
+        if(digitPertama > 99 || digitKedua > 99){
+            document.getElementById(`estimasi_${evt}`).value = " ";
+        }
+        console.log(digitKedua);
     }
 </script>
 @endpush

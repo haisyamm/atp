@@ -70,8 +70,7 @@
                         <div class="col-md-6 form-group mb-3">
                             <label for="tlp_pengirim" class="small fw-bolder text-uppercase">Telp. Pengirim</label>
                             <div class="input-group">  
-                                <input type="tel" name="tlp_pengirim" id="tlp_pengirim" class="form-control mt-1" placeholder="Ex: 0881234567890" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}" 
-                                onkeypress="return onlyNumberKey(event)">
+                                <input type="tel" name="tlp_pengirim" id="tlp_pengirim" class="form-control mt-1" placeholder="Ex: 0811234567890" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}"  onkeyup="tlpPengirim()" onkeypress="return onlyNumberKey(event)">
                             </div>
                             <div class="col-md-12 form-group form-switch mt-3">
                                     <input class="form-check-input" type="checkbox" id="save_pengirim" name="save_pengirim">
@@ -83,7 +82,7 @@
                             <div class="input-group">
                                 <!-- <span class="input-group-text">
                                 </span> -->
-                                <input type="tel" name="tlp_penerima" id="tlp_penerima" class="form-control mt-1" placeholder="Ex: 0881234567890" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}"onkeypress="return onlyNumberKey(event)">
+                                <input type="tel" name="tlp_penerima" id="tlp_penerima" class="form-control mt-1" placeholder="Ex: 0881234567890" onkeyup="tlpPenerima()" onkeypress="return onlyNumberKey(event)">
                             </div>
                             <div class="col-md-12 form-group form-switch mt-3">
                                 <input class="form-check-input" type="checkbox" id="save_penerima" name="save_penerima">
@@ -523,12 +522,36 @@ $(document).ready(function() {
 
     
 </script>
-<script>
+<script type="text/javascript">
     function onlyNumberKey(evt) {
-        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
-        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
+        if(ASCIICode == 43){
+            return true;
+        }
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)){
             return false;
+        }
         return true;
+    }
+    function tlpPengirim(){
+        var data = document.getElementById("tlp_pengirim").value;
+        if(data[0] == 0){
+            document.getElementById("tlp_pengirim").value = "+62";
+        }else if(data[0] == 6){
+            document.getElementById("tlp_pengirim").value = "+62";
+        }else if(data[3] == 0){
+            document.getElementById("tlp_pengirim").value = "+62";
+        }
+    }
+    function tlpPenerima(){
+        var data = document.getElementById("tlp_penerima").value;
+        if(data[0] == 0){
+            document.getElementById("tlp_penerima").value = "+62";
+        }else if(data[0] == 6){
+            document.getElementById("tlp_penerima").value = "+62";
+        }else if(data[3] == 0){
+            document.getElementById("tlp_penerima").value = "+62";
+        }
     }
 </script>
 @endpush
