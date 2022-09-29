@@ -25,7 +25,7 @@ class MasterHargaImport implements ToModel, WithHeadingRow
             
         }
 
-        dd($row['tarif_reg']);
+        //dd($row['tarif_reg']);
         $alamat_asal= $row['provinsi_o'].", ".$row['kota_o'].", ".$row['kecamatan_o'].", ".$row['kelurahan_o'];
         $alamat_tujuan= $row['provinsi_d'].", ".$row['kota_d'].", ".$row['kecamatan_d'].", ".$row['kelurahan_d'];
         return new MasterHarga([
