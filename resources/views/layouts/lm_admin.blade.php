@@ -359,6 +359,7 @@
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                        <a href="{{ route('user.show', Auth::user()->id)}}" class="dropdown-item">Settings</a>
                             <a href="#" class="dropdown-item" onclick="logout_app()">Logout</a>
                         </div>
                     </div>

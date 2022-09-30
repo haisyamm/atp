@@ -329,7 +329,7 @@
                         <select name="tracking" id="tracking" class="col-md-12 form-select mt-1" required>
                         <option value="" class="col-md-12 form-select">Pilih...</option>
                         @foreach(config('tracking') as $key => $tracking)
-                        <option value="{{$key}}" class="col-md-12 form-select">{{$tracking}}</option>
+                        <option value="{{$key}}" class="col-md-12 form-select"><b>{{'< '.$key.' >'}}</b> {{$tracking}}</option>
                         @endforeach
                     </select>
                 </div>

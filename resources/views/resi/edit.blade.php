@@ -83,7 +83,7 @@
                                 <input type="tel" name="tlp_pengirim" id="tlp_pengirim" class="form-control mt-1" placeholder="Ex: 0881234567890" value="{{ isset($resi->tlp_pengirim) ? $resi->tlp_pengirim : ''  }}">
                             </div>
                             <div class="col-md-12 form-group form-switch mt-3">
-                                    <input class="form-check-input" type="checkbox" id="save_pengirim" name="save_pengirim">
+                                    <input class="form-check-input" type="checkbox" id="save_pengirim" name="save_pengirim" disabled>
                                     <label class="fw-bolder text-uppercase ms-1" for="save_pengirim">Simpan Pengirim</label>
                                 </div>                                                        
                         </div>                        
@@ -95,7 +95,7 @@
                                 <input type="tel" name="tlp_penerima" id="tlp_penerima" class="form-control mt-1" placeholder="Ex: 0881234567890" value="{{ isset($resi->tlp_penerima) ? $resi->tlp_penerima : ''  }}">
                             </div>
                             <div class="col-md-12 form-group form-switch mt-3">
-                                <input class="form-check-input" type="checkbox" id="save_penerima" name="save_penerima">
+                                <input class="form-check-input" type="checkbox" id="save_penerima" name="save_penerima" disabled>
                                 <label class="fw-bolder text-uppercase ms-1" for="save_penerima">Simpan Penerima</label>
                             </div>
                         </div>

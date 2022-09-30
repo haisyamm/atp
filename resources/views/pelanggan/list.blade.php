@@ -119,7 +119,7 @@
             $('#booking').DataTable({
                 fixedColumns: {
                     left: false,
-                    right: 3
+                    right: 2
                 }
             });
         });

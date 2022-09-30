@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Resi;
+use App\Models\Pelanggan;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Carbon\Carbon;
@@ -124,6 +125,7 @@ class ResiController extends Controller
             $resi = Resi::all();
             $last = count(json_decode($resi));
             $new = $last+1;
+            $area = auth()->user()->area;
             $an = 'ATP-'.$area.$request->payment.substr($request->servis,0,1).str_pad($new, 6, '0', STR_PAD_LEFT);
             // dd($an);
             $detail['barang'] = $request->detail_barang;
@@ -136,6 +138,22 @@ class ResiController extends Controller
             $alamat_penerima['id']= $request->tujuan_id;
             $alamat_penerima['alamat_1']= $request->alamat_penerima_1;
             $alamat_penerima['alamat_2']= $request->alamat_penerima_2;
+            // dd($request->is_do);
+            if($request->simpan_pengirim){
+                Pelanggan::create([
+                    'nama' => $request->nama_pengirim,
+                    'alamat' => json_encode($alamat_pengirim),
+                    'no_tlp' => $request->tlp_pengirim,
+                ]);
+            }
+
+            if($request->simpan_penerima){
+                Pelanggan::create([
+                    'nama' => $request->nama_penerima,
+                    'alamat' => json_encode($alamat_penerima),
+                    'no_tlp' => $request->tlp_penerima,
+                ]);
+            }
             
             $tracking['status'] = "PICK UP";
             $tracking['word'] = config('tracking')['PICK UP'];
@@ -156,11 +174,12 @@ class ResiController extends Controller
             $resi->payment = $request->payment;
             $resi->packing = $request->packing;
             $resi->others = $request->others;
+            $resi->is_do = ($request->is_do == true) ? 1 : 0 ;
             $resi->total_berat = $request->total_berat;
             $resi->total_biaya = $request->total_biaya;
             $resi->detail_barang = json_encode($detail);
             $resi->tracking = json_encode($track);
-            // dd($resi);
+            
 
             $resi->saveOrFail();
 
@@ -171,6 +190,7 @@ class ResiController extends Controller
 
         }catch(\Exception $e){
             \Log::error($e->getMessage());
+            dd($e);
             return response()->with([
                 'message'=> $e->getMessage()
             ],500);

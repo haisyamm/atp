@@ -79,7 +79,7 @@ class UserController extends Controller
         }
         $item = User::findOrFail($id);
         $item->update($data);
-        return redirect()->back();
+        return redirect()->route('lm-admin');
     }
 
     /**

@@ -360,7 +360,6 @@ $(document).ready(function() {
 });
 </script>
 <script>
-    
     $('.distric').select2({
     placeholder: 'Pilih Kecamatan',
     theme: "bootstrap",
@@ -443,9 +442,9 @@ $(document).ready(function() {
         let ala = $('#alamat_penerima_1').val();
         let tlpp = $('#tlp_pengirim').val();
         let tlpa = $('#tlp_penerima').val();
-        let savep = $('#save_pengirim').val();
-        let savea = $('#save_penerima').val();
-        let ido = $('#is_do').val();
+        let savep = $('#save_pengirim').prop('checked');
+        let savea = $('#save_penerima').prop('checked');
+        let ido = $('#is_do').prop('checked');
         let tb = $('#total_berat').val();
         let pay = $('#payment').val();
         let pack = $('#packing').val();

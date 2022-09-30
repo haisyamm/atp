@@ -78,11 +78,9 @@ class MasterHargaController extends Controller
     public function fileImport(Request $request) 
     {
         try {
+            ini_set('max_execution_time', 180);
             Excel::import(new MasterHargaImport, $request->file('file')->store('temp'));
-            return response()->json([
-                'status' => 'Data berhasil di import',
-                'data' => "",
-            ]);
+            return view('harga.import');
         } catch (\Throwable $th) {
             dd($th);
             return back()->with('error','something wrong');
