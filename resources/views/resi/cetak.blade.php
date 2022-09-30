@@ -124,7 +124,7 @@
                                             <a class="btn btn-dark mb-1">{{strtoupper(config('servis')[$resi->servis])}}</a>
                                             <p><b>{{$i}}/{{$detail_biaya->total_barang}}</b></p>
                                             <span>Total berat:  {{$resi->total_berat}}</span><br>
-                                            <span>Biaya kirim: -</span>
+                                            <span>Biaya kirim: {{$detail_biaya->tarif}}</span>
                                         </div>
                                         <div class="text-end" style="width: 20%">
                                             <p>{!! $qrcode !!}</p>
@@ -156,7 +156,7 @@
                                             <a class="btn btn-dark mb-1">{{strtoupper(config('servis')[$resi->servis])}}</a>
                                             <p><b>{{$i}}/{{$detail_biaya->total_barang}}</b></p>
                                             <span>Total berat:  {{$resi->total_berat}}</span><br>
-                                            <span>Biaya kirim: -</span>
+                                            <span>Biaya kirim: {{$detail_biaya->tarif}}</span>
                                         </div>
                                         <div class="text-end" style="width: 20%">
                                             <p>{!! $qrcode !!}</p>
