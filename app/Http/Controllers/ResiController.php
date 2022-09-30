@@ -43,8 +43,11 @@ class ResiController extends Controller
         $penerima= json_decode($resi->alamat_penerima);
         $url = route('track-stt', 'no_resi='.$resi->no_resi);
         //dd($resi);
-        // $cek_area =  
-        $data['area'] = DB::table('cek_area')->where('asal_id', auth()->user()->origin_id)->where('tujuan_id', $penerima->id)->first();
+        $cek_area = DB::table('cek_area')->where('asal_id', auth()->user()->origin_id)->where('tujuan_id', $penerima->id)->first();
+        $data['area'] = $cek_area;
+        foreach(json_decode($cek_area->estimasi) as $key => $est){
+            $data['estimasi'][$key] = $est; 
+        }
         $detail = json_decode($resi->detail_barang);
         $data['qrcode'] =  QrCode::size(70)->generate($url);
         $data['product'] = $resi->no_resi;
@@ -56,7 +59,7 @@ class ResiController extends Controller
         // dd($data);
         // $pdf = PDF::loadview('resi.resiPdf',$data);
         // return $pdf->stream();
-        return view('resi.resiPdf',$data);
+        return view('resi.cetak',$data);
     }
 
     public function tracking(Request $request)

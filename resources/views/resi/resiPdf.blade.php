@@ -80,7 +80,7 @@
                                         </tr>
                                         <tr>
                                             <td class="text-left">
-                                                <label class="small">ATP Packing Olshop Cgk</label>
+                                                <label class="small">{{auth()->user()->name}}</label>
                                             </td>
                                             <td></td>
                                             <td class="text-end"> 
