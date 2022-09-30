@@ -118,7 +118,7 @@
                                 <td>{{$val->estimasi->$key}}</td>
                                 <td>{{number_format((float)$val->harga->$key,2,",",".")}}</td>
                                 @endforeach
-                                <td>{{config('office')[auth()->user()->area]}</td>
+                                <td>{{config('office')[auth()->user()->area]}}</td>
                                 <td class="text-center" style="background-color: white;">
                                     <a href="{{ route('harga-edit', $val->id) }}" class="btn btn-icon border-dashed bg-yellow-lt">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
