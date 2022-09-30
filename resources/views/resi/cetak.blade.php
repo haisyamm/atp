@@ -91,7 +91,7 @@
                                         <div style="width: 20%">
                                             <a class="btn btn-dark mb-1">{{strtoupper(config('servis')[$resi->servis])}}</a>
                                             <h2>GW: {{$brg->berat_actual}} Kg</h2>
-                                            <h2>VW: {{number_format((float)$brg->volume,2)}}</h2>
+                                            <h2>VW: {{number_format((float)$brg->volume,2)}} Kg</h2>
                                         </div>
                                         <div class="text-end" style="width: 20%">
                                             <h1>{{$i}}/{{$detail_biaya->total_barang}}</h1>
@@ -106,29 +106,29 @@
                                                 <div style="width: 50%">
                                                     <img class="d-inline-block" src="{{ asset('assets/img/logo.png') }}"
                                                     alt="logo" width="100">
-                                                    <p class="mt-2"><b>29 September 2022</b></p>
+                                                    <p class="mt-2"><b>{{date('d F Y', strtotime($resi->tgl_resi))}}</b></p>
                                                 </div>
                                                 <div>
-                                                    <p><b>ATPXXTUPGR00001</b></p>
+                                                    <p><b>{{$product}}</b></p>
                                                     <div class="barcode">
                                                         {!! DNS1D::getBarcodeHTML($product, "C128",0.7,22) !!}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <span>Pengirim :</span><br>
-                                            <span>Penerima :</span><br>
-                                            <span>Alamat :</span><br>
-                                            <span>Estimasi :</span>
+                                            <span>Pengirim : {{$resi->pengirim}}</span><br>
+                                            <span>Penerima : {{$resi->penerima}}</span><br>
+                                            <span>Alamat :  ***************</span><br>
+                                            <span>Estimasi : {{date('d F Y', strtotime($resi->tgl_resi))}}</span>
                                         </div>
                                         <div style="width: 20%">
                                             <a class="btn btn-dark mb-1">{{strtoupper(config('servis')[$resi->servis])}}</a>
                                             <p><b>{{$i}}/{{$detail_biaya->total_barang}}</b></p>
-                                            <span>Total berat: -</span><br>
+                                            <span>Total berat:  {{$resi->total_berat}}</span><br>
                                             <span>Biaya kirim: -</span>
                                         </div>
                                         <div class="text-end" style="width: 20%">
                                             <p>{!! $qrcode !!}</p>
-                                            <span>Total biaya:<br>Rp-</span>
+                                            <span>Total biaya:<br>Rp {{number_format((float)$resi->total_biaya,2)}}</span>
                                         </div>
                                     </div>
                                     <div style="border: 1px dashed #000000; margin: 20px 0px 20px 0px"></div>
@@ -138,29 +138,29 @@
                                                 <div style="width: 50%">
                                                     <img class="d-inline-block" src="{{ asset('assets/img/logo.png') }}"
                                                     alt="logo" width="100">
-                                                    <p class="mt-2"><b>29 September 2022</b></p>
+                                                    <p class="mt-2"><b>{{date('d F Y', strtotime($resi->tgl_resi))}}</b></p>
                                                 </div>
                                                 <div>
-                                                    <p><b>ATPXXTUPGR00001</b></p>
+                                                    <p><b>{{$product}}</b></p>
                                                     <div class="barcode">
                                                         {!! DNS1D::getBarcodeHTML($product, "C128",0.7,22) !!}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <span>Pengirim :</span><br>
-                                            <span>Penerima :</span><br>
-                                            <span>Alamat :</span><br>
-                                            <span>Estimasi :</span>
+                                            <span>Pengirim : {{$resi->pengirim}}</span><br>
+                                            <span>Penerima : {{$resi->penerima}}</span><br>
+                                            <span>Alamat :  ***************</span><br>
+                                            <span>Estimasi : {{date('d F Y', strtotime($resi->tgl_resi))}}</span>
                                         </div>
                                         <div style="width: 20%">
                                             <a class="btn btn-dark mb-1">{{strtoupper(config('servis')[$resi->servis])}}</a>
                                             <p><b>{{$i}}/{{$detail_biaya->total_barang}}</b></p>
-                                            <span>Total berat: -</span><br>
+                                            <span>Total berat:  {{$resi->total_berat}}</span><br>
                                             <span>Biaya kirim: -</span>
                                         </div>
                                         <div class="text-end" style="width: 20%">
                                             <p>{!! $qrcode !!}</p>
-                                            <span>Total biaya:<br>Rp-</span>
+                                            <span>Total biaya:<br>Rp {{number_format((float)$resi->total_biaya,2)}}</span>
                                         </div>
                                     </div>
                                 </div>
