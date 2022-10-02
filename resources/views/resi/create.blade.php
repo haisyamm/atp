@@ -315,6 +315,10 @@ function hitung() {
 
     let trf =  $('#tarif').val();
 
+    if(total_vol >= 50 || total_bact >= 50){
+        alert("You will get Heavyweight Surcharge")
+    }
+
     if(total_vol > total_bact){
         document.getElementById('total_berat').value = Math.ceil(total_vol);
         tk = parseFloat(Math.ceil(total_vol)*parseInt(trf));
@@ -322,6 +326,7 @@ function hitung() {
         document.getElementById('total_berat').value = total_bact;
         tk = parseFloat(Math.ceil(total_bact)*parseInt(trf));
     }
+
     document.getElementById('tot_biaya_kirim').value = tk;
     document.getElementById('total_biaya').value = tk;
     document.getElementById('packing').value = 0;

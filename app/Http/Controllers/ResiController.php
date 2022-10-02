@@ -25,6 +25,25 @@ class ResiController extends Controller
         return view('resi.list', $data);
     }
 
+    public function dBooking()
+    {
+        $db = DB::table('dBooking')->first();
+        //$data = json_encode($db);
+
+        return json_encode($db);
+    }
+
+    public function lastBooking()
+    {
+        $resi = Resi::orderBy('id', 'desc')->take(10)->get();
+        foreach($resi as $key => $val){
+            $track = json_decode($val->tracking);
+            $data[$key]['no_resi'] =$val->no_resi;
+            $data[$key]['status'] =$track[count($track)-1]->status;
+        }
+        return json_encode($data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -90,8 +109,9 @@ class ResiController extends Controller
         {
             $resi = Resi::find($request->id);
             //$today = Carbon::now();
+            $word = explode(">", $request->word);
             $tracking['status'] = $request->status;
-            $tracking['word'] = $request->word;
+            $tracking['word'] = $word[1];
             $tracking['date'] = Carbon::now()->format('Y-m-d');
             $tracking['time'] = Carbon::now()->format('H:i');
             
@@ -289,7 +309,7 @@ class ResiController extends Controller
         {
             $resi = Resi::find($request->id);
             //$today = Carbon::now();
-            $tracking['status'] = "Canceled";
+            $tracking['status'] = "CANCELED";
             $tracking['word'] = $request->word;
             $tracking['date'] = Carbon::now()->format('Y-m-d');
             $tracking['time'] = Carbon::now()->format('H:i');
@@ -301,10 +321,7 @@ class ResiController extends Controller
             $resi->tracking = json_encode($data);
             // dd($resi);
             $resi->saveOrFail();
-
-            $all = Resi::all();
-            $data['resi'] = json_decode($all);
-            return view('resi.list', $data);
+            return redirect()->route('resi');
         
         }catch(\Exception $e){
             \Log::error($e->getMessage());
