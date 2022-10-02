@@ -35,7 +35,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between" style="background-color: #006a4e;">
-                <h3 class="card-title text-white"><B>LIST BOOKING</B></h3>
+                <h3 class="card-title text-white"><B>LIST BOOKING SHIPMENT</B></h3>
                 <div class="">
                     <a href="{{ route('resi-add') }}" class="btn btn-primary">TAMBAH DATA</a>
                 </div>

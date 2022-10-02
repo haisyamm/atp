@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-header d-flex justify-content-between text-white" style="background-color: #006a4e;">
-            <h3>Import Bulk Tarif</h3>
+            <h3>Import List Tarif</h3>
             <a class="btn btn-secondary" href="{{asset('excel/import_template_price.xlsx')}}">Download</a>
         </div>
     </div>

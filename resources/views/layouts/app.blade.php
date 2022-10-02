@@ -51,7 +51,7 @@
             </ul>
             <form>
                 <a href="{{ route('request-pickup') }}" class="btn btn-voyage-outline order-0"><span class="text-success">REQUEST PICKUP</span></a>
-                <a href="{{ route('login') }}" class="btn btn-voyage-outline order-0" type="submit"><span class="text-primary">LOGIN</span></a>
+                <a href="{{ route('lm-admin') }}" class="btn btn-voyage-outline order-0" type="submit"><span class="text-primary">LOGIN</span></a>
             </form>
             </div>
         </div>
