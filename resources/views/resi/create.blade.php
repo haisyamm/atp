@@ -2,9 +2,11 @@
 @section('content')
 <div class="row">
     <div class="card-header d-flex justify-content-between" style="background-color: #006a4e;">
-                <h3 class="card-title text-white"><B> <h3>{{ isset($resi->id) ? "Edit" : "Tambah"  }} Resi</h3></B></h3>
-                
-            </div>
+        <h3 class="card-title text-white"><B>
+                <h3>{{ isset($resi->id) ? "Edit" : "Tambah"  }} Resi</h3>
+            </B></h3>
+
+    </div>
     <div class="col-md-12">
         <div class="card">
             <div class="card-body py-4 px-4">
@@ -69,14 +71,14 @@
                         </div>
                         <div class="col-md-6 form-group mb-3">
                             <label for="tlp_pengirim" class="small fw-bolder text-uppercase">Telp. Pengirim</label>
-                            <div class="input-group">  
-                                <input type="tel" name="tlp_pengirim" id="tlp_pengirim" class="form-control mt-1" placeholder="Ex: 0811234567890" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}"  onkeyup="tlpPengirim()" onkeypress="return onlyNumberKey(event)">
+                            <div class="input-group">
+                                <input type="tel" name="tlp_pengirim" id="tlp_pengirim" class="form-control mt-1" placeholder="Ex: 0811234567890" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}" onkeyup="tlpPengirim()" onkeypress="return onlyNumberKey(event)">
                             </div>
                             <div class="col-md-12 form-group form-switch mt-3">
-                                    <input class="form-check-input" type="checkbox" id="save_pengirim" name="save_pengirim">
-                                    <label class="fw-bolder text-uppercase ms-1" for="save_pengirim">Simpan Pengirim</label>
-                                </div>                                                        
-                        </div>                        
+                                <input class="form-check-input" type="checkbox" id="save_pengirim" name="save_pengirim">
+                                <label class="fw-bolder text-uppercase ms-1" for="save_pengirim">Simpan Pengirim</label>
+                            </div>
+                        </div>
                         <div class="col-md-6 form-group mb-3">
                             <label for="tlp_penerima" class="small fw-bolder text-uppercase">Telp. Penerima</label>
                             <div class="input-group">
@@ -108,86 +110,86 @@
                         <tr>
                             <th>Berat Barang</th>
                             <th>Dimensi Paket (p x l x t) </th>
-                            <th>Volume</th> 
-                            <th></th> 
+                            <th>Volume</th>
+                            <th></th>
                         </tr>
                     </table>
                     <table id="emptbl" class="table align-middle">
                         <tr class="detail">
-                            <td id="col0"><input type="text" id="berat_act" placeholder="Berat Actual" name="berat_act" value="" class="form-control"  oninput="hitung()"/></td> 
-                            <td id="col1"  style="width :40%">
+                            <td id="col0"><input type="text" id="berat_act" placeholder="Berat Actual" name="berat_act" value="" class="form-control" oninput="hitung()" /></td>
+                            <td id="col1" style="width :40%">
                                 <div class="row">
                                     <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Panjang" aria-label="Panjang" id="panjang" name="panjang" oninput="hitung()">
-                                    <span class="input-group-text">x</span>
-                                    <input type="text" class="form-control" placeholder="Lebar" aria-label="Lebar" id="lebar" name="lebar" oninput="hitung()">
-                                    <span class="input-group-text">x</span>
-                                    <input type="text" class="form-control" placeholder="Tinggi" aria-label="Tinggi" id="tinggi" name="tinggi" oninput="hitung()">
-                                    <span class="input-group-text"><b>CM</b></span>
+                                        <input type="text" class="form-control" placeholder="Panjang" aria-label="Panjang" id="panjang" name="panjang" oninput="hitung()">
+                                        <span class="input-group-text">x</span>
+                                        <input type="text" class="form-control" placeholder="Lebar" aria-label="Lebar" id="lebar" name="lebar" oninput="hitung()">
+                                        <span class="input-group-text">x</span>
+                                        <input type="text" class="form-control" placeholder="Tinggi" aria-label="Tinggi" id="tinggi" name="tinggi" oninput="hitung()">
+                                        <span class="input-group-text"><b>CM</b></span>
                                     </div>
                                 </div>
-                            </td>  
-                            <td id="col2"><input type="text" name="volume" value="" class="form-control" readonly/></td> 
-                        </tr>  
-                    </table> 
-                    <table> 
+                            </td>
+                            <td id="col2"><input type="text" name="volume" value="" class="form-control" readonly /></td>
+                        </tr>
+                    </table>
+                    <table>
                         <tr>
-                            <td  style="width :90%">&nbsp;</td> 
-                            <td class="text-end"><input type="button" value="Add Row" onclick="addRows()" class="btn btn-sm btn-primary" /></td> 
-                            <td class="text-end"><input type="button" value="Delete Row" onclick="deleteRows()" class="btn btn-sm btn-danger" /></td> 
+                            <td style="width :90%">&nbsp;</td>
+                            <td class="text-end"><input type="button" value="Add Row" onclick="addRows()" class="btn btn-sm btn-primary" /></td>
+                            <td class="text-end"><input type="button" value="Delete Row" onclick="deleteRows()" class="btn btn-sm btn-danger" /></td>
                             <br>
                         </tr>
                         <tr class="mb-6">
-                            <td  style="width :90%">Isi Barang</td> 
+                            <td style="width :90%">Isi Barang</td>
                             <td colspan="2" class="text-end" style="width :30%">
                                 <div class="input-group mt-2">
                                     <input type="text" name="isi_barang" id="isi_barang" class="form-control">
                                 </div>
-                            </td> 
+                            </td>
                         </tr>
                         <tr class="mb-6">
-                            <td  style="width :90%">Total Barang</td> 
+                            <td style="width :90%">Total Barang</td>
                             <td colspan="2" class="text-end" style="width :30%">
                                 <div class="input-group">
                                     <input type="text" name="total_barang" id="total_barang" class="form-control" readonly>
                                 </div>
-                            </td> 
+                            </td>
                         </tr>
                         <tr class="mb-6">
-                            <td  style="width :90%">Total Berat Dimensi</td> 
+                            <td style="width :90%">Total Berat Dimensi</td>
                             <td colspan="2" class="text-end" style="width :30%">
                                 <div class="input-group">
                                     <input type="text" name="total_volume" id="total_volume" class="form-control" readonly>
                                     <span class="input-group-text">KG</span>
                                 </div>
-                            </td> 
-                        </tr class="mb-6"> 
+                            </td>
+                        </tr class="mb-6">
                         <tr>
-                            <td  style="width :90%">Berat Dikenakan Biaya</td> 
+                            <td style="width :90%">Berat Dikenakan Biaya</td>
                             <td colspan="2" class="text-end" style="width :30%">
-                            <div class="input-group">
-                                <input type="text" name="total_berat" id="total_berat" class="form-control" readonly>
-                                <span class="input-group-text">KG</span>
-                            </div>
-                            </td> 
+                                <div class="input-group">
+                                    <input type="text" name="total_berat" id="total_berat" class="form-control" readonly>
+                                    <span class="input-group-text">KG</span>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
-                            <td  style="width :90%">Tarif</td> 
+                            <td style="width :90%">Tarif</td>
                             <td colspan="2" class="text-end" style="width :30%">
                                 <div class="input-group">
                                     <span class="input-group-text">RP</span>
                                     <input type="text" name="tarif" id="tarif" class="form-control" readonly>
                                 </div>
-                            </td> 
+                            </td>
                         </tr>
                         <tr>
-                            <td  style="width :70%">Biaya Kirim</td> 
+                            <td style="width :70%">Biaya Kirim</td>
                             <td colspan="2" class="text-end" style="width :30%">
-                            <div class="input-group">
-                                <span class="input-group-text">RP</span>
-                                <input type="text" name="tot_biaya_kirim" id="tot_biaya_kirim" class="form-control" readonly>
-                            </div>
-                            </td> 
+                                <div class="input-group">
+                                    <span class="input-group-text">RP</span>
+                                    <input type="text" name="tot_biaya_kirim" id="tot_biaya_kirim" class="form-control" readonly>
+                                </div>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -201,192 +203,205 @@
                 </div>
                 <div class="ps-1">
                     <input type="hidden" name="p_id" id="p_id" value="{{ isset($resi->id) ? $resi->id : ''  }}">
-                        <div class="row" style="margin-top: 25px;">
-                            <div class="col-md-3 form-group mb-3">
-                                <label for="payment" class="small fw-bolder text-uppercase">Metode Pembayaran</label>
-                                <select name="payment" id="payment" class="form-select mt-1" required>
+                    <div class="row" style="margin-top: 25px;">
+                        <div class="col-md-3 form-group mb-3">
+                            <label for="payment" class="small fw-bolder text-uppercase">Metode Pembayaran</label>
+                            <select name="payment" id="payment" class="form-select mt-1" required>
                                 <option value="" class="form-select">Pilih...</option>
                                 @foreach(config('payment') as $key => $payment)
                                 <option value="{{$key}}" class="form-select">{{$payment}}</option>
                                 @endforeach
                             </select>
-                            </div>
-                            <!-- <div class="col-md-3 form-group mb-3">
+                        </div>
+                        <!-- <div class="col-md-3 form-group mb-3">
                                 <label for="tujuan_area" class="small fw-bolder text-uppercase">PPN</label>
                                 <input type="text" name="tujuan_area" id="tujuan_area" class="form-control mt-1" placeholder="Masukan PPN" value="{{ isset($resi->id) ? $resi->tujuan_area : ''  }}">
                             </div> -->
-                            <div class="col-md-3 form-group mb-3">
-                                <label for="packing" class="small fw-bolder text-uppercase">Packing</label>
-                                <input type="text" name="packing" id="packing" class="form-control mt-1" placeholder="Packing" value="{{ isset($resi->id) ? $resi->tujuan_area : ''  }}" oninput="total()">
-                            </div>
-                            <div class="col-md-3 form-group mb-3">
-                                <label for="other" class="small fw-bolder text-uppercase">Others</label>
-                                <input type="text" name="other" id="other" class="form-control mt-1" placeholder="Others" value="{{ isset($resi->id) ? $resi->tujuan_area : ''  }}" oninput="total()">
-                            </div>
-                            <!-- <div class="col-md-3 form-group mb-3">
+                        <div class="col-md-3 form-group mb-3">
+                            <label for="packing" class="small fw-bolder text-uppercase">Packing</label>
+                            <input type="text" name="packing" id="packing" class="form-control mt-1" placeholder="Packing" value="{{ isset($resi->id) ? $resi->tujuan_area : ''  }}" oninput="total()">
+                        </div>
+                        <div class="col-md-3 form-group mb-3">
+                            <label for="other" class="small fw-bolder text-uppercase">Others</label>
+                            <input type="text" name="other" id="other" class="form-control mt-1" placeholder="Others" value="{{ isset($resi->id) ? $resi->tujuan_area : ''  }}" oninput="total()">
+                        </div>
+                        <!-- <div class="col-md-3 form-group mb-3">
                                 <label for="tujuan_area" class="small fw-bolder text-uppercase">Asuransi</label>
                                 <input type="text" name="tujuan_area" id="tujuan_area" class="form-control mt-1" placeholder="Masukan Asuransi" value="{{ isset($resi->id) ? $resi->tujuan_area : ''  }}">
                             </div> -->
-                            
-                            <div class="col-md-3 form-group mb-3">
-                                <label for="total_biaya" class="small fw-bolder text-uppercase">Total Biaya Keseluruhan</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">RP</span>
-                                    <input type="text" name="total_biaya" id="total_biaya" class="form-control" readonly>
-                                </div>
+
+                        <div class="col-md-3 form-group mb-3">
+                            <label for="total_biaya" class="small fw-bolder text-uppercase">Total Biaya Keseluruhan</label>
+                            <div class="input-group">
+                                <span class="input-group-text">RP</span>
+                                <input type="text" name="total_biaya" id="total_biaya" class="form-control" readonly>
                             </div>
                         </div>
                     </div>
-                    <hr>
-                    <div class="row">
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <a class="btn btn-light" href="{{route('resi')}}">CANCEL</a>
-                        <button class="btn btn-dark ms-1" onclick="onCreateAsset()">{{ isset($resi->id) ? 'Update' : 'Add'  }}</button>
-                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                </div>
+                <div class="d-flex justify-content-end">
+                    <a class="btn btn-light" href="{{route('resi')}}">CANCEL</a>
+                    <button class="btn btn-dark ms-1" onclick="onCreateAsset()">{{ isset($resi->id) ? 'Update' : 'Add'  }}</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</div>
+<div class="card-body">
+    <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="file" class="form-control">
+        <br>
+        <button class="btn btn-success">
+            Import User Data
+        </button>
+        
+    </form>
+</div>
 @endsection
 @push('script')
 <script type="text/javascript">
-function addRows(){ 
-	var table = document.getElementById('emptbl');
-	var rowCount = table.rows.length;
-	var cellCount = table.rows[0].cells.length; 
-	var row = table.insertRow(rowCount);
-	for(var i =0; i <= cellCount; i++){
-		var cell = 'cell'+i;
-		cell = row.insertCell(i);
-		var copycel = document.getElementById('col'+i).innerHTML;
-		cell.innerHTML=copycel;
+    function addRows() {
+        var table = document.getElementById('emptbl');
+        var rowCount = table.rows.length;
+        var cellCount = table.rows[0].cells.length;
+        var row = table.insertRow(rowCount);
+        for (var i = 0; i <= cellCount; i++) {
+            var cell = 'cell' + i;
+            cell = row.insertCell(i);
+            var copycel = document.getElementById('col' + i).innerHTML;
+            cell.innerHTML = copycel;
+            total_barang();
+        }
+    }
+
+    function deleteRows() {
+        var table = document.getElementById('emptbl');
+        var rowCount = table.rows.length;
+        if (rowCount > '1') {
+            var row = table.deleteRow(rowCount - 1);
+            rowCount--;
+        } else {
+            alert('There should be atleast one row');
+        }
         total_barang();
-	}
-}
+    }
 
-function deleteRows(){
-	var table = document.getElementById('emptbl');
-	var rowCount = table.rows.length;
-	if(rowCount > '1'){
-		var row = table.deleteRow(rowCount-1);
-		rowCount--;
-	}
-	else{
-		alert('There should be atleast one row');
-	}
-    total_barang();
-}
+    function total_barang() {
+        var table = document.getElementById('emptbl');
+        var rowCount = table.rows.length;
+        document.getElementById('total_barang').value = rowCount;
+    }
 
-function total_barang(){
-    var table = document.getElementById('emptbl');
-    var rowCount = table.rows.length;
-    document.getElementById('total_barang').value = rowCount;
-}
+    function hitung() {
+        var total_vol = 0;
+        var total_bact = 0;
+        let ser = $('#servis').val();
+        $('#emptbl tr').each(function() {
+            var $this = $(this).attr('class', 'detail'),
+                bact = $this.find("input[name='berat_act']").val();
 
-function hitung() {
-    var total_vol = 0;
-    var total_bact = 0;
-    let ser = $('#servis').val();
-    $('#emptbl tr').each(function () {
-        var $this = $(this).attr('class', 'detail'),
-        bact = $this.find("input[name='berat_act']").val();
+            p = $this.find("input[name='panjang']").val();
+            l = $this.find("input[name='lebar']").val();
+            t = $this.find("input[name='tinggi']").val();
 
-        p = $this.find("input[name='panjang']").val();
-        l = $this.find("input[name='lebar']").val();
-        t = $this.find("input[name='tinggi']").val();
-
-            if(ser=="EKO"){
-                va = (p*l*t)/4000;
-            }else{
-                va = (p*l*t)/6000;
+            if (ser == "EKO") {
+                va = (p * l * t) / 4000;
+            } else {
+                va = (p * l * t) / 6000;
             }
             va = va.toFixed(4)
-        vol = $this.find("input[name='volume']");
-        vol.val(va);
-        total_vol = parseFloat(total_vol) + parseFloat(va);
-        total_bact = parseFloat(total_bact) + parseFloat(bact);
-    });
+            vol = $this.find("input[name='volume']");
+            vol.val(va);
+            total_vol = parseFloat(total_vol) + parseFloat(va);
+            total_bact = parseFloat(total_bact) + parseFloat(bact);
+        });
 
-    document.getElementById('total_volume').value = total_vol;
+        document.getElementById('total_volume').value = total_vol;
 
-    tarif();
+        tarif();
 
-    let trf =  $('#tarif').val();
+        let trf = $('#tarif').val();
 
-    if(total_vol > total_bact){
-        document.getElementById('total_berat').value = Math.ceil(total_vol);
-        tk = parseFloat(Math.ceil(total_vol)*parseInt(trf));
-    }else{
-        document.getElementById('total_berat').value = total_bact;
-        tk = parseFloat(Math.ceil(total_bact)*parseInt(trf));
-    }
-    document.getElementById('tot_biaya_kirim').value = tk;
-    document.getElementById('total_biaya').value = tk;
-    document.getElementById('packing').value = 0;
-    document.getElementById('other').value = 0;
-}
-
-function tarif(){
-    let ser = $('#servis').val();
-    let ka = "{{auth()->user()->origin_id}}"; //role user
-    let kt = $('#alamat_penerima_2').val();
-
-    return data = $.ajax({
-        url: '{{route("tarif-fix")}}',
-        type: 'GET',
-        data: {tujuan_id : kt, asal_id: ka},
-        dataType: 'json',
-        success: function (data) {
-            document.getElementById('tarif').value = data[ser];
+        if (total_vol > total_bact) {
+            document.getElementById('total_berat').value = Math.ceil(total_vol);
+            tk = parseFloat(Math.ceil(total_vol) * parseInt(trf));
+        } else {
+            document.getElementById('total_berat').value = total_bact;
+            tk = parseFloat(Math.ceil(total_bact) * parseInt(trf));
         }
+        document.getElementById('tot_biaya_kirim').value = tk;
+        document.getElementById('total_biaya').value = tk;
+        document.getElementById('packing').value = 0;
+        document.getElementById('other').value = 0;
+    }
+
+    function tarif() {
+        let ser = $('#servis').val();
+        let ka = "{{auth()->user()->origin_id}}"; //role user
+        let kt = $('#alamat_penerima_2').val();
+
+        return data = $.ajax({
+            url: '{{route("tarif-fix")}}',
+            type: 'GET',
+            data: {
+                tujuan_id: kt,
+                asal_id: ka
+            },
+            dataType: 'json',
+            success: function(data) {
+                document.getElementById('tarif').value = data[ser];
+            }
+        });
+
+    }
+
+    function total() {
+        let tbk = $('#tot_biaya_kirim').val();
+        let packing = $('#packing').val();
+        let others = $('#other').val();
+
+        tot = parseFloat(tbk) + parseFloat(packing) + parseFloat(others);
+        document.getElementById('total_biaya').value = tot;
+
+    }
+
+    $(document).ready(function() {
+        total_barang();
     });
-    
-}
-
-function total(){
-    let tbk =  $('#tot_biaya_kirim').val();
-    let packing =  $('#packing').val();
-    let others =  $('#other').val();
-    
-    tot  = parseFloat(tbk) + parseFloat(packing) + parseFloat(others);
-    document.getElementById('total_biaya').value = tot;
-    
-}
-
-$(document).ready(function() {
-    total_barang();
-});
 </script>
 <script>
     $('.distric').select2({
-    placeholder: 'Pilih Kecamatan',
-    theme: "bootstrap",
-    ajax: {
-        url: '{{route("distric")}}',
-        dataType: 'json',
-        delay: 250,
+        placeholder: 'Pilih Kecamatan',
+        theme: "bootstrap",
+        ajax: {
+            url: '{{route("distric")}}',
+            dataType: 'json',
+            delay: 250,
 
-        processResults: function (data) {
-            return {
-                results: $.map(data, function (item) {
-                    return {
-                        text: item.name,
-                        id: item.id
-                    }
-                })
-            };
-        },
-        cache: true
-    }
+            processResults: function(data) {
+                return {
+                    results: $.map(data, function(item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        }
+                    })
+                };
+            },
+            cache: true
+        }
     });
 </script>
 <script>
     const onCreateAsset = () => {
         var dataBatch = getFormInput();
         var p_id = $('#p_id').val();
-        if(p_id === ""){
+        if (p_id === "") {
             dataBatch['detail_barang'] = getDetailInput();
             dataBatch['detail'] = getDetail();
             requestServer({
@@ -394,28 +409,28 @@ $(document).ready(function() {
                 data: dataBatch,
                 onSuccess: function(response) {
                     Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Your resi has been saved',
-                    showConfirmButton: false,
-                    timer: 1500
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your resi has been saved',
+                        showConfirmButton: false,
+                        timer: 1500
                     }).then((result) => {
                         window.location.assign('{{route("resi")}}')
                     })
                 }
             });
-        }else{
+        } else {
             dataBatch['id'] = p_id;
             requestServer({
                 url: '{{route("resi-update")}}',
                 data: dataBatch,
                 onSuccess: function(response) {
                     Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Your resi has been update',
-                    showConfirmButton: false,
-                    timer: 1500
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your resi has been update',
+                        showConfirmButton: false,
+                        timer: 1500
                     }).then((result) => {
                         window.location.assign('{{route("resi")}}');
                     })
@@ -470,12 +485,12 @@ $(document).ready(function() {
             tlp_penerima: tlpa,
             simpan_pengirim: savep,
             simpan_penerima: savea,
-            is_do: ido ,
-            total_berat: tb ,
-            payment: pay ,
-            packing: pack ,
-            others: oth ,
-            total_biaya: total 
+            is_do: ido,
+            total_berat: tb,
+            payment: pay,
+            packing: pack,
+            others: oth,
+            total_biaya: total
         };
 
         return dataBatch;
@@ -485,15 +500,19 @@ $(document).ready(function() {
         // Daerah Asal
 
         var data = [];
-        
-        $('#emptbl tr').each(function () {
+
+        $('#emptbl tr').each(function() {
             var $this = $(this).attr('class', 'detail'),
                 bact = $this.find("input[name='berat_act']").val(),
                 p = $this.find("input[name='panjang']").val(),
                 l = $this.find("input[name='lebar']").val(),
                 t = $this.find("input[name='tinggi']").val(),
                 vol = $this.find("input[name='volume']").val();
-            var temp = { berat_actual: bact, dimensi: p+" x "+l+" x "+t, volume: vol};
+            var temp = {
+                berat_actual: bact,
+                dimensi: p + " x " + l + " x " + t,
+                volume: vol
+            };
             data.push(temp);
         });
 
@@ -504,51 +523,55 @@ $(document).ready(function() {
         // Daerah Asal
 
         var data = [];
-        
+
         let ibr = $('#isi_barang').val();
         let tbr = $('#total_barang').val();
         let tvl = $('#total_volume').val();
         let trf = $('#tarif').val();
-        var dt = {isi:ibr, total_barang:tbr, total_volume: tvl, tarif:trf};
+        var dt = {
+            isi: ibr,
+            total_barang: tbr,
+            total_volume: tvl,
+            tarif: trf
+        };
         data.push(dt);
         console.log(data);
 
         return data;
     }
 
-    function backToList(){
-    }
-
-    
+    function backToList() {}
 </script>
 <script type="text/javascript">
     function onlyNumberKey(evt) {
         var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
-        if(ASCIICode == 43){
+        if (ASCIICode == 43) {
             return true;
         }
-        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)){
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) {
             return false;
         }
         return true;
     }
-    function tlpPengirim(){
+
+    function tlpPengirim() {
         var data = document.getElementById("tlp_pengirim").value;
-        if(data[0] == 0){
+        if (data[0] == 0) {
             document.getElementById("tlp_pengirim").value = "+62";
-        }else if(data[0] == 6){
+        } else if (data[0] == 6) {
             document.getElementById("tlp_pengirim").value = "+62";
-        }else if(data[3] == 0){
+        } else if (data[3] == 0) {
             document.getElementById("tlp_pengirim").value = "+62";
         }
     }
-    function tlpPenerima(){
+
+    function tlpPenerima() {
         var data = document.getElementById("tlp_penerima").value;
-        if(data[0] == 0){
+        if (data[0] == 0) {
             document.getElementById("tlp_penerima").value = "+62";
-        }else if(data[0] == 6){
+        } else if (data[0] == 6) {
             document.getElementById("tlp_penerima").value = "+62";
-        }else if(data[3] == 0){
+        } else if (data[3] == 0) {
             document.getElementById("tlp_penerima").value = "+62";
         }
     }

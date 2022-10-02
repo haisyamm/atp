@@ -106,7 +106,7 @@ Route::middleware(['auth', 'user-access:1'])->prefix("lm-admin")->group(function
     Route::post('/updateTrack', [ResiController::class, 'updateTracking'])->name('track-update');
     Route::get('/tracking', [ResiController::class, 'tracking'])->name('tracking');
     Route::post('/cancel/{id}', [ResiController::class, 'cancel'])->name('cancel-resi');
-
+    Route::post('/import', [UserController::class, 'import' ])->name('import'); 
 
     Route::get('/printResi/{id}', [ResiController::class, 'print'])->name('cetak-resi');
 });

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ImportUser;
+use App\Exports\ExportUser; 
 class UserController extends Controller
 {
     /**
@@ -91,5 +93,27 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function importView(Request $request)
+    {
+        return view('importFile');
+    }
+
+    public function import(Request $request)
+    { 
+        $file = $request->file('file');
+        $namafile = $file->getClientOriginalName();
+        $file-> move('userexcel',$namafile);
+        Excel::import(
+            new ImportUser,
+            public_path('/userexcel/'.$namafile)
+        );
+         
+        return redirect()->back();
+    }
+
+    public function exportUsers(Request $request)
+    {
+        return Excel::download(new ExportUser, 'users.xlsx');
     }
 }
