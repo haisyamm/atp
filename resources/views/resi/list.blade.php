@@ -8,6 +8,29 @@
 </style>
 @stop
 @section('content')
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cancel Booking</h5>
+            <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id="cancel" method="POST">
+                @csrf
+            <textarea name="word" id="word" class="form-controll col-md-12" ></textarea>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-danger">Submit</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -130,7 +153,8 @@
                                 </td>
                                 <td class="text-center fixed-columns-right" style="width: 100px; background-color: white;">
                                     @if(auth()->user()->access != 0)
-                                    <a href="" class="btn btn-icon border-dashed bg-danger-lt">
+                                    <a href="" class="btn btn-icon border-dashed bg-danger-lt" data-route="{{ route('cancel-resi', $val->id) }}" 
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Close" data-toggle="modal" data-target="#exampleModal">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                 <circle cx="12" cy="12" r="9"></circle>
@@ -171,6 +195,12 @@ $(document).ready(function () {
             left: false,
             right: 3
         }
+    });
+
+    $('#exampleModal').on('show.bs.modal', function (event) {
+    var a = $(event.relatedTarget) // a that triggered the modal
+    var link = a.data('route') // Extract info from data-* attributes
+    document.getElementById("cancel").action = link;
     });
 });
 </script>

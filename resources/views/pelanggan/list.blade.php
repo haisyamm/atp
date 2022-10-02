@@ -16,7 +16,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <h3 class="card-title"><B>List Data Pelanggan</B></h3>
+                    <h3 class="card-title"><B>List Data Customer</B></h3>
                     <div class="">
                         <a href="{{ route('pelanggan.create') }}" class="btn btn-dark">Tambah</a>
                     </div>

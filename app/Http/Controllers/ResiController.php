@@ -283,6 +283,37 @@ class ResiController extends Controller
 
     }
 
+    public function cancel(Request $request)
+    {
+        try
+        {
+            $resi = Resi::find($request->id);
+            //$today = Carbon::now();
+            $tracking['status'] = "Canceled";
+            $tracking['word'] = $request->word;
+            $tracking['date'] = Carbon::now()->format('Y-m-d');
+            $tracking['time'] = Carbon::now()->format('H:i');
+            
+            $history = json_decode($resi->tracking);
+            $data = $history;
+            $data[] = $tracking;
+            $resi->cancel = json_encode($tracking);
+            $resi->tracking = json_encode($data);
+            // dd($resi);
+            $resi->saveOrFail();
+
+            $all = Resi::all();
+            $data['resi'] = json_decode($all);
+            return view('resi.list', $data);
+        
+        }catch(\Exception $e){
+            \Log::error($e->getMessage());
+            return response()->with([
+                'message'=> $e->getMessage()
+            ],500);
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      *

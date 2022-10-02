@@ -86,7 +86,7 @@
                                      </svg>
                                 </span>
                                 <span class="nav-link-title">
-                                    Pelanggan
+                                    Customer
                                 </span>
                             </a>
                         </li>
