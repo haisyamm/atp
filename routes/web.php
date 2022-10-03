@@ -86,6 +86,8 @@ Route::middleware(['auth', 'user-access:1'])->prefix("lm-admin")->group(function
 
 
     Route::get('/', [HomeController::class, 'adminHome'])->name('lm-admin');
+    Route::get('/dashboard-realtime-book', [ResiController::class, 'dBooking'])->name('d-booking');
+    Route::get('/feed-resi', [ResiController::class, 'lastBooking'])->name('f-booking');
     Route::get('/price-list', [MasterHargaController::class, 'index'])->name('master-harga');
     Route::get('/price/add', [MasterHargaController::class, 'create'])->name('master-harga-add');
     Route::get('/price/import', [MasterHargaController::class, 'import'])->name('master-harga-import');

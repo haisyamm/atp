@@ -359,7 +359,7 @@
                 showConfirmButton: false,
                 timer: 1500
                 }).then((result) => {
-                    window.location.assign('{{route("resi")}}');
+                    window.location.assign('{{ route("tracking", "no_resi=".$resi->no_resi) }}');
                 })
             }
         });
