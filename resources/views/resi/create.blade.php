@@ -372,6 +372,11 @@
 
     $(document).ready(function() {
         total_barang();
+
+        $('#servis').on('change', function() {
+            hitung();
+            total();
+        });
     });
 </script>
 <script>
