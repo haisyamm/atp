@@ -11,7 +11,6 @@ RewriteCond %{HTTP_HOST} ^demo\.atpcargo\.id$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.demo\.atpcargo\.id$
 RewriteRule ^/?$ "https\:\/\/demo\.atpcargo\.id\/" [R=301,L]
 
-
 # php -- BEGIN cPanel-generated handler, do not edit
 # Set the “ea-php74” package as the default “PHP” programming language.
 <IfModule mime_module>
