@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-md-4 form-group mb-3">
                             <label for="no_reff" class="small fw-bolder text-uppercase">Refferensi</label>
-                            <input type="text" name="no_reff" id="no_reff" class="form-control mt-1" placeholder="Refferensi (Optional)" value="{{ isset($resi->resi) ? $resi->resi : ''  }}">
+                            <input type="text" name="no_reff" id="no_reff" class="form-control text-uppercase mt-1" placeholder="Refferensi (Optional)" value="{{ isset($resi->resi) ? $resi->resi : ''  }}">
                         </div>
                         <!-- <div class="col-md-3 form-group mb-3">
                             <label for="no_pickup" class="small fw-bolder text-uppercase">No Pickup</label>
@@ -47,11 +47,11 @@
                         </div> -->
                         <div class="col-md-6 form-group mb-3">
                             <label for="nama_pengirim" class="small fw-bolder text-uppercase">Nama Pengirim</label>
-                            <input type="text" name="nama_pengirim" id="nama_pengirim" class="form-control mt-1" placeholder="Masukan Nama" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}">
+                            <input type="text" name="nama_pengirim" id="nama_pengirim" class="form-control text-uppercase mt-1" placeholder="Masukan Nama" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}">
                         </div>
                         <div class="col-md-6 form-group mb-3">
                             <label for="nama_penerima" class="small fw-bolder text-uppercase">Nama Penerima</label>
-                            <input type="text" name="nama_penerima" id="nama_penerima" class="form-control mt-1" placeholder="Masukan Nama" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}">
+                            <input type="text" name="nama_penerima" id="nama_penerima" class="form-control text-uppercase mt-1" placeholder="Masukan Nama" value="{{ isset($resi->id) ? $resi->estimasi : ''  }}">
                         </div>
                         <div class="col-md-6 form-group mb-3">
                             <label for="alamat_pengirim_1" class="small fw-bolder text-uppercase">Alamat Pengirim</label>
@@ -59,15 +59,15 @@
                                 <select name="alamat_pengirim_2" id="alamat_pengirim_2" class="distric form-select mt-1">
                                 </select>
                             </div>
-                            <input type="text" name="alamat_pengirim_1" id="alamat_pengirim_1" class="form-control" placeholder="Nama Jalan, Patokan, RT/RW" value="{{ isset($resi->id) ? $resi->alamat_1 : ''  }}">
+                            <input type="text" name="alamat_pengirim_1" id="alamat_pengirim_1" class="form-control text-uppercase" placeholder="Nama Jalan, Patokan, RT/RW" value="{{ isset($resi->id) ? $resi->alamat_1 : ''  }}">
                         </div>
                         <div class="col-md-6 form-group mb-3">
                             <label for="alamat_penerima_1" class="small fw-bolder text-uppercase">Alamat Penerima</label>
                             <div class="col-md-6 form-select mb-3">
-                                <select name="alamat_penerima_2" id="alamat_penerima_2" class="distric form-control mt-1">
+                                <select name="alamat_penerima_2" id="alamat_penerima_2" class="distric form-control text-uppercase mt-1">
                                 </select>
                             </div>
-                            <input type="text" name="alamat_penerima_1" id="alamat_penerima_1" class="form-control" placeholder="Nama Jalan, Patokan, RT/RW" value="{{ isset($resi->id) ? $resi->alamat_2 : ''  }}">
+                            <input type="text" name="alamat_penerima_1" id="alamat_penerima_1" class="form-control text-uppercase" placeholder="Nama Jalan, Patokan, RT/RW" value="{{ isset($resi->id) ? $resi->alamat_2 : ''  }}">
                         </div>
                         <div class="col-md-6 form-group mb-3">
                             <label for="tlp_pengirim" class="small fw-bolder text-uppercase">Telp. Pengirim</label>
@@ -129,7 +129,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td id="col2"><input type="text" name="volume" value="" class="form-control" readonly /></td>
+                            <td id="col2"><input type="text" name="volume" value="" class="form-control text-uppercase" readonly /></td>
                         </tr>
                     </table>
                     <table>
