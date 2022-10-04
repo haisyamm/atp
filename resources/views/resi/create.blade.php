@@ -251,7 +251,7 @@
     </div>
 </div>
 </div>
-<div class="card-body">
+<!-- <div class="card-body">
     <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="file" name="file" class="form-control">
@@ -261,7 +261,7 @@
         </button>
         
     </form>
-</div>
+</div> -->
 @endsection
 @push('script')
 <script type="text/javascript">
