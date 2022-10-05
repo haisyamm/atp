@@ -138,7 +138,7 @@
                                 <th>Berat Barang</th>
                                 <th>Dimensi Paket (p x l x t) </th>
                                 <th>Volume</th>
-                                <th></th>
+                                <th>Keterangan</th>
                             </tr>
                         </table>
                         <table id="emptbl" class="table align-middle">
@@ -162,6 +162,9 @@
                                 </td>
                                 <td id="col2"><input type="text" name="volume" value=""
                                         class="form-control text-uppercase" readonly /></td>
+                                <td id="col3">
+                                    <input type="text" class="form-control" placeholder="Keterangan..">
+                                </td>
                             </tr>
                         </table>
                         <table>
