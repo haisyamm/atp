@@ -49,11 +49,11 @@
                         </div> -->
                         <div class="col-md-6 form-group mb-3">
                             <label for="nama_pengirim" class="small fw-bolder text-uppercase">Nama Pengirim</label>
-                            <input type="text" name="nama_pengirim" id="nama_pengirim" class="form-control mt-1" placeholder="Masukan Nama" value="{{ isset($resi->pengirim) ? $resi->pengirim : ''  }}">
+                            <input type="text" oninput="this.value = this.value.toUpperCase()" name="nama_pengirim" id="nama_pengirim" class="form-control mt-1" placeholder="Masukan Nama" value="{{ isset($resi->pengirim) ? $resi->pengirim : ''  }}">
                         </div>
                         <div class="col-md-6 form-group mb-3">
                             <label for="nama_penerima" class="small fw-bolder text-uppercase">Nama Penerima</label>
-                            <input type="text" name="nama_penerima" id="nama_penerima" class="form-control mt-1" placeholder="Masukan Nama" value="{{ isset($resi->penerima) ? $resi->penerima : ''  }}">
+                            <input type="text" oninput="this.value = this.value.toUpperCase()" name="nama_penerima" id="nama_penerima" class="form-control mt-1" placeholder="Masukan Nama" value="{{ isset($resi->penerima) ? $resi->penerima : ''  }}">
                         </div>
                         <div class="col-md-6 form-group mb-3">
                             <label for="alamat_pengirim_1" class="small fw-bolder text-uppercase">Alamat Pengirim</label>
@@ -64,7 +64,7 @@
                                     @endif
                                 </select>
                             </div>
-                            <input type="text" name="alamat_pengirim_1" id="alamat_pengirim_1" class="form-control" placeholder="Nama Jalan, Patokan, RT/RW" value="{{ isset($pengirim->alamat_1) ? $pengirim->alamat_1 : ''  }}">
+                            <input type="text" oninput="this.value = this.value.toUpperCase()" name="alamat_pengirim_1" id="alamat_pengirim_1" class="form-control" placeholder="Nama Jalan, Patokan, RT/RW" value="{{ isset($pengirim->alamat_1) ? $pengirim->alamat_1 : ''  }}">
                         </div>
                         <div class="col-md-6 form-group mb-3">
                             <label for="alamat_penerima_1" class="small fw-bolder text-uppercase">Alamat Penerima</label>
@@ -75,7 +75,7 @@
                                     @endif
                                 </select>
                             </div>
-                            <input type="text" name="alamat_penerima_1" id="alamat_penerima_1" class="form-control" placeholder="Nama Jalan, Patokan, RT/RW" value="{{ isset($penerima->alamat_1) ? $penerima->alamat_1 : ''  }}">
+                            <input type="text" oninput="this.value = this.value.toUpperCase()" name="alamat_penerima_1" id="alamat_penerima_1" class="form-control" placeholder="Nama Jalan, Patokan, RT/RW" value="{{ isset($penerima->alamat_1) ? $penerima->alamat_1 : ''  }}">
                         </div>
                         <div class="col-md-6 form-group mb-3">
                             <label for="tlp_pengirim" class="small fw-bolder text-uppercase">Telp. Pengirim</label>
@@ -100,7 +100,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 form-group form-switch mb-3 ms-2">
-                            <input class="form-check-input" type="checkbox" id="is_do" name="is_do">
+                            <input class="form-check-input" type="checkbox" id="is_do" name="is_do" {{ !empty($resi->is_do) ? 'checked' : '' }}>
                             <label class="fw-bolder text-uppercase ms-1" for="is_do">DO Balik</label>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                             <th>Berat Barang</th>
                             <th>Dimensi Paket (p x l x t) </th>
                             <th>Volume</th> 
-                            <th></th> 
+                            <th>Keterangan</th>
                         </tr>
                     </table>
                     <table id="emptbl" class="table align-middle">
@@ -142,7 +142,8 @@
                                     </div>
                                 </div>
                             </td>  
-                            <td id="col2"><input type="text" name="volume" class="form-control" value="{{ $brg->volume}}" readonly/></td> 
+                            <td id="col2"><input type="text" name="volume" class="form-control" value="{{ $brg->volume}}" readonly/></td>
+                            <td id="col3"><input type="text" oninput="this.value = this.value.toUpperCase()" name="keterangan" class="form-control" value="{{ !empty($brg->keterangan) ? $brg->keterangan : '' }}" /></td> 
                         </tr>
                         @endforeach  
                     </table> 
@@ -157,7 +158,7 @@
                             <td  style="width :90%">Isi Barang</td> 
                             <td colspan="2" class="text-end" style="width :30%">
                                 <div class="input-group mt-2">
-                                    <input type="text" name="isi_barang" id="isi_barang" class="form-control" value="{{ isset($detail_biaya->isi) ? $detail_biaya->isi : ''  }}">
+                                    <input type="text" oninput="this.value = this.value.toUpperCase()" name="isi_barang" id="isi_barang" class="form-control" value="{{ isset($detail_biaya->isi) ? $detail_biaya->isi : ''  }}">
                                 </div>
                             </td> 
                         </tr>
@@ -268,135 +269,148 @@
 @endsection
 @push('script')
 <script type="text/javascript">
-function addRows(){ 
-	var table = document.getElementById('emptbl');
-	var rowCount = table.rows.length;
-	var cellCount = table.rows[0].cells.length; 
-	var row = table.insertRow(rowCount);
-	for(var i =0; i <= cellCount; i++){
-		var cell = 'cell'+i;
-		cell = row.insertCell(i);
-		var copycel = document.getElementById('col'+i).innerHTML;
-		cell.innerHTML=copycel;
-        total_barang();
-	}
-}
-
-function deleteRows(){
-	var table = document.getElementById('emptbl');
-	var rowCount = table.rows.length;
-	if(rowCount > '1'){
-		var row = table.deleteRow(rowCount-1);
-		rowCount--;
-	}
-	else{
-		alert('There should be atleast one row');
-	}
-    total_barang();
-}
-
-function total_barang(){
-    var table = document.getElementById('emptbl');
-    var rowCount = table.rows.length;
-    document.getElementById('total_barang').value = rowCount;
-}
-
-function hitung() {
-    var total_vol = 0;
-    var total_bact = 0;
-    let ser = $('#servis').val();
-    $('#emptbl tr').each(function () {
-        var $this = $(this).attr('class', 'detail'),
-        bact = $this.find("input[name='berat_act']").val();
-
-        p = $this.find("input[name='panjang']").val();
-        l = $this.find("input[name='lebar']").val();
-        t = $this.find("input[name='tinggi']").val();
-
-            if(ser=="EKO"){
-                va = (p*l*t)/4000;
-            }else{
-                va = (p*l*t)/6000;
-            }
-            va = va.toFixed(4)
-        vol = $this.find("input[name='volume']");
-        vol.val(va);
-        total_vol = parseFloat(total_vol) + parseFloat(va);
-        total_bact = parseFloat(total_bact) + parseFloat(bact);
-    });
-
-    document.getElementById('total_volume').value = total_vol;
-
-    tarif();
-
-    let trf =  $('#tarif').val();
-
-    if(total_vol > total_bact){
-        document.getElementById('total_berat').value = Math.ceil(total_vol);
-        tk = parseFloat(Math.ceil(total_vol)*parseInt(trf));
-    }else{
-        document.getElementById('total_berat').value = total_bact;
-        tk = parseFloat(Math.ceil(total_bact)*parseInt(trf));
-    }
-    document.getElementById('tot_biaya_kirim').value = tk;
-    document.getElementById('total_biaya').value = tk;
-    document.getElementById('packing').value = 0;
-    document.getElementById('other').value = 0;
-}
-
-function tarif(){
-    let ser = $('#servis option:selected').val();
-    let ka = "{{auth()->user()->origin_id}}"; //role user
-    let kt = "{{$penerima->id}}";
-
-    return data = $.ajax({
-        url: '{{route("tarif-fix")}}',
-        type: 'GET',
-        data: {tujuan_id : kt, asal_id: ka},
-        dataType: 'json',
-        success: function (data) {
-            document.getElementById('tarif').value = data[ser];
+    function addRows() {
+        var table = document.getElementById('emptbl');
+        var rowCount = table.rows.length;
+        var cellCount = table.rows[0].cells.length;
+        var row = table.insertRow(rowCount);
+        for (var i = 0; i <= cellCount; i++) {
+            var cell = 'cell' + i;
+            cell = row.insertCell(i);
+            var copycel = document.getElementById('col' + i).innerHTML;
+            cell.innerHTML = copycel;
+            total_barang();
         }
+    }
+
+    function deleteRows() {
+        var table = document.getElementById('emptbl');
+        var rowCount = table.rows.length;
+        if (rowCount > '1') {
+            var row = table.deleteRow(rowCount - 1);
+            rowCount--;
+        } else {
+            alert('There should be atleast one row');
+        }
+        total_barang();
+    }
+
+    function total_barang() {
+        var table = document.getElementById('emptbl');
+        var rowCount = table.rows.length;
+        document.getElementById('total_barang').value = rowCount;
+    }
+
+    function hitung() {
+        var total_vol = 0;
+        var total_bact = 0;
+        let ser = $('#servis').val();
+        $('#emptbl tr').each(function() {
+            var $this = $(this).attr('class', 'detail'),
+                bact = $this.find("input[name='berat_act']").val();
+
+            p = $this.find("input[name='panjang']").val();
+            l = $this.find("input[name='lebar']").val();
+            t = $this.find("input[name='tinggi']").val();
+
+            if (ser == "EKO") {
+                va = (p * l * t) / 4000;
+            } else {
+                va = (p * l * t) / 6000;
+            }
+            va = va.toFixed(1)
+            vol = $this.find("input[name='volume']");
+            vol.val(va);
+            total_vol = parseFloat(total_vol) + parseFloat(va);
+            total_bact = parseFloat(total_bact) + parseFloat(bact);
+        });
+
+        document.getElementById('total_volume').value = total_vol;
+
+        tarif();
+
+        let trf = $('#tarif').val();
+
+        if (total_vol > total_bact) {
+            document.getElementById('total_berat').value = Math.ceil(total_vol);
+        } else {
+            document.getElementById('total_berat').value = total_bact;
+        }
+        let tb = $('#total_berat').val();
+        tk = parseFloat(parseFloat(tb) * parseInt(trf));
+        document.getElementById('tot_biaya_kirim').value = tk;
+        document.getElementById('total_biaya').value = tk;
+        document.getElementById('packing').value = 0;
+        document.getElementById('other').value = 0;
+    }
+
+    function tarif() {
+        let ser = $('#servis').val();
+        let ka = "{{ auth()->user()->origin_id }}"; //role user
+        let kt = $('#alamat_penerima_2').val();
+
+        return data = $.ajax({
+            url: '{{ route('tarif-fix') }}',
+            type: 'GET',
+            data: {
+                tujuan_id: kt,
+                asal_id: ka
+            },
+            dataType: 'json',
+            success: function(data) {
+                document.getElementById('tarif').value = data[ser];
+
+                let tb = $('#total_berat').val();
+                if(tb > 0){
+                    tk = parseFloat(parseFloat(tb) * parseInt(data[ser]));
+                    document.getElementById('tot_biaya_kirim').value = tk;
+                    total();
+                }
+                
+            }
+        });
+
+    }
+
+    function total() {
+        let tbk = $('#tot_biaya_kirim').val();
+        let packing = $('#packing').val();
+        let others = $('#other').val();
+
+        tot = parseFloat(tbk) + parseFloat(packing) + parseFloat(others);
+        document.getElementById('total_biaya').value = tot;
+
+    }
+
+    $(document).ready(function() {
+        total_barang();
     });
-    
-}
 
-function total(){
-    let tbk =  $('#tot_biaya_kirim').val();
-    let packing =  $('#packing').val();
-    let others =  $('#other').val();
-    
-    tot  = parseFloat(tbk) + parseFloat(packing) + parseFloat(others);
-    document.getElementById('total_biaya').value = tot;
-    
-}
-
-$(document).ready(function() {
-    total_barang();
-    hitung();
-});
+    $('#servis').on('change', function() {
+        hitung();
+    });
 </script>
 <script>
-    
     $('.distric').select2({
-    theme: "bootstrap",
-    ajax: {
-        url: '{{route("distric")}}',
-        dataType: 'json',
-        delay: 250,
+        placeholder: 'Pilih Kecamatan',
+        theme: "bootstrap",
+        ajax: {
+            url: '{{ route('distric') }}',
+            dataType: 'json',
+            delay: 250,
 
-        processResults: function (data) {
-            return {
-                results: $.map(data, function (item) {
-                    return {
-                        text: item.name,
-                        id: item.id
-                    }
-                })
-            };
-        },
-        cache: true
-    }
+            processResults: function(data) {
+                return {
+                    results: $.map(data, function(item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        }
+                    })
+                };
+            },
+            cache: true
+        }
     });
 </script>
 <script>
@@ -485,14 +499,20 @@ $(document).ready(function() {
 
         var data = [];
         
-        $('#emptbl tr').each(function () {
+        $('#emptbl tr').each(function() {
             var $this = $(this).attr('class', 'detail'),
                 bact = $this.find("input[name='berat_act']").val(),
                 p = $this.find("input[name='panjang']").val(),
                 l = $this.find("input[name='lebar']").val(),
                 t = $this.find("input[name='tinggi']").val(),
                 vol = $this.find("input[name='volume']").val();
-            var temp = { berat_actual: bact, dimensi: p+" x "+l+" x "+t, volume: vol};
+                ket = $this.find("input[name='keterangan']").val();
+            var temp = {
+                berat_actual: bact,
+                dimensi: p + " x " + l + " x " + t,
+                volume: vol,
+                keterangan: ket
+            };
             data.push(temp);
         });
 
@@ -518,4 +538,38 @@ $(document).ready(function() {
     function backToList(){
     }
 </script>
+<script type="text/javascript">
+        function onlyNumberKey(evt) {
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
+            if (ASCIICode == 43) {
+                return true;
+            }
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) {
+                return false;
+            }
+            return true;
+        }
+
+        function tlpPengirim() {
+            var data = document.getElementById("tlp_pengirim").value;
+            if (data[0] == 0) {
+                document.getElementById("tlp_pengirim").value = "+62";
+            } else if (data[0] == 6) {
+                document.getElementById("tlp_pengirim").value = "+62";
+            } else if (data[3] == 0) {
+                document.getElementById("tlp_pengirim").value = "+62";
+            }
+        }
+
+        function tlpPenerima() {
+            var data = document.getElementById("tlp_penerima").value;
+            if (data[0] == 0) {
+                document.getElementById("tlp_penerima").value = "+62";
+            } else if (data[0] == 6) {
+                document.getElementById("tlp_penerima").value = "+62";
+            } else if (data[3] == 0) {
+                document.getElementById("tlp_penerima").value = "+62";
+            }
+        }
+    </script>
 @endpush

@@ -203,7 +203,7 @@ class ResiController extends Controller
             $resi->detail_barang = json_encode($detail);
             $resi->tracking = json_encode($track);
             
-
+            // dd($detail);
             $resi->saveOrFail();
 
             return response()->json([
