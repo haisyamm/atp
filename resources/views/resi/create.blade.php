@@ -6,7 +6,6 @@
                 <h3 class="card-title text-white"><b>
                         <h3>{{ isset($resi->id) ? 'Edit' : 'Tambah' }} Resi</h3>
                     </b></h3>
-
             </div>
         </div>
         <div class="col-md-10">
