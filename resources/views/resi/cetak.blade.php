@@ -73,7 +73,8 @@
                                         <span>Isi      : {{$detail_biaya->isi}}</span>
                                     </div>
                                     <hr style="margin-top: 10px;margin-bottom: 10px">
-                                    @if($resi->is_do && $detail_biaya->total_barang == $i)
+                                    @if($detail_biaya->total_barang == $i)
+                                    @if($resi->is_do)
                                     <div style="display: flex">
                                         <div style="width: 50%">
                                             <p>{{auth()->user()->name}}</p>
@@ -83,6 +84,7 @@
                                         </div>
                                     </div>
                                     <hr style="margin-top: 5px;margin-bottom: 10px">
+                                    @endif
                                     <div style="display: flex">
                                         <div style="width: 60%">
                                             <h2 class="text-uppercase">{{config('payment')[$resi->payment]}}</h2>
