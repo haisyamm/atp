@@ -1,13 +1,14 @@
 @extends('layouts.lm_admin')
 @section('content')
-    <div class="row">
-        <div class="card-header d-flex justify-content-between" style="background-color: #006a4e;">
-            <h3 class="card-title text-white"><B>
-                    <h3>{{ isset($resi->id) ? 'Edit' : 'Tambah' }} Resi</h3>
-                </B></h3>
-
-        </div>
+    <div class="row g-1">
         <div class="col-md-12">
+            <div class="card-header d-flex justify-content-between" style="background-color: #006a4e;">
+                <h3 class="card-title text-white"><b>
+                        <h3>{{ isset($resi->id) ? 'Edit' : 'Tambah' }} Resi</h3>
+                    </b></h3>
+            </div>
+        </div>
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-body py-4 px-4">
                     <div class="h3 fw-bolder text-uppercase col-md-6">
@@ -24,7 +25,8 @@
                         <div class="row" style="margin-top: 25px;">
                             <div class="col-md-4 form-group mb-3">
                                 <label for="tgl_resi" class="small fw-bolder text-uppercase">Tanggal Resi</label>
-                                <input type="datetime-local" name="tgl_resi" id="tgl_resi" class="form-control mt-1 datepicker"  value="">
+                                <input type="datetime-local" name="tgl_resi" id="tgl_resi"
+                                    class="form-control mt-1 datepicker" value="">
                             </div>
                             <div class="col-md-4 form-group mb-3">
                                 <label for="servis" class="small fw-bolder text-uppercase">Pilih Layanan</label>
@@ -38,27 +40,28 @@
                             </div>
                             <div class="col-md-4 form-group mb-3">
                                 <label for="no_reff" class="small fw-bolder text-uppercase">Refferensi</label>
-                                <input type="text" oninput="this.value = this.value.toUpperCase()" name="no_reff" id="no_reff" class="form-control mt-1"
-                                    placeholder="Refferensi (Optional)" value="{{ isset($resi->resi) ? $resi->resi : '' }}">
+                                <input type="text" oninput="this.value = this.value.toUpperCase()" name="no_reff"
+                                    id="no_reff" class="form-control mt-1" placeholder="Refferensi (Optional)"
+                                    value="{{ isset($resi->resi) ? $resi->resi : '' }}">
                             </div>
                             <!-- <div class="col-md-3 form-group mb-3">
-                                    <label for="no_pickup" class="small fw-bolder text-uppercase">No Pickup</label>
-                                    <input type="text" oninput="this.value = this.value.toUpperCase()" name="no_pickup" id="no_pickup" class="form-control mt-1" placeholder="Masukan No Pickup" value="{{ isset($resi->resi) ? $resi->resi : '' }}">
-                                </div> -->
+                                                    <label for="no_pickup" class="small fw-bolder text-uppercase">No Pickup</label>
+                                                    <input type="text" oninput="this.value = this.value.toUpperCase()" name="no_pickup" id="no_pickup" class="form-control mt-1" placeholder="Masukan No Pickup" value="{{ isset($resi->resi) ? $resi->resi : '' }}">
+                                                </div> -->
                             <!-- <div class="col-md-3 form-group mb-3">
-                                    <label for="tgl_pickup" class="small fw-bolder text-uppercase">Tanggal Pickup</label>
-                                    <input type="date" name="tgl_pickup" id="tgl_pickup" class="form-control mt-1 datepicker" placeholder="Masukan No Res" value="{{ isset($resi->resi) ? $resi->resi : '' }}">
-                                </div> -->
+                                                    <label for="tgl_pickup" class="small fw-bolder text-uppercase">Tanggal Pickup</label>
+                                                    <input type="date" name="tgl_pickup" id="tgl_pickup" class="form-control mt-1 datepicker" placeholder="Masukan No Res" value="{{ isset($resi->resi) ? $resi->resi : '' }}">
+                                                </div> -->
                             <div class="col-md-6 form-group mb-3">
                                 <label for="nama_pengirim" class="small fw-bolder text-uppercase">Nama Pengirim</label>
-                                <input type="text" oninput="this.value = this.value.toUpperCase()" name="nama_pengirim" id="nama_pengirim"
-                                    class="form-control mt-1" placeholder="Masukan Nama"
+                                <input type="text" oninput="this.value = this.value.toUpperCase()" name="nama_pengirim"
+                                    id="nama_pengirim" class="form-control mt-1" placeholder="Masukan Nama"
                                     value="{{ isset($resi->id) ? $resi->estimasi : '' }}">
                             </div>
                             <div class="col-md-6 form-group mb-3">
                                 <label for="nama_penerima" class="small fw-bolder text-uppercase">Nama Penerima</label>
-                                <input type="text" oninput="this.value = this.value.toUpperCase()" name="nama_penerima" id="nama_penerima"
-                                    class="form-control mt-1" placeholder="Masukan Nama"
+                                <input type="text" oninput="this.value = this.value.toUpperCase()" name="nama_penerima"
+                                    id="nama_penerima" class="form-control mt-1" placeholder="Masukan Nama"
                                     value="{{ isset($resi->id) ? $resi->estimasi : '' }}">
                             </div>
                             <div class="col-md-6 form-group mb-3">
@@ -69,8 +72,9 @@
                                         class="distric form-select mt-1">
                                     </select>
                                 </div>
-                                <input type="text" oninput="this.value = this.value.toUpperCase()" name="alamat_pengirim_1" id="alamat_pengirim_1"
-                                    class="form-control" placeholder="Nama Jalan, Patokan, RT/RW"
+                                <input type="text" oninput="this.value = this.value.toUpperCase()"
+                                    name="alamat_pengirim_1" id="alamat_pengirim_1" class="form-control"
+                                    placeholder="Nama Jalan, Patokan, RT/RW"
                                     value="{{ isset($resi->id) ? $resi->alamat_1 : '' }}">
                             </div>
                             <div class="col-md-6 form-group mb-3">
@@ -81,8 +85,9 @@
                                         class="distric form-control mt-1">
                                     </select>
                                 </div>
-                                <input type="text" oninput="this.value = this.value.toUpperCase()" name="alamat_penerima_1" id="alamat_penerima_1"
-                                    class="form-control" placeholder="Nama Jalan, Patokan, RT/RW"
+                                <input type="text" oninput="this.value = this.value.toUpperCase()"
+                                    name="alamat_penerima_1" id="alamat_penerima_1" class="form-control"
+                                    placeholder="Nama Jalan, Patokan, RT/RW"
                                     value="{{ isset($resi->id) ? $resi->alamat_2 : '' }}">
                             </div>
                             <div class="col-md-6 form-group mb-3">
@@ -104,7 +109,7 @@
                                 <label for="tlp_penerima" class="small fw-bolder text-uppercase">Telp. Penerima</label>
                                 <div class="input-group">
                                     <!-- <span class="input-group-text">
-                                        </span> -->
+                                                        </span> -->
                                     <input type="tel" name="tlp_penerima" id="tlp_penerima"
                                         class="form-control mt-1" placeholder="Ex: 0881234567890" onkeyup="tlpPenerima()"
                                         onkeypress="return onlyNumberKey(event)">
@@ -161,10 +166,12 @@
                                     </div>
                                 </td>
                                 <td id="col2">
-                                    <input type="text" id="volume" name="volume" value="" class="form-control" readonly />
+                                    <input type="text" id="volume" name="volume" value=""
+                                        class="form-control" readonly />
                                 </td>
                                 <td id="col3">
-                                    <input type="text" oninput="this.value = this.value.toUpperCase()" name="keterangan" class="form-control" placeholder="Keterangan..">
+                                    <input type="text" oninput="this.value = this.value.toUpperCase()"
+                                        name="keterangan" class="form-control" placeholder="Keterangan..">
                                 </td>
                             </tr>
                         </table>
@@ -181,7 +188,8 @@
                                 <td style="width :90%">Isi Barang</td>
                                 <td colspan="2" class="text-end" style="width :30%">
                                     <div class="input-group mt-2">
-                                        <input type="text" oninput="this.value = this.value.toUpperCase()" name="isi_barang" id="isi_barang" class="form-control">
+                                        <input type="text" oninput="this.value = this.value.toUpperCase()"
+                                            name="isi_barang" id="isi_barang" class="form-control">
                                     </div>
                                 </td>
                             </tr>
@@ -189,8 +197,8 @@
                                 <td style="width :90%">Total Barang</td>
                                 <td colspan="2" class="text-end" style="width :30%">
                                     <div class="input-group">
-                                        <input type="text" oninput="this.value = this.value.toUpperCase()" name="total_barang" id="total_barang" class="form-control"
-                                            readonly>
+                                        <input type="text" oninput="this.value = this.value.toUpperCase()"
+                                            name="total_barang" id="total_barang" class="form-control" readonly>
                                     </div>
                                 </td>
                             </tr>
@@ -198,8 +206,8 @@
                                 <td style="width :90%">Total Berat Dimensi</td>
                                 <td colspan="2" class="text-end" style="width :30%">
                                     <div class="input-group">
-                                        <input type="text" oninput="this.value = this.value.toUpperCase()" name="total_volume" id="total_volume" class="form-control"
-                                            readonly>
+                                        <input type="text" oninput="this.value = this.value.toUpperCase()"
+                                            name="total_volume" id="total_volume" class="form-control" readonly>
                                         <span class="input-group-text">KG</span>
                                     </div>
                                 </td>
@@ -208,8 +216,8 @@
                                 <td style="width :90%">Berat Dikenakan Biaya</td>
                                 <td colspan="2" class="text-end" style="width :30%">
                                     <div class="input-group">
-                                        <input type="text" oninput="this.value = this.value.toUpperCase()" name="total_berat" id="total_berat" class="form-control"
-                                            readonly>
+                                        <input type="text" oninput="this.value = this.value.toUpperCase()"
+                                            name="total_berat" id="total_berat" class="form-control" readonly>
                                         <span class="input-group-text">KG</span>
                                     </div>
                                 </td>
@@ -219,8 +227,8 @@
                                 <td colspan="2" class="text-end" style="width :30%">
                                     <div class="input-group">
                                         <span class="input-group-text">RP</span>
-                                        <input type="text" oninput="this.value = this.value.toUpperCase()" name="tarif" id="tarif" class="form-control"
-                                            readonly>
+                                        <input type="text" oninput="this.value = this.value.toUpperCase()"
+                                            name="tarif" id="tarif" class="form-control" readonly>
                                     </div>
                                 </td>
                             </tr>
@@ -229,8 +237,8 @@
                                 <td colspan="2" class="text-end" style="width :30%">
                                     <div class="input-group">
                                         <span class="input-group-text">RP</span>
-                                        <input type="text" oninput="this.value = this.value.toUpperCase()" name="tot_biaya_kirim" id="tot_biaya_kirim"
-                                            class="form-control" readonly>
+                                        <input type="text" oninput="this.value = this.value.toUpperCase()"
+                                            name="tot_biaya_kirim" id="tot_biaya_kirim" class="form-control" readonly>
                                     </div>
                                 </td>
                             </tr>
@@ -261,9 +269,9 @@
                                 </select>
                             </div>
                             <!-- <div class="col-md-3 form-group mb-3">
-                                        <label for="tujuan_area" class="small fw-bolder text-uppercase">PPN</label>
-                                        <input type="text" oninput="this.value = this.value.toUpperCase()" name="tujuan_area" id="tujuan_area" class="form-control mt-1" placeholder="Masukan PPN" value="{{ isset($resi->id) ? $resi->tujuan_area : '' }}">
-                                    </div> -->
+                                                        <label for="tujuan_area" class="small fw-bolder text-uppercase">PPN</label>
+                                                        <input type="text" oninput="this.value = this.value.toUpperCase()" name="tujuan_area" id="tujuan_area" class="form-control mt-1" placeholder="Masukan PPN" value="{{ isset($resi->id) ? $resi->tujuan_area : '' }}">
+                                                    </div> -->
                             <div class="col-md-3 form-group mb-3">
                                 <label for="packing" class="small fw-bolder text-uppercase">Biaya Packing</label>
                                 <input type="text" name="packing" id="packing" class="form-control mt-1"
@@ -277,9 +285,9 @@
                                     oninput="total()">
                             </div>
                             <!-- <div class="col-md-3 form-group mb-3">
-                                        <label for="tujuan_area" class="small fw-bolder text-uppercase">Asuransi</label>
-                                        <input type="text" name="tujuan_area" id="tujuan_area" class="form-control mt-1" placeholder="Masukan Asuransi" value="{{ isset($resi->id) ? $resi->tujuan_area : '' }}">
-                                    </div> -->
+                                                        <label for="tujuan_area" class="small fw-bolder text-uppercase">Asuransi</label>
+                                                        <input type="text" name="tujuan_area" id="tujuan_area" class="form-control mt-1" placeholder="Masukan Asuransi" value="{{ isset($resi->id) ? $resi->tujuan_area : '' }}">
+                                                    </div> -->
 
                             <div class="col-md-3 form-group mb-3">
                                 <label for="total_biaya" class="small fw-bolder text-uppercase">Total Biaya
@@ -297,25 +305,47 @@
                     </div>
                     <div class="d-flex justify-content-end">
                         <a class="btn btn-light" href="{{ route('resi') }}">CANCEL</a>
-                        <button class="btn btn-dark ms-1"
-                            onclick="onCreateAsset()">Add</button>
+                        <button class="btn btn-dark ms-1" onclick="onCreateAsset()">Add</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="col-md-2">
+            <div class="card position-fixed" style="width: 190px">
+                <div class="card-header">
+                    <h4 class="card-title"><b>History</b></h4>
+                </div>
+                <div class="card-body">
+                    <p>Coming Soon.</p>
+                    <hr style="margin-bottom: 10px">
+                    <button class="btn btn-secondary-outline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-printer"
+                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2">
+                            </path>
+                            <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4"></path>
+                            <rect x="7" y="13" width="10" height="8" rx="2">
+                            </rect>
+                        </svg>
+                        Cetak
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- <div class="card-body">
-            <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <input type="file" name="file" class="form-control">
-                <br>
-                <button class="btn btn-success">
-                    Import User Data
-                </button>
-                
-            </form>
-        </div> -->
+                            <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="file" class="form-control">
+                                <br>
+                                <button class="btn btn-success">
+                                    Import User Data
+                                </button>
+                                
+                            </form>
+                        </div> -->
 @endsection
 @push('script')
     <script type="text/javascript">
@@ -411,12 +441,12 @@
                     document.getElementById('tarif').value = data[ser];
 
                     let tb = $('#total_berat').val();
-                    if(tb > 0){
+                    if (tb > 0) {
                         tk = parseFloat(parseFloat(tb) * parseInt(data[ser]));
                         document.getElementById('tot_biaya_kirim').value = tk;
                         total();
                     }
-                    
+
                 }
             });
 
@@ -474,7 +504,7 @@
                     url: '{{ route('resi-send') }}',
                     data: dataBatch,
                     onSuccess: function(response) {
-                        var url = '{{ route("show-detail", ":id") }}';
+                        var url = '{{ route('show-detail', ':id') }}';
                         url = url.replace(':id', response.data.id);
                         Swal.fire({
                             position: 'top-end',
@@ -576,7 +606,7 @@
                     l = $this.find("input[name='lebar']").val(),
                     t = $this.find("input[name='tinggi']").val(),
                     vol = $this.find("input[name='volume']").val();
-                    ket = $this.find("input[name='keterangan']").val();
+                ket = $this.find("input[name='keterangan']").val();
                 var temp = {
                     berat_actual: bact,
                     dimensi: p + " x " + l + " x " + t,
@@ -662,13 +692,13 @@
 
             if (dd < 10) {
                 dd = `0${dd}`
-            } else if (dd == null){
+            } else if (dd == null) {
                 dd = `00`;
             }
 
             if (mm < 10) {
                 mm = `0${mm}`;
-            } else if (mm == null){
+            } else if (mm == null) {
                 mm = `00`;
             }
 
