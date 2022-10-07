@@ -94,6 +94,8 @@ class ResiController extends Controller
 
     public function trackSTT(Request $request)
     {
+        try
+        {
         $resi = Resi::where('no_resi', $request->no_resi)->first();
         // dd($resi[0]->tracking);
         $tracking = isset($resi->tracking) ? json_decode($resi->tracking) : '';
@@ -101,6 +103,12 @@ class ResiController extends Controller
         $data['last'] =count(json_decode($resi->tracking))-1;
         $data['tracking'] = $tracking;
         return view('lacak', $data);
+        }catch(\Exception $e){
+            \Log::error($e->getMessage());
+            return response()->with([
+                'message'=> $e->getMessage()
+            ],500);
+        }
     }
 
     public function updateTracking(Request $request)
