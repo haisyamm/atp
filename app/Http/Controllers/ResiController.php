@@ -43,7 +43,6 @@ class ResiController extends Controller
         }
         return json_encode($data);
     }
-
     /**
      * Show the form for creating a new resource.
      *

@@ -83,7 +83,6 @@
                                         </div>
                                     </div>
                                     <hr style="margin-top: 5px;margin-bottom: 10px">
-                                    @endif
                                     <div style="display: flex">
                                         <div style="width: 60%">
                                             <h2 class="text-uppercase">{{config('payment')[$resi->payment]}}</h2>
@@ -163,6 +162,7 @@
                                             <span>Total biaya:<br>Rp {{number_format((float)$resi->total_biaya,2)}}</span>
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
