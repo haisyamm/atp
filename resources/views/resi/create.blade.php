@@ -44,7 +44,7 @@
                                     id="no_reff" class="form-control mt-1" placeholder="Refferensi (Optional)"
                                     value="{{ isset($resi->resi) ? $resi->resi : '' }}">
                             </div>
-                            <!-- <div class="col-md-3 form-group mb-3">
+                            <!-- <div class="col-md-3 form-group mb-3" cek>
                                                     <label for="no_pickup" class="small fw-bolder text-uppercase">No Pickup</label>
                                                     <input type="text" oninput="this.value = this.value.toUpperCase()" name="no_pickup" id="no_pickup" class="form-control mt-1" placeholder="Masukan No Pickup" value="{{ isset($resi->resi) ? $resi->resi : '' }}">
                                                 </div> -->
