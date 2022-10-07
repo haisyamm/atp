@@ -73,7 +73,6 @@
                                         <span>Isi      : {{$detail_biaya->isi}}</span>
                                     </div>
                                     <hr style="margin-top: 10px;margin-bottom: 10px">
-                                    @if($detail_biaya->total_barang == $i)
                                     @if($resi->is_do)
                                     <div style="display: flex">
                                         <div style="width: 50%">
@@ -100,6 +99,7 @@
                                             <p>{{$brg->dimensi}} cm<br><b>{{number_format((float)$brg->volume,2)}}Kg</b></p>
                                         </div>
                                     </div>
+                                    @if($detail_biaya->total_barang == $i)
                                     <div style="border: 1px dashed #000000; margin: 0px 0px 15px 0px"></div>
                                     <div style="display: flex">
                                         <div style="width: 60%">
