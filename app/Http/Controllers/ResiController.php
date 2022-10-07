@@ -43,6 +43,10 @@ class ResiController extends Controller
         }
         return json_encode($data);
     }
+<<<<<<< Updated upstream
+=======
+ 
+>>>>>>> Stashed changes
     /**
      * Show the form for creating a new resource.
      *
