@@ -10,35 +10,37 @@
                         <thead>
                             <tr>
                                 <th scope="col" width="250px">RUTE</th>
-                                <th scope="col">VOLUME KGv</th>
-                                <th scope="col">BERAT ACTUAL</th>
                                 <th scope="col">REGULAR</th>
                                 <th scope="col">KILAT</th>
                                 <th scope="col">EKONOMI</th>
+                                <th scope="col">VOLUME KGv</th>
+                                <th scope="col">BERAT ACTUAL</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($tarif as $val)
-                            <?php 
-                                if($val->servis=="EKO") {
-                                    $berat_act = ceil($volume/4000);
-                                }else{
-                                    $berat_act = ceil($volume/6000);
-                                }
-                                
-                                if ($berat_act > $berat){
-                                    $berat_akhir = $berat_act;
-                                }else{
-                                    $berat_akhir = $berat;
-                                }
-                            ?>
                             <tr>
                                 <td>{{$val->alamat_asal}}&nbsp;&nbsp;==>&nbsp;&nbsp;{{$val->alamat_tujuan}}</td>
+                                @foreach(json_decode($val->harga) as $servis => $harga)
+                                <?php 
+
+                                
+                                        if($servis=="EKO") {
+                                            $berat_act = ceil($volume/4000);
+                                        }else{
+                                            $berat_act = ceil($volume/6000);
+                                        }
+                                        if ($berat_act > $berat){
+                                            $berat_akhir = $berat_act;
+                                        }else{
+                                            $berat_akhir = $berat;
+                                        }
+
+                                    ?>
+                                <td>{{ !empty($servis) ? 'Rp. '.number_format((float)$harga*$berat_akhir) : ''  }}</td>
+                                @endforeach
                                 <td>{{$berat_act}}</td>
                                 <td>{{$berat}}</td>
-                                <td>{{ ($val->servis=="REG") ? 'Rp. '.number_format((float)$val->harga*$berat_akhir) : ''  }}</td>
-                                <td>{{ ($val->servis=="KIL") ? 'Rp. '.number_format((float)$val->harga*$berat_akhir) : ''  }}</td>
-                                <td>{{ ($val->servis=="EKO") ? 'Rp. '.number_format((float)$val->harga*$berat_akhir) : ''  }}</td>
                             </tr>
                             @endforeach
                         </tbody>
