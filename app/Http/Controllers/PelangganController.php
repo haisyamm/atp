@@ -20,6 +20,23 @@ class PelangganController extends Controller
         ]);
     }
 
+    public function searchPelanggan(Request $request)
+    {
+        $result = [];
+
+        if($request->has('term')){
+            $query = Pelanggan::where('nama', 'like', '%'. $request->term .'%')->get();
+            foreach(json_decode($query->take(5)) as $key => $val){
+                $result[$key]['id'] = $val->id;
+                $result[$key]['nama'] = $val->nama;
+                $result[$key]['no_tlp'] = $val->no_tlp;
+                $result[$key]['alamat'] = json_decode($val->alamat);
+            }
+        }
+        
+        return response()->json($result);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

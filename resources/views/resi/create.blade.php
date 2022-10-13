@@ -447,6 +447,57 @@
         });
     </script>
     <script>
+        $(function() {
+            $("#nama_penerima").autocomplete({
+                minLength: 0,
+                source: "{{ route('search-customer') }}",
+                focus: function( event, ui ) {
+                    $( "#nama_penerima" ).val( ui.item.nama );
+                    return false;
+                },
+                select: function( event, ui ) {
+                    let opt = ' <option value="'+ui.item.alamat.id+'" selected>'+ui.item.alamat.alamat_2+'</option>';
+                    $("#nama_penerima").val( ui.item.nama );
+                    $("#tlp_penerima").val( ui.item.no_tlp );
+                    $('#alamat_penerima_2').html(opt);
+                    $('#alamat_penerima_1').val(ui.item.alamat.alamat_1);
+                    $('#tlp_penerima').val();
+                    $('#save_penerima').attr("disabled", true);
+                    return false;
+                }
+                })
+                .autocomplete( "instance" )._renderItem = function( ul, item ) {
+                return $( "<li>" )
+                    .append( "<div>" + item.nama + "</div>" )
+                    .appendTo( ul );
+                }
+        });
+
+        $(function() {
+            $("#nama_pengirim").autocomplete({
+                minLength: 0,
+                source: "{{ route('search-customer') }}",
+                focus: function( event, ui ) {
+                    $( "#nama_pengirim" ).val( ui.item.nama );
+                    return false;
+                },
+                select: function( event, ui ) {
+                    let opt = ' <option value="'+ui.item.alamat.id+'" selected>'+ui.item.alamat.alamat_2+'</option>';
+                    $("#nama_pengirim").val( ui.item.nama );
+                    $("#tlp_pengirim").val( ui.item.no_tlp );
+                    $('#alamat_pengirim_2').html(opt);
+                    $('#alamat_pengirim_1').val(ui.item.alamat.alamat_1);
+                    $('#tlp_pengirim').val();
+                    $('#save_pengirim').attr("disabled", true);
+                    return false;
+                }
+                })
+                .autocomplete( "instance" )._renderItem = function( ul, item ) {
+                return $( "<li>" )
+                    .append( "<div>" + item.nama + "</div>" )
+                    .appendTo( ul );
+                }
+        });
         $('.distric').select2({
             placeholder: 'Pilih Kecamatan',
             theme: "bootstrap",
@@ -697,4 +748,9 @@
         }
         showTime();
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        
+    <!-- jQuery UI library -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 @endpush

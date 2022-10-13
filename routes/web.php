@@ -84,6 +84,7 @@ Route::middleware(['auth', 'user-access:1'])->prefix("lm-admin")->group(function
     Route::resource('banner', BannerController::class);
     Route::resource('user', UserController::class);
 
+    Route::get('customer', [PelangganController::class, 'searchPelanggan'])->name('search-customer');
 
     Route::get('/', [HomeController::class, 'adminHome'])->name('lm-admin');
     Route::get('/dashboard-realtime-book', [ResiController::class, 'dBooking'])->name('d-booking');
