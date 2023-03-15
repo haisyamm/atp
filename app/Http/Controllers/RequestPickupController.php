@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\RequestPickup;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class RequestPickupController extends Controller
@@ -24,7 +25,8 @@ class RequestPickupController extends Controller
      */
     public function create()
     {
-        return view('request');
+        $contact = Contact::all();
+        return view('request', ['contact' => $contact]);
     }
 
     /**

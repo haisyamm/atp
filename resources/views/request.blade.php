@@ -1,43 +1,49 @@
 @extends('layouts.app')
 @section('content')
-<section class="py-8 overflow-hidden backgroundfooter" id="contactus">
-
+<section class="py-8 overflow-hidden backgroundfooter" id="contactus"
+        style="background-image:url({{ asset('assets/img/gallery/bg-footer.png') }}); background-size: 100%; background-position: center; position: relative;">
     <div class="container">
         <div class="our-service-sass hide-pr show-pr">
             <div class="inner-wrapper">
                 <div class="row py-0">
                     <div class="col-lg-6 single-block aos-init aos-animate" data-aos="fade-up">
                         <div class="service-block">
+                            <span class="snow-dot"></span>
+                            <span class="snow-dot"></span>
+                            <span class="snow-dot"></span>
+                            <span class="snow-dot"></span>
+                            <span class="snow-dot"></span>
+                            <span class="snow-dot"></span>
+                            <span class="snow-dot"></span>
                             <div class="hover-content"></div>
                             <i class="flaticon-web user"></i>
                             <h1 class="title"><a>Request Pickup</a></h1>
                             <div class="row g-4">
-                                <div class="col-12">
+                                <div class="col-lg-12">
                                     <div class="input-group-icon">
                                         <label class="form-label " for="nama_pengirim">Nama Pengirim</label>
                                         <input class="form-control" id="nama_pengirim" type="text" placeholder="Nama Pengirim">
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-lg-12">
                                     <div class="input-group-icon">
                                         <label class="form-label " for="alamat">Alamat</label>
                                         <input class="form-control" id="alamat" type="text" placeholder="Alamat">
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-lg-12">
                                     <div class="input-group-icon">
                                         <label class="form-label " for="no_hp">Nomor yang dapat dihubungi:</label>
                                         <input class="form-control" id="no_hp" type="text" placeholder="Nomor yang dapat dihubungi">
                                     </div>
                                 </div>
-                            
-                                <div class="col-12">
+                                <div class="col-lg-12">
                                     <div class="input-group-icon">
                                         <label class="form-label" for="date">Request Waktu Pick Up</label>
                                         <input class="form-control datepicker" id="date" type="date">
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-lg-12">
                                     <div class="input-group-icon">
                                         <input class="form-check-input" type="radio" name="option1" id="option1" value="09.00-12.00">
                                             <label class="form-check-label" for="option1">
@@ -50,14 +56,14 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-lg-12">
                                     <div class="input-group-icon">
                                     <label class="form-label " for="tujuan_id">Tujuan</label>
                                         <select name="tujuan_id" id="tujuan_id" class="distric form-control ">
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-lg-12">
                                     <div class="input-group-icon">
                                     <label class="form-label " for="servis">Servis</label>
                                         <select name="servis" id="servis" class="form-select mt-1">
@@ -69,61 +75,86 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                <div class="col-6">
-                                    <div class="input-group-icon">
-                                        <label class="form-label " for="qty">Jumlah Pcs</label>
-                                        <input class="form-control" id="qty" type="text" placeholder="Jumlah">
+                                    <div class="col-6">
+                                        <div class="input-group-icon">
+                                            <label class="form-label " for="qty">Jumlah Pcs</label>
+                                            <input class="form-control" id="qty" type="text" placeholder="Jumlah">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="input-group-icon">
-                                        <label class="form-label " for="berat">Total Berat</label>
-                                        <input class="form-control" id="berat" type="text" placeholder="..../KG">
+                                    <div class="col-6">
+                                        <div class="input-group-icon">
+                                            <label class="form-label " for="berat">Total Berat</label>
+                                            <input class="form-control" id="berat" type="text" placeholder="..../KG">
+                                        </div>
                                     </div>
-                                </div>
                                 </div>                            
-                                <div class="col-12 d-grid mt-6"><button class="btn btn-secondary"  id="btnRequest">Request</button></div>
-                            </div>
-                        </div> <!-- /.service-block -->
-                    </div> <!-- /.single-block -->
+                                <div class="col-lg-12 d-grid mt-6">
+                                    <button class="btn btn-secondary"  id="btnRequest">Request</button>
+                                </div>
+                            </div> <!-- /.service-block -->
+                        </div> 
+                    <!-- /.single-block -->
+                    @forelse ($contact as $ct)
                     <div class="col-lg-6 single-block aos-init aos-animate" data-aos="fade-up">
                         <div class="service-block">
+                            <span class="snow-dot"></span>
+                            <span class="snow-dot"></span>
+                            <span class="snow-dot"></span>
+                            <span class="snow-dot"></span>
+                            <span class="snow-dot"></span>
+                            <span class="snow-dot"></span>
+                            <span class="snow-dot"></span>
                             <div class="hover-content"></div>
+                            <i class="flaticon-web user"></i>
                             <h5 class="title"><a>ANY INQUIRY ? PLEASE CONTACT US</a></h5>
                             <h5 class="text-secondary me-3">Head Office</h5>
-                            <p><i class="fas fa-phone-alt me-3"></i><span class="text">(021) 6249965</span></p>
-                            <p><i class="fas fa-envelope me-3"></i><span class="text">info@atpcargo.co.id</span></p>
+                            <p><i class="fas fa-phone-alt me-3"></i><span
+                                    class="text">{{ $ct->ho_telp }}</span></p>
+                            <p><i class="fas fa-envelope me-3"></i><span
+                                    class="text">{{ $ct->ho_email }}</span>
+                            </p>
                             <hr>
                             <h5 class="text-secondary me-3">Operational Office</h5>
-                            <p><i class="fas fa-phone-alt me-3"></i><span class="text">(021) 6249965</span></p>
-                            <p><i class="fas fa-envelope me-3"></i><span class="text">info@atpcargo.co.id</span></p>
+                            <p><i class="fas fa-phone-alt me-3"></i><span
+                                    class="text">{{ $ct->oo_telp }}</span></p>
+                            <p><i class="fas fa-envelope me-3"></i><span
+                                    class="text">{{ $ct->oo_email }}</span>
+                            </p>
                             <hr>
                             <h5 class="text-secondary me-3">Marketing</h5>
-                            <p><i class="fas fa-phone-alt me-3"></i><span class="text">(021) 6249965</span></p>
-                            <p><i class="fas fa-envelope me-3"></i><span class="text">info@atpcargo.co.id</span></p>
+                            <p><i class="fas fa-phone-alt me-3"></i><span
+                                    class="text">{{ $ct->mo_telp }}</span></p>
+                            <p><i class="fas fa-envelope me-3"></i><span
+                                    class="text">{{ $ct->mo_email }}</span>
+                            </p>
                             <hr>
                             <div class="mt-12">
-                                <a href="#!" class="text-primary"><i><img src="assets/icons/facebook.png" width="30px"></i></a>&nbsp;&nbsp;
-                                <a href="#!" class="text-primary"><i><img src="assets/icons/instagram.png" width="30px"></i></a>&nbsp;&nbsp;
-                                <a href="#!" class="text-primary"><i><img src="assets/icons/whatsapp.png" width="30px"></i></a>&nbsp;&nbsp;
-                                <a href="#!" class="text-primary"><i><img src="assets/icons/youtube.png" width="30px"></i></a>&nbsp;&nbsp;
-                                <a href="#!" class="text-primary"><i><img src="assets/icons/linkedin.png" width="30px"></i></a>&nbsp;&nbsp;
-                                <a href="#!" class="text-primary"><i><img src="assets/icons/telegram.png" width="30px"></i></a>&nbsp;&nbsp;
+                                <a href="{{ $ct->facebook }}" class="text-primary"><i><img
+                                            src="assets/icons/facebook.png" width="30px"></i></a>&nbsp;&nbsp;
+                                <a href="{{ $ct->instagram }}" class="text-primary"><i><img
+                                            src="assets/icons/instagram.png" width="30px"></i></a>&nbsp;&nbsp;
+                                <a href="{{ $ct->whatsapp }}" class="text-primary"><i><img
+                                            src="assets/icons/whatsapp.png" width="30px"></i></a>&nbsp;&nbsp;
+                                <a href="{{ $ct->youtube }}" class="text-primary"><i><img
+                                            src="assets/icons/youtube.png" width="30px"></i></a>&nbsp;&nbsp;
+                                <a href="{{ $ct->linkedin }}" class="text-primary"><i><img
+                                            src="assets/icons/linkedin.png" width="30px"></i></a>&nbsp;&nbsp;
+                                <a href="{{ $ct->telegram }}" class="text-primary"><i><img
+                                            src="assets/icons/telegram.png" width="30px"></i></a>&nbsp;&nbsp;
                             </div>
-                            <a class="detail-button"><i class="icon-img"><img src="assets/contactus3.svg" width="150px"></i></a>
+                            <a class="detail-button"><i class="icon-img"><img src="assets/contactus3.svg"
+                                        width="150px"></i></a>
                         </div> <!-- /.service-block -->
                     </div> <!-- /.single-block -->
-
+                    @empty
+                    @endforelse
                 </div> <!-- /.row -->
             </div> <!-- /.inner-wrapper -->
         </div>
     </div>
-
     <!-- end of .container-->
-
 </section>
 @endsection
-
 @push('script')
 <script>
 $(document).ready(function(){

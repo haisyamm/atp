@@ -43,8 +43,8 @@ Route::get('/', function () {
         'banner' => $banner
     ]);
 })->name('site');
-Route::get('/contact/pick-up', [RequestPickupController::class, 'create'])->name('request-pickup');
-Route::post('/contact/pick-up', [RequestPickupController::class, 'store'])->name('request-send');
+Route::get('pick-up', [RequestPickupController::class, 'create'])->name('request-pickup');
+Route::post('pick-up', [RequestPickupController::class, 'store'])->name('request-send');
 
 Route::get('provinsi', [MasterHargaController::class, 'searchProvince'])->name('provinsi');
 Route::get('city', [MasterHargaController::class, 'searchCity'])->name('city');

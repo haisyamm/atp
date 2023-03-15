@@ -553,8 +553,9 @@
             @endforelse
         </div>
     </section>
+@endsection
 
-
+@section('contact')
     <section class="py-0 overflow-hidden backgroundfooter" id="contactus"
         style="background-image:url({{ asset('assets/img/gallery/bg-footer.png') }}); background-size: 100%; background-position: center; position: relative;">
         <div class="container">
@@ -582,7 +583,7 @@
 
                                     <a class="detail-button"><i class="icon-img"><img src="assets/maps.svg"
                                                 width="150px"></i></a>
-                                    <iframe src="{{ $ct->maps_link }}" width="650" height="300" style="border:0;"
+                                    <iframe src="{{ $ct->maps_link }}" width="470" height="350" style="border:0;"
                                         allowfullscreen="" loading="lazy"
                                         referrerpolicy="no-referrer-when-downgrade"></iframe>
 
